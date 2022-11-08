@@ -9,14 +9,14 @@ def countWord(text, txtFind):
     txtFind = " " + txtFind + " "
     num = text.count(txtFind)     # nº de ocorrencias
 
-    ant=0           
+    posSearch=0           
     positions=""     # variável de saida com as diversas posições no texto
     for i in range(num):
-        pos = text.find(txtFind, ant) # pesquisa (find) no texto a partir da posição ant
-        print(pos)
-        if pos != -1:
-            positions+= " " + str(pos+1)   
-            ant = pos + 1
+        posWords = text.find(txtFind, posSearch) # pesquisa (find) no texto a partir da posição ant
+        print(posWords)
+        if posWords != -1:
+            positions+= " " + str(posWords+1)   
+            posSearch = posWords + 1
         else:
             break
     return num, positions     # devolve nº ocorrencias (num) e posições (positions)
@@ -24,7 +24,7 @@ def countWord(text, txtFind):
 text = input("Texto:")
 txtFind = input("Pesquisa:")
 num, positions = countWord(text, txtFind)
-print("A palavra {0} ocorre {1} vezes no texto. Nas posições {2}" .format(txtFind, num, positions))
+print("A palavra {0} ocorre {1} vezes no texto. Nas posições:{2}" .format(txtFind, num, positions))
 
 #refazer o codigo para melhor entedimento pessoal
 #prioridade para o dia 7/11/2022

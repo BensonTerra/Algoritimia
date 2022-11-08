@@ -1,6 +1,6 @@
 """
-Crie um programa que leia a pontuação de 10 participantes num concurso de programação (a pontuação deve estar validada entre 0 a 20, por uma estrutura try-except). 
-O programa deve invocar uma função, positiveList que receba a lista das 10 pontuações e devolva uma nova lista apenas com as pontuações positivas (>=10).
+Crie um programa que leia a pontuação de 10 participantes num concurso de programação (a pontuação deve estar validada entre 0 a 20, por uma estrutura try-except). 
+O programa deve invocar uma função, positiveList que receba a lista das 10 pontuações e devolva uma nova lista apenas com as pontuações positivas (>=10).
 """
 import os #biblioteca os
 autoStart="y"
