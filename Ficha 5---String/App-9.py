@@ -1,4 +1,8 @@
-
+"""
+Escreva a função countWord que receba um texto e uma palavra de 
+pesquisa. A função deve devolver o número de ocorrências dessa 
+palavra no texto, e as posições onde ocorre.
+"""
 # Função que o nº de ocorrência de uma palavra, num texto
 def countWord(text, txtFind):
     """
