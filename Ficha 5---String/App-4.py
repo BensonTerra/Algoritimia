@@ -1,11 +1,7 @@
 '''
-<<<<<<< HEAD
-
-=======
 Escreva a função removeSpaces que receba um texto e sustitua as 
 sequências de dois ou mais espaços por um único espaço. A função 
 deve imprimir o texto resultante.
->>>>>>> 589851bd90164c75136ed69649cceea7fed5bb5d
 '''
 
 import os #biblioteca os

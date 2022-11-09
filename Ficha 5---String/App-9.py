@@ -12,6 +12,7 @@ def countWord(text, txtFind):
     text = " " + text + " "
     txtFind = " " + txtFind + " "
     num = text.count(txtFind)     # nº de ocorrencias
+    print(num)
 
     posSearch=0           
     positions=""     # variável de saida com as diversas posições no texto
