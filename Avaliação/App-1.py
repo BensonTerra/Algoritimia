@@ -29,6 +29,10 @@ while numCiclos !=-0:
 return resposta
 """
 #tentativa falha FIM
+
+import os #biblioteca os
+autoStart="y"
+
 def removeDuplicates(texto):
     i=0
     lista = []
@@ -49,12 +53,6 @@ def removeDuplicates(texto):
 
     return resposta
 
-
-
-
- 
-import os #biblioteca os
-autoStart="y"
 texto ="este é um texto do teste de AED texto de AED"
 
 while autoStart == "Y" or autoStart == "y":
