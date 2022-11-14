@@ -27,13 +27,12 @@ def searchNumber(lista, pesquisa):
         return positions
 
 #lista= [1,2,3,4,5,6,7,8,5,10]
-
 posição = [1,2,3,4,5,6,7,8,9,10]
-lista= []
 
 while autoStart == "Y" or autoStart == "y":
     os.system("cls")
     try:
+        lista= []
         for i in range(2):
             num=int(input("O numero para a posição %i: "%posição[i])) #Input para introduzir um numero
             #print(num)
