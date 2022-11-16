@@ -65,5 +65,4 @@ while op != '0':
     elif op == '2':
         listaTrasnspota = invert(lista)
     elif op == '3':
-        print("Teste")
         maior(lista)
