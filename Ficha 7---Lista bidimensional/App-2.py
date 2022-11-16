@@ -30,16 +30,17 @@ def invert(lista):
             print(lista[y][x], end= " ")
         print()
     input()
-#---------------------------------------------------------#
+#-------------------------MAIOR---------------------------#
 def maior(lista):
     listaMaior = []
-    for x in range (len(listaMaior)):
-        for y in range (len(listaMaior)):
+    for x in range (len(lista)):
+        for y in range (len(lista)):
             num = lista[x][y]
             listaMaior.append(num)
-    print(listaMaior)
+    #print(lista)
+    print(max(listaMaior))
     input()
-        
+#---------------------------------------------------------#        
 
 import os #biblioteca os
 import random #biblioteca random
