@@ -33,7 +33,7 @@ while autoStart == "Y" or autoStart == "y":
     os.system("cls")
     try:
         lista= []
-        for i in range(2):
+        for i in range(10):
             num=int(input("O numero para a posição %i: "%posição[i])) #Input para introduzir um numero
             #print(num)
             lista.append(num)
