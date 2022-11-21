@@ -22,6 +22,3 @@ def replaceNumbers(texto):
 
 texto = input("Texto:")
 replaceNumbers(texto)
-
-#Analisar codigo
-#Prioridade para o dia 8/11/2022
