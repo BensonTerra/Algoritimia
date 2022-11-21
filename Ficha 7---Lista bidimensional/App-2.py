@@ -1,5 +1,5 @@
 """
-
+docstring
 """
 #---------------------GERADOR DE MATRIZES-----------------#
 def cria_Matriz(num):
@@ -44,7 +44,6 @@ def maior(lista):
 
 import os #biblioteca os
 import random #biblioteca random
-autoStart="y"
 op="1"
 
 lista = []
