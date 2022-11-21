@@ -38,7 +38,7 @@ def maior(lista):
             num = lista[x][y]
             listaMaior.append(num)
     #print(lista)
-    print(max(listaMaior))
+    print("O maior elemento da matriz é: %i"%max(listaMaior))
     input()
 #---------------------------------------------------------#        
 
@@ -64,4 +64,7 @@ while op != '0':
     elif op == '2':
         listaTrasnspota = invert(lista)
     elif op == '3':
+        maior(lista)
+    elif op == '4':
+        listaTrasnspota = invert(lista)
         maior(lista)

@@ -38,9 +38,9 @@ def removerCarro(vagas):
     return vagas
 
 def estado(vagas):
-    print("\n\n\t\tVagas ocupadas {0} " .format(len(vagas)))
-    print("\n\n\t\tVagas livres   {0} " .format(compVagas - len(vagas)))
-    print("\n\t\t", vagas)
+    print("\n\t\tVagas ocupadas: %i " %(len(vagas)))
+    print("\n\t\tVagas livres: %i "%(compVagas - len(vagas)))
+    print("\n\t\tLocal das vagas: ", vagas)
     input()
 
 import os #biblioteca os
@@ -56,7 +56,7 @@ while autoStart == "Y" or autoStart == "y":
         print("\t\t1 -  Adicionar carro")
         print("\t\t2 -  Remover carro")
         print("\t\t3 -  Estado do estacionamento")
-        print("\t\t0 - Sair")
+        print("\t\t0 - Sair\n")
 
         op = input("\t\t    Opção: ")
         if op == '1':
