@@ -7,6 +7,10 @@ import os #biblioteca os
 pasta = "files"
 ficheiro = "files/lista.txt"
 #
+def tabela():
+    print("\t\t+---------------País | Continente----------------+")
+    print("\t\t+------------------------------------------------+")
+#
 if not os.path.exists(pasta):
     os.mkdir(pasta)
 #
@@ -42,7 +46,7 @@ def paisExiste(pais):
         linhas = f.readlines()
         f.close()
         for linha in linhas:
-            print("%s"%(linha.split(";")[0]))
+            #print("%s"%(linha.split(";")[0]))
             if pais == linha.split(";")[0]:
                 return True
         else:
@@ -52,15 +56,23 @@ def consultaPaíses(continente):
     f = open(ficheiro, "r", encoding="utf-8")
     linhas = f.readlines()
     f.close()
+    os.system("cls")
+    tabela()
     for linha in linhas:
-        if continente == "" or continente + '\n' == linha.split(";")[1]:
-            print("\t\t%s | %s"%((linha.split(";")[0]),(linha.split(";")[1])))
+        if continente == "":
+            print("\t\t\t\t %s | %s"%((linha.split(";")[0]),(linha.split(";")[1])))
+        elif continente + '\n' == linha.split(";")[1]:
+            print("\t\t\t\t %s | %s"%((linha.split(";")[0]),(linha.split(";")[1])))
     input()
-
-
-
-
-
+#
+def numerosPaises():
+    f = open(ficheiro, "r", encoding="utf-8")
+    linhas = f.readlines()
+    f.close()
+    num = len(linhas)
+    print("%i"%num)
+    input()
+#
 autoStart="y"
 op=" "
 #
@@ -82,9 +94,13 @@ while autoStart == "Y" or autoStart == "y":
         elif op == '2':
             consultaPaíses('')
         elif op == '3':
-            continente = input("qual contine:")
-
+            continente = input("qual continente:")
             consultaPaíses(continente)
-
-
+        elif op == '4':
+            numerosPaises()
+        elif op == '5':
+            tabela()
     autoStart = input("Repetir(Y/N) ?: ")
+
+
+    
