@@ -1,6 +1,6 @@
 import os #biblioteca os
 
-colunasLetras = ["A","B","C","D","E","F","G",]
+colunasLetras = ["A","B","C","D","E","F","G"]
 
 tabuleiro = [["","","","","","",""],
              ["","","","","","",""],
@@ -52,27 +52,33 @@ def mostrarTabuleiro():
     input()
 
 def colunaLetraParaNumero(string):
-    posiçao = [None,None]#Referencia ao tabyuleiro [LINHA,COLUNA]
-    if string.upper()[0] == "A":
-        posiçao[1] = 0
-    elif string.upper()[0] == "B":
-        posiçao[1] = 1
-    elif string.upper()[0] == "C":
-        posiçao[1] = 2
-    elif string.upper()[0] == "D":
-        posiçao[1] = 3
-    elif string.upper()[0] == "E":
-        posiçao[1] = 4
-    elif string.upper()[0] == "F":
-        posiçao[1] = 5
-    elif string.upper()[0] == "G":
-        posiçao[1] = 6
+    global colunasLetras
+    posiçao = [None,None]#Referencia ao tabuleiro [LINHA,COLUNA]
+    if(string.upper()[0] in colunasLetras):
+        if string.upper()[0] == "A":
+            posiçao[1] = 0 #coluna 0
+        elif string.upper()[0] == "B":
+            posiçao[1] = 1 #coluna 1
+        elif string.upper()[0] == "C":
+            posiçao[1] = 2 #coluna 2
+        elif string.upper()[0] == "D":
+            posiçao[1] = 3 #coluna 3
+        elif string.upper()[0] == "E":
+            posiçao[1] = 4 #coluna 4
+        elif string.upper()[0] == "F":
+            posiçao[1] = 5 #coluna 5
+        elif string.upper()[0] == "G":
+            posiçao[1] = 6 #coluna 6
+        posiçao[0] = int(string[1])
+        return posiçao
+
     else:
         print("Letra invalida. Insira novamente")
         input()
-    posiçao[0] = int(string[1])
-    return posiçao
+        os.system("cls")
+        mostrarTabuleiro()
 
+def posicaoDisponivel()
 
 turnoPlayer = 0
 modo = 0
@@ -87,8 +93,9 @@ while autoStart == "Y" or autoStart == "y":
             mostrarTabuleiro()
             while True:
                 espaçoSelecionado = input("\nSelecione uma casa para por a ficha: ")
-                print(espaçoSelecionado)
-                cordenada = (espaçoSelecionado)
+                #print(espaçoSelecionado)
+                cordenada = colunaLetraParaNumero(espaçoSelecionado)
+                #verificar se o espaço esta ocupado ou ha algo abaixo
 
     
         
