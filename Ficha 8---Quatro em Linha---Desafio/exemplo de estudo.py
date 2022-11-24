@@ -64,7 +64,7 @@ def checkForWinner(chip):
 
 def coordinateParser(inputString):
   coordinate = [None] * 2
-  if(inputString[0] == "A"):
+  if(inputString.upper()[0] == "A"):
     coordinate[1] = 0
   elif(inputString[0] == "B"):
     coordinate[1] = 1
