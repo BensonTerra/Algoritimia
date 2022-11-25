@@ -45,9 +45,9 @@ def mostrarTabuleiro():
         print(x, " |", end="")
         for y in range(colunas):
             if(tabuleiro[x][y] == "1"):
-                print("",tabuleiro[x][y], end=" |")
+                print("",tabuleiro[x][y], end="  |")
             elif(tabuleiro[x][y] == "2"):
-                print("", tabuleiro[x][y], end=" |")
+                print("", tabuleiro[x][y], end="  |")
             else:
                 print(" ", tabuleiro[x][y], end="  |")
     print("\n   +----+----+----+----+----+----+----+")
@@ -85,16 +85,28 @@ def gravidade(cordenada):
     casaInferior[0] = cordenada[0] + 1
     casaInferior[1] = cordenada[1]
     print(cordenada)
-    #verifica se na posição abaixo possui algo(" ","1" ou "2")
-    espaçoDisponivel(cordenada)
+    while espaçoDisponivel(casaInferior) == True:
+        cordenada[0] += 1
+        if cordenada[0] == 5 and tabuleiro[cordenada[0]][cordenada[1]] == "": #quando a peça esta na ultima camada/linha do tabuleiro
+            return cordenada
+        elif tabuleiro[cordenada[0]][cordenada[1]] != "":
+            cordenada[0] = cordenada[0] - 1
+            cordenada[1] = cordenada[1]
+            return cordenada
+           
+    while espaçoDisponivel(casaInferior) == False:
+        return cordenada   
 
 def espaçoDisponivel(cordenada):
-    #while(tabuleiro[0][1] == ""):
-    """
-    if(tabuleiro[0][1] == ""):
-        cordenada[0] += 1
-        print(cordenada)
-    """
+    if(tabuleiro[cordenada[0]][cordenada[1]] == "1"):
+        return False
+    elif(tabuleiro[cordenada[0]][cordenada[1]] == "2"):
+        return False
+    else:
+        return True
+
+def modificarTabuleiro(cordenada,ficha):
+    tabuleiro[cordenada[0]][cordenada[1]] = ficha
 
 turnoPlayer = 0
 modo = 0
@@ -103,21 +115,46 @@ autoStart="y"
 while autoStart == "Y" or autoStart == "y":
     os.system("cls")#Limpar tela
     iniciarJogo()
-    if(modo == 1):
+    if(modo == 1): #modo de jogo
         turnoPlayer = 1
-        if(turnoPlayer == 1):
-            mostrarTabuleiro()
-            while True:
-                espaçoSelecionado = input("\nSelecione uma casa para por a ficha: ")
-                #print(espaçoSelecionado)
-                cordenada = colunaLetraParaNumero(espaçoSelecionado)
-                #print(cordenada)
-                #verificar se o espaço esta ocupado ou ha algo abaixo
-                gravidade(cordenada)
+        loop = True
+        while loop == True:
+            if(turnoPlayer == 1):#vez do jogador 1
+                ficha="1"
+                mostrarTabuleiro()
+                while True:
+                    espaçoSelecionado = input("\nSelecione uma casa para por a ficha: ")
+                    #print(espaçoSelecionado)
+                    cordenada = colunaLetraParaNumero(espaçoSelecionado)
+                    #print(cordenada)
+                    #verificar se o espaço esta ocupado ou ha algo abaixo
+                    cordenadaFinal = gravidade(cordenada)
+                    #print(cordenadaFinal)
+                    modificarTabuleiro(cordenadaFinal,ficha)
+                    mostrarTabuleiro()
+                    turnoPlayer = 2
+                    break
+            elif(turnoPlayer == 2):#vez do jogador 2
+                ficha="2"
+                mostrarTabuleiro()
+                while True:
+                    espaçoSelecionado = input("\nSelecione uma casa para por a ficha: ")
+                    #print(espaçoSelecionado)
+                    cordenada = colunaLetraParaNumero(espaçoSelecionado)
+                    #print(cordenada)
+                    #verificar se o espaço esta ocupado ou ha algo abaixo
+                    cordenadaFinal = gravidade(cordenada)
+                    #print(cordenadaFinal)
+                    modificarTabuleiro(cordenadaFinal,ficha)
+                    mostrarTabuleiro()
+                    turnoPlayer = 1
+                    break
+            
+
 
     
         
-    autoStart = input("Repetir(Y/N) ?: ")
+    #autoStart = input("Repetir(Y/N) ?: ")
 
 
     
