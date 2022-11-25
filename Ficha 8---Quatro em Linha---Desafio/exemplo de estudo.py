@@ -93,7 +93,7 @@ def isSpaceAvailable(intendedCoordinate):
 
 def gravityChecker(intendedCoordinate):
   ### Calculate space below
-  spaceBelow = [None] * 2
+  spaceBelow = [None,None]
   spaceBelow[0] = intendedCoordinate[0] + 1
   spaceBelow[1] = intendedCoordinate[1]
   ### Is the coordinate at ground level

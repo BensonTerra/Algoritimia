@@ -11,6 +11,7 @@ tabuleiro = [["","","","","","",""],
 
 linha = 6
 colunas = 7
+#vitorias = 0
 
 def iniciarJogo():
     global modo
@@ -37,14 +38,15 @@ def iniciarJogo():
             return modo
 
 def mostrarTabuleiro():
+    print("\n     0    1    2    3    4    5    6  ", end="")
     print("\n     A    B    C    D    E    F    G  ", end="")
     for x in range(linha):
         print("\n   +----+----+----+----+----+----+----+")
-        print(x+1, " |", end="")
+        print(x, " |", end="")
         for y in range(colunas):
-            if(tabuleiro[x][y] == "🔵"):
+            if(tabuleiro[x][y] == "1"):
                 print("",tabuleiro[x][y], end=" |")
-            elif(tabuleiro[x][y] == "🔴"):
+            elif(tabuleiro[x][y] == "2"):
                 print("", tabuleiro[x][y], end=" |")
             else:
                 print(" ", tabuleiro[x][y], end="  |")
@@ -56,29 +58,43 @@ def colunaLetraParaNumero(string):
     posiçao = [None,None]#Referencia ao tabuleiro [LINHA,COLUNA]
     if(string.upper()[0] in colunasLetras):
         if string.upper()[0] == "A":
-            posiçao[1] = 0 #coluna 0
+            posiçao[1] = 0 #coluna 0/1
         elif string.upper()[0] == "B":
-            posiçao[1] = 1 #coluna 1
+            posiçao[1] = 1 #coluna 1/2
         elif string.upper()[0] == "C":
-            posiçao[1] = 2 #coluna 2
+            posiçao[1] = 2 #coluna 2/3
         elif string.upper()[0] == "D":
-            posiçao[1] = 3 #coluna 3
+            posiçao[1] = 3 #coluna 3/4
         elif string.upper()[0] == "E":
-            posiçao[1] = 4 #coluna 4
+            posiçao[1] = 4 #coluna 4/5
         elif string.upper()[0] == "F":
-            posiçao[1] = 5 #coluna 5
+            posiçao[1] = 5 #coluna 5/6
         elif string.upper()[0] == "G":
-            posiçao[1] = 6 #coluna 6
-        posiçao[0] = int(string[1])
+            posiçao[1] = 6 #coluna 6/7
+        posiçao[0] = 0 #linha 0
         return posiçao
-
     else:
         print("Letra invalida. Insira novamente")
         input()
         os.system("cls")
         mostrarTabuleiro()
 
-def posicaoDisponivel()
+def gravidade(cordenada):
+    #calcula a casa abaixo da coluna escolhida linha[0]coluna[x]
+    casaInferior = [None,None]
+    casaInferior[0] = cordenada[0] + 1
+    casaInferior[1] = cordenada[1]
+    print(cordenada)
+    #verifica se na posição abaixo possui algo(" ","1" ou "2")
+    espaçoDisponivel(cordenada)
+
+def espaçoDisponivel(cordenada):
+    #while(tabuleiro[0][1] == ""):
+    """
+    if(tabuleiro[0][1] == ""):
+        cordenada[0] += 1
+        print(cordenada)
+    """
 
 turnoPlayer = 0
 modo = 0
@@ -95,7 +111,9 @@ while autoStart == "Y" or autoStart == "y":
                 espaçoSelecionado = input("\nSelecione uma casa para por a ficha: ")
                 #print(espaçoSelecionado)
                 cordenada = colunaLetraParaNumero(espaçoSelecionado)
+                #print(cordenada)
                 #verificar se o espaço esta ocupado ou ha algo abaixo
+                gravidade(cordenada)
 
     
         
