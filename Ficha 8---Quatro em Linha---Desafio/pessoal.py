@@ -108,15 +108,6 @@ def espaçoDisponivel(cordenada):
 def modificarTabuleiro(cordenada,ficha):
     tabuleiro[cordenada[0]][cordenada[1]] = ficha
 
-def checarVitoria(ficha):
-    #Checar espaços horizontal
-    for x in range (colunas - 3):
-        for y in range (linha):
-            if(tabuleiro[x][y] == ficha and tabuleiro[x+1][y] == ficha and tabuleiro[x+2][y] == ficha and tabuleiro[x+3][y] == ficha):
-                print("vitorias ")
-
-
-
 turnoPlayer = 0
 modo = 0
 autoStart="y"
@@ -141,8 +132,6 @@ while autoStart == "Y" or autoStart == "y":
                     #print(cordenadaFinal)
                     modificarTabuleiro(cordenadaFinal,ficha)
                     mostrarTabuleiro()
-                    winner = checarVitoria(ficha)
-                    if winner == 1:
                     #turnoPlayer = 2
             elif(turnoPlayer == 2):#vez do jogador 2
                 ficha="2"
