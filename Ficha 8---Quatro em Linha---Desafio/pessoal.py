@@ -108,6 +108,17 @@ def espaçoDisponivel(cordenada):
 def modificarTabuleiro(cordenada,ficha):
     tabuleiro[cordenada[0]][cordenada[1]] = ficha
 
+def checarVitoria(ficha):
+    #verifica na horizontal
+    for y in range(linha):
+        for x in range (colunas - 3):
+            if tabuleiro[y][x] == ficha and tabuleiro[y][x+1] == ficha and tabuleiro[y][x+2] == ficha and tabuleiro[y][x+3] == ficha:
+                print("Horizontal")
+    #verifica na vertical
+    for x in range(linha):
+        for y in range (colunas - 3):
+            if tabuleiro[y][x] == ficha and tabuleiro[y+1][x] == ficha and tabuleiro[y+2][x] == ficha and tabuleiro[y+3][x] == ficha:
+                print("Vertical")
 turnoPlayer = 0
 modo = 0
 autoStart="y"
@@ -132,6 +143,7 @@ while autoStart == "Y" or autoStart == "y":
                     #print(cordenadaFinal)
                     modificarTabuleiro(cordenadaFinal,ficha)
                     mostrarTabuleiro()
+                    winner = checarVitoria(ficha)
                     #turnoPlayer = 2
             elif(turnoPlayer == 2):#vez do jogador 2
                 ficha="2"
