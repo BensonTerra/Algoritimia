@@ -13,6 +13,7 @@ linha = 6
 colunas = 7
 #vitorias = 0
 
+
 def iniciarJogo():
     global modo
     op=""
@@ -108,18 +109,22 @@ def modificarTabuleiro(cordenada,ficha):
     tabuleiro[cordenada[0]][cordenada[1]] = ficha
 
 def checarVitoria(ficha):
+    win = 0
     #verifica na horizontal
     for y in range(linha):
         for x in range (colunas - 3):
             if tabuleiro[y][x] == ficha and tabuleiro[y][x+1] == ficha and tabuleiro[y][x+2] == ficha and tabuleiro[y][x+3] == ficha:
                 print("Horizontal")
+                win = 1
+                return win
     #verifica na vertical
     for x in range(colunas):
         for y in range(linha-3):
             if tabuleiro[y][x] == ficha and tabuleiro[y+1][x] and tabuleiro[y+2][x] and tabuleiro[y+3][x] == ficha:
-                print("teste")
-            
-
+                print("Vertical")
+                win = 1
+                return win           
+    return win #caso não cumpra nenhuma das condições anteriores
 
 turnoPlayer = 0
 modo = 0
@@ -145,8 +150,9 @@ while autoStart == "Y" or autoStart == "y":
                     #print(cordenadaFinal)
                     modificarTabuleiro(cordenadaFinal,ficha)
                     mostrarTabuleiro()
-                    checarVitoria(ficha)
+                    vitoria = checarVitoria(ficha)
                     turnoPlayer = 2
+                    break
             elif(turnoPlayer == 2):#vez do jogador 2
                 ficha="2"
                 mostrarTabuleiro()
@@ -160,14 +166,11 @@ while autoStart == "Y" or autoStart == "y":
                     #print(cordenadaFinal)
                     modificarTabuleiro(cordenadaFinal,ficha)
                     mostrarTabuleiro()
+                    checarVitoria(ficha)
                     turnoPlayer = 1
                     break
-            
-
-
-    
-        
-    #autoStart = input("Repetir(Y/N) ?: ")
-
-
-    
+            if(vitoria == 1):
+                mostrarTabuleiro()
+                input("\nVitoria")
+                break
+    #autoStart = input("Repetir(Y/N) ?: ")    
