@@ -43,6 +43,10 @@ def checkForWinner(chip):
   ### Check vertical spaces
   for x in range(rows):
     for y in range(cols - 3):
+      print(gameBoard[x][y])
+      print(gameBoard[x][y+1])
+      print(gameBoard[x][y+2])
+      print(gameBoard[x][y+3])
       if gameBoard[x][y] == chip and gameBoard[x][y+1] == chip and gameBoard[x][y+2] == chip and gameBoard[x][y+3] == chip:
         print("\nGame over", chip, "wins! Thank you for playing :)")
         return True
@@ -122,7 +126,7 @@ while(leaveLoop == False):
       except:
         print("Error occured. Please try again.")
     winner = checkForWinner('🔵')
-    turnCounter += 1
+    #turnCounter += 1
   ### It's the computers turn
   else:
     while True:

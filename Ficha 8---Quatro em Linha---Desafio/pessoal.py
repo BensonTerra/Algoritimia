@@ -2,12 +2,12 @@ import os #biblioteca os
 
 colunasLetras = ["A","B","C","D","E","F","G"]
 
-tabuleiro = [["","","","","","",""],
-             ["","","","","","",""],
-             ["","","","","","",""],
-             ["","","","","","",""],
-             ["","","","","","",""],
-             ["","","","","","",""]]
+tabuleiro = [ ["","","","","","",""],
+              ["","","","","","",""],
+              ["","","","","","",""],
+              ["","","","","","",""],
+              ["","","","","","",""],
+              ["","","","","","",""]]
 
 linha = 6
 colunas = 7
@@ -51,7 +51,6 @@ def mostrarTabuleiro():
             else:
                 print(" ", tabuleiro[x][y], end="  |")
     print("\n   +----+----+----+----+----+----+----+")
-    input()
 
 def colunaLetraParaNumero(string):
     global colunasLetras
@@ -115,10 +114,13 @@ def checarVitoria(ficha):
             if tabuleiro[y][x] == ficha and tabuleiro[y][x+1] == ficha and tabuleiro[y][x+2] == ficha and tabuleiro[y][x+3] == ficha:
                 print("Horizontal")
     #verifica na vertical
-    for x in range(linha):
-        for y in range (colunas - 3):
-            if tabuleiro[y][x] == ficha and tabuleiro[y+1][x] == ficha and tabuleiro[y+2][x] == ficha and tabuleiro[y+3][x] == ficha:
-                print("Vertical")
+    for x in range(colunas):
+        for y in range(linha-3):
+            if tabuleiro[y][x] == ficha and tabuleiro[y+1][x] and tabuleiro[y+2][x] and tabuleiro[y+3][x] == ficha:
+                print("teste")
+            
+
+
 turnoPlayer = 0
 modo = 0
 autoStart="y"
@@ -143,8 +145,8 @@ while autoStart == "Y" or autoStart == "y":
                     #print(cordenadaFinal)
                     modificarTabuleiro(cordenadaFinal,ficha)
                     mostrarTabuleiro()
-                    winner = checarVitoria(ficha)
-                    #turnoPlayer = 2
+                    checarVitoria(ficha)
+                    turnoPlayer = 2
             elif(turnoPlayer == 2):#vez do jogador 2
                 ficha="2"
                 mostrarTabuleiro()
