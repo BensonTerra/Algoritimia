@@ -99,10 +99,16 @@ def gravidade(cordenada):
 
 def espaçoDisponivel(cordenada):
     if(tabuleiro[cordenada[0]][cordenada[1]] == "1"):
+        input()
+        print("ocupado")
         return False
     elif(tabuleiro[cordenada[0]][cordenada[1]] == "2"):
+        input()
+        print("ocupado")
         return False
     else:
+        input()
+        print("livre")
         return True
 
 def modificarTabuleiro(cordenada,ficha):
@@ -132,8 +138,8 @@ autoStart="y"
 
 while autoStart == "Y" or autoStart == "y":
     os.system("cls")#Limpar tela
-    iniciarJogo()
-    if(modo == 1): #modo de jogo
+    modo = iniciarJogo()
+    if(modo == 2): #modo de jogo
         turnoPlayer = 1
         loop = True
         while loop == True:
@@ -141,36 +147,41 @@ while autoStart == "Y" or autoStart == "y":
                 ficha="1"
                 mostrarTabuleiro()
                 while True:
-                    espaçoSelecionado = input("\nSelecione uma casa para por a ficha: ")
+                    espaçoSelecionado = input("\nSelecione uma coluna para por a ficha: ")
                     #print(espaçoSelecionado)
                     cordenada = colunaLetraParaNumero(espaçoSelecionado)
                     #print(cordenada)
                     #verificar se o espaço esta ocupado ou ha algo abaixo
                     cordenadaFinal = gravidade(cordenada)
                     #print(cordenadaFinal)
-                    modificarTabuleiro(cordenadaFinal,ficha)
+                    if espaçoDisponivel(cordenadaFinal) == True:
+                        modificarTabuleiro(cordenadaFinal,ficha)
                     mostrarTabuleiro()
-                    vitoria = checarVitoria(ficha)
+                    #vitoria = checarVitoria(ficha)
                     turnoPlayer = 2
                     break
-            elif(turnoPlayer == 2):#vez do jogador 2
+            if(turnoPlayer == 2):#vez do jogador 1
                 ficha="2"
                 mostrarTabuleiro()
                 while True:
-                    espaçoSelecionado = input("\nSelecione uma casa para por a ficha: ")
+                    espaçoSelecionado = input("\nSelecione uma coluna para por a ficha: ")
                     #print(espaçoSelecionado)
                     cordenada = colunaLetraParaNumero(espaçoSelecionado)
                     #print(cordenada)
                     #verificar se o espaço esta ocupado ou ha algo abaixo
                     cordenadaFinal = gravidade(cordenada)
                     #print(cordenadaFinal)
-                    modificarTabuleiro(cordenadaFinal,ficha)
+                    if espaçoDisponivel(cordenadaFinal) == True:
+                        modificarTabuleiro(cordenadaFinal,ficha)
                     mostrarTabuleiro()
-                    checarVitoria(ficha)
+                    #vitoria = checarVitoria(ficha)
                     turnoPlayer = 1
                     break
+                """
             if(vitoria == 1):
                 mostrarTabuleiro()
-                input("\nVitoria")
+                input("\nVitoria da ficha: %s" %ficha)
                 break
-    #autoStart = input("Repetir(Y/N) ?: ")    
+                """
+
+    autoStart = input("\nRepetir(Y/N) ?: ")    

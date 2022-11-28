@@ -70,7 +70,7 @@ def numerosPaises():
     linhas = f.readlines()
     f.close()
     num = len(linhas)
-    print("%i"%num)
+    print("A lista possui: %i paises"%num)
     input()
 #
 autoStart="y"
