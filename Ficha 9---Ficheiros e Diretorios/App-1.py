@@ -18,7 +18,6 @@ def inserirDado():
     """
     Cria bloco de notas.txt
     """
-
     pais = ""
     continente = ""
     pais = input("Digite um país: ")

@@ -56,20 +56,20 @@ def mostrarTabuleiro():
 def colunaLetraParaNumero(string):
     global colunasLetras
     posiçao = [None,None]#Referencia ao tabuleiro [LINHA,COLUNA]
-    if(string.upper()[0] in colunasLetras):
-        if string.upper()[0] == "A":
+    if(string.upper() in colunasLetras):
+        if string.upper() == "A":
             posiçao[1] = 0 #coluna 0/1
-        elif string.upper()[0] == "B":
+        elif string.upper() == "B":
             posiçao[1] = 1 #coluna 1/2
-        elif string.upper()[0] == "C":
+        elif string.upper() == "C":
             posiçao[1] = 2 #coluna 2/3
-        elif string.upper()[0] == "D":
+        elif string.upper() == "D":
             posiçao[1] = 3 #coluna 3/4
-        elif string.upper()[0] == "E":
+        elif string.upper() == "E":
             posiçao[1] = 4 #coluna 4/5
-        elif string.upper()[0] == "F":
+        elif string.upper() == "F":
             posiçao[1] = 5 #coluna 5/6
-        elif string.upper()[0] == "G":
+        elif string.upper() == "G":
             posiçao[1] = 6 #coluna 6/7
         posiçao[0] = 0 #linha 0
         return posiçao
