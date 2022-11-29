@@ -136,7 +136,7 @@ def checarVitoria(ficha):
 
 def PlayerX(ficha):
     global turnoPlayer
-    ficha="1"
+    fichaX=ficha
     fim = 0
     mostrarTabuleiro()
     while True:
@@ -150,15 +150,16 @@ def PlayerX(ficha):
             cordenadaFinal = gravidade(cordenada)
             #print(cordenadaFinal)
             if colunaDisponivel(cordenadaFinal) == True:
-                modificarTabuleiro(cordenadaFinal,ficha)
+                modificarTabuleiro(cordenadaFinal,fichaX)
                 #os.system("cls")
             mostrarTabuleiro()
             #vitoria = checarVitoria(ficha)
-            turnoPlayer = 2
+            turnoPlayer+=1
             fim = 1
             break
         if fim == 1:
             break
+
 turnoPlayer = 0
 modo = 0
 autoStart="y"
@@ -169,15 +170,15 @@ while autoStart == "Y" or autoStart == "y":
     vitoria = 0
             #-------------------------------------jogador vs maquina----------------------------------------#
     if(modo == 1): #modo de jogo 1 jogador
-        turnoPlayer = 1
+        turnoPlayer = 0
         loop = True
         while loop == True:
             #-------------------------------------Vez do Jogador 1------------------------------------------#
-            if(turnoPlayer == 1):#vez do jogador 1
+            if(turnoPlayer % 2 == 0):#vez do jogador 1
                 ficha="1"
                 PlayerX(ficha)
             #-------------------------------------Vez do computador-----------------------------------------#
-            if(turnoPlayer == 2):
+            elif(turnoPlayer % 2 != 2):
                 ficha="2"
                 PlayerX(ficha)
     autoStart = input("\nRepetir(Y/N) ?: ")    
