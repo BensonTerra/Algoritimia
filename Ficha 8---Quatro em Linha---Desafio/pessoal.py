@@ -8,11 +8,13 @@ tabuleiro = [ ["","","","","","",""],
               ["","","","","","",""],
               ["","","","","","",""],
               ["","","","","","",""]]
-
+#variaveis globais inicio
 linha = 6
 colunas = 7
+vitoria = 0
 #vitorias = 0
 turnoPlayer = 1
+#variaveis globais fim
 
 def iniciarJogo():
     global modo
@@ -136,6 +138,7 @@ def checarVitoria(ficha):
 
 def PlayerX(ficha):
     global turnoPlayer
+    global vitoria
     fichaX=ficha
     fim = 0
     mostrarTabuleiro()
@@ -153,12 +156,15 @@ def PlayerX(ficha):
                 modificarTabuleiro(cordenadaFinal,fichaX)
                 #os.system("cls")
             mostrarTabuleiro()
-            #vitoria = checarVitoria(ficha)
+            vitoria = checarVitoria(ficha)
             turnoPlayer+=1
             fim = 1
             break
         if fim == 1:
             break
+    if vitoria == 1:
+        print("vitoria da ficha: ")
+        input()
 
 turnoPlayer = 0
 modo = 0
@@ -167,17 +173,16 @@ autoStart="y"
 while autoStart == "Y" or autoStart == "y":
     os.system("cls")#Limpar tela
     modo = iniciarJogo()
-    vitoria = 0
             #-------------------------------------jogador vs maquina----------------------------------------#
-    if(modo == 1): #modo de jogo 1 jogador
+    if(modo == 2): #modo de jogo 1 jogador
         turnoPlayer = 0
         loop = True
         while loop == True:
             #-------------------------------------Vez do Jogador 1------------------------------------------#
-            if(turnoPlayer % 2 == 0):#vez do jogador 1
+            if(turnoPlayer % 2 == 0):
                 ficha="1"
                 PlayerX(ficha)
-            #-------------------------------------Vez do computador-----------------------------------------#
+            #-------------------------------------Vez do Jogador 2------------------------------------------#
             elif(turnoPlayer % 2 != 2):
                 ficha="2"
                 PlayerX(ficha)
