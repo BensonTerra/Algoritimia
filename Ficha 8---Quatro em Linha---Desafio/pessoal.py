@@ -12,7 +12,7 @@ tabuleiro = [ ["","","","","","",""],
 linha = 6
 colunas = 7
 #vitorias = 0
-
+turnoPlayer = 1
 
 def iniciarJogo():
     global modo
@@ -85,7 +85,7 @@ def gravidade(cordenada):
     casaInferior[0] = cordenada[0] + 1
     casaInferior[1] = cordenada[1]
     print(cordenada)
-    while espaçoDisponivel(casaInferior) == True:
+    while colunaDisponivel(casaInferior) == True:
         cordenada[0] += 1
         if cordenada[0] == 5 and tabuleiro[cordenada[0]][cordenada[1]] == "": #quando a peça esta na ultima camada/linha do tabuleiro
             return cordenada
@@ -94,21 +94,21 @@ def gravidade(cordenada):
             cordenada[1] = cordenada[1]
             return cordenada
            
-    while espaçoDisponivel(casaInferior) == False:
+    while colunaDisponivel(casaInferior) == False:
         return cordenada   
 
-def espaçoDisponivel(cordenada):
+def colunaDisponivel(cordenada):
     if(tabuleiro[cordenada[0]][cordenada[1]] == "1"):
-        input()
-        print("ocupado")
+        #input()
+        #print("ocupado")
         return False
     elif(tabuleiro[cordenada[0]][cordenada[1]] == "2"):
-        input()
-        print("ocupado")
+        #input()
+        #print("ocupado")
         return False
     else:
-        input()
-        print("livre")
+        #input()
+        #print("livre")
         return True
 
 def modificarTabuleiro(cordenada,ficha):
@@ -121,6 +121,7 @@ def checarVitoria(ficha):
         for x in range (colunas - 3):
             if tabuleiro[y][x] == ficha and tabuleiro[y][x+1] == ficha and tabuleiro[y][x+2] == ficha and tabuleiro[y][x+3] == ficha:
                 print("Horizontal")
+                input()
                 win = 1
                 return win
     #verifica na vertical
@@ -128,10 +129,36 @@ def checarVitoria(ficha):
         for y in range(linha-3):
             if tabuleiro[y][x] == ficha and tabuleiro[y+1][x] and tabuleiro[y+2][x] and tabuleiro[y+3][x] == ficha:
                 print("Vertical")
+                input()
                 win = 1
                 return win           
     return win #caso não cumpra nenhuma das condições anteriores
 
+def PlayerX(ficha):
+    global turnoPlayer
+    ficha="1"
+    fim = 0
+    mostrarTabuleiro()
+    while True:
+        mostrarTabuleiro()
+        colunaSelecionada = input("\nSelecione uma coluna para por a ficha: ")
+        #print(colunaSelecionada)
+        while colunaSelecionada != "":
+            cordenada = colunaLetraParaNumero(colunaSelecionada)
+            #print(cordenada)
+            #verificar se o coluna esta ocupado ou ha algo abaixo
+            cordenadaFinal = gravidade(cordenada)
+            #print(cordenadaFinal)
+            if colunaDisponivel(cordenadaFinal) == True:
+                modificarTabuleiro(cordenadaFinal,ficha)
+                #os.system("cls")
+            mostrarTabuleiro()
+            #vitoria = checarVitoria(ficha)
+            turnoPlayer = 2
+            fim = 1
+            break
+        if fim == 1:
+            break
 turnoPlayer = 0
 modo = 0
 autoStart="y"
@@ -139,49 +166,18 @@ autoStart="y"
 while autoStart == "Y" or autoStart == "y":
     os.system("cls")#Limpar tela
     modo = iniciarJogo()
-    if(modo == 2): #modo de jogo
+    vitoria = 0
+            #-------------------------------------jogador vs maquina----------------------------------------#
+    if(modo == 1): #modo de jogo 1 jogador
         turnoPlayer = 1
         loop = True
         while loop == True:
+            #-------------------------------------Vez do Jogador 1------------------------------------------#
             if(turnoPlayer == 1):#vez do jogador 1
                 ficha="1"
-                mostrarTabuleiro()
-                while True:
-                    espaçoSelecionado = input("\nSelecione uma coluna para por a ficha: ")
-                    #print(espaçoSelecionado)
-                    cordenada = colunaLetraParaNumero(espaçoSelecionado)
-                    #print(cordenada)
-                    #verificar se o espaço esta ocupado ou ha algo abaixo
-                    cordenadaFinal = gravidade(cordenada)
-                    #print(cordenadaFinal)
-                    if espaçoDisponivel(cordenadaFinal) == True:
-                        modificarTabuleiro(cordenadaFinal,ficha)
-                    mostrarTabuleiro()
-                    #vitoria = checarVitoria(ficha)
-                    turnoPlayer = 2
-                    break
-            if(turnoPlayer == 2):#vez do jogador 1
+                PlayerX(ficha)
+            #-------------------------------------Vez do computador-----------------------------------------#
+            if(turnoPlayer == 2):
                 ficha="2"
-                mostrarTabuleiro()
-                while True:
-                    espaçoSelecionado = input("\nSelecione uma coluna para por a ficha: ")
-                    #print(espaçoSelecionado)
-                    cordenada = colunaLetraParaNumero(espaçoSelecionado)
-                    #print(cordenada)
-                    #verificar se o espaço esta ocupado ou ha algo abaixo
-                    cordenadaFinal = gravidade(cordenada)
-                    #print(cordenadaFinal)
-                    if espaçoDisponivel(cordenadaFinal) == True:
-                        modificarTabuleiro(cordenadaFinal,ficha)
-                    mostrarTabuleiro()
-                    #vitoria = checarVitoria(ficha)
-                    turnoPlayer = 1
-                    break
-                """
-            if(vitoria == 1):
-                mostrarTabuleiro()
-                input("\nVitoria da ficha: %s" %ficha)
-                break
-                """
-
+                PlayerX(ficha)
     autoStart = input("\nRepetir(Y/N) ?: ")    

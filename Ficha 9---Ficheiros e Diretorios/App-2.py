@@ -20,11 +20,11 @@ def menu():
         op = input("\t\t    Opção: ")
         if op == '1':
             consultaDados()
-            print("teste")
+            #print("teste")
             input()
         if op == '2':
             consultaEstatisca()
-            print("teste")
+            #print("teste")
             input()
 
 def tabela():
@@ -74,7 +74,7 @@ def consultaEstatisca():
 
 autoStart="y"
 
-while autoStart == "Y" or autoStart == "y":
+while autoStart.upper() == "Y":
     menu()
     autoStart = input("Repetir(Y/N) ?: ")
 
