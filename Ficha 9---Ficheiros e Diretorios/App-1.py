@@ -72,10 +72,8 @@ def numerosPaises():
     print("A lista possui: %i paises"%num)
     input()
 #
-autoStart="y"
-op=" "
-#
-while autoStart == "Y" or autoStart == "y":
+def menu():
+    op=" "
     os.system("cls")#Limpar tela
     while op !="0":
         os.system("cls")
@@ -99,6 +97,11 @@ while autoStart == "Y" or autoStart == "y":
             numerosPaises()
         elif op == '5':
             tabela()
+#
+autoStart="y"
+#
+while autoStart == "Y" or autoStart == "y":
+    menu()
     autoStart = input("Repetir(Y/N) ?: ")
 
 

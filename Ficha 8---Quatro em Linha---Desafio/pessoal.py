@@ -173,6 +173,18 @@ autoStart="y"
 while autoStart == "Y" or autoStart == "y":
     os.system("cls")#Limpar tela
     modo = iniciarJogo()
+    if(modo == 1): #modo de jogo 1 jogador
+        turnoPlayer = 0
+        loop = True
+        while loop == True:
+            #-------------------------------------Vez do Jogador 1------------------------------------------#
+            if(turnoPlayer % 2 == 0):
+                ficha="1"
+                PlayerX(ficha)
+            #-------------------------------------Vez do Jogador 2------------------------------------------#
+            elif(turnoPlayer % 2 != 2):
+                ficha="2"
+                PlayerX(ficha)
             #-------------------------------------jogador vs maquina----------------------------------------#
     if(modo == 2): #modo de jogo 1 jogador
         turnoPlayer = 0
