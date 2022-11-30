@@ -21,11 +21,9 @@ def menu():
         if op == '1':
             consultaDados()
             #print("teste")
-            input()
         if op == '2':
             consultaEstatisca()
             #print("teste")
-            input()
 
 def tabela():
     print("\t\t+--------------------Data---------Hora------temperatura-----------------+")
