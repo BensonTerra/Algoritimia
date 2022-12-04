@@ -91,7 +91,7 @@ while autoStart == "Y" or autoStart == "y":
         elif op == "3":
             estado(parque)
         elif op == "4":
-            esvaziarParque(parque)
+            esvaziarParque(parque) # função extra
         input()
 
     autoStart = input("Repetir(Y/N) ?: ")
