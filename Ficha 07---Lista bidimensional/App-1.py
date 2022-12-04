@@ -16,7 +16,7 @@ def invert(lista):
     print("Lista original em modo tabela:")
     for x in range (len(lista)):
         for y in range (len(lista)):
-            print(lista[x][y], end= " ")
+            print(lista[x][y], end= " ")#lista[x][y]
         print()
     #---------------------------------------#
     print("")
@@ -24,7 +24,7 @@ def invert(lista):
     print("Lista transposta em modo tabela:")
     for x in range (len(lista)):
         for y in range (len(lista)):
-            print(lista[y][x], end= " ")
+            print(lista[y][x], end= " ")#lista[y][x]
         print()
 
 import os #biblioteca os
