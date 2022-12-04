@@ -37,6 +37,11 @@ def lerFicheiro():
     f.close()
 #Ler ficheiros fim
 #
+#Limpar ficheiro inicio
+def limparFicheiro():
+    limparTexto()
+    f = open(ficheiro,"w")
+    f.close()
 #codigo principal inicio
 window = Tk()
 window.geometry("700x400")
@@ -53,6 +58,9 @@ btnLimparFicheiro.place(x = 20, y = 160)
 #-----------------------------------------------------------------------------------------------------------------------------#
 btnLerFicheiro = Button(window, width = 20, height = 3,font = ("arial", 10), text = "Ler Ficheiro", fg = "green", bd = 2, command = lerFicheiro)
 btnLerFicheiro.place(x = 20, y = 260)
+#-----------------------------------------------------------------------------------------------------------------------------#
+btnLimparFicheiro = Button(window, width = 20, height = 3,font = ("arial", 10), text = "Limpar Ficheiro", fg = "green", bd = 2, command = limparFicheiro)
+btnLimparFicheiro.place(x = 20, y = 360)
 #codigo principal fim
 
 

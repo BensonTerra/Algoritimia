@@ -3,50 +3,75 @@
 """
 
 #Variaveis globais
+filas = 3
+vagas = 5
 compVagas = 15
 senha = 1
 
-def adicionarCarro(vagas):
-    """
-    rebebe o carro e gera uma vaga
-    """
-    global compVagas
-    if len(vagas) == compVagas:
-        print("\n\n\t\tNão há mais vagas")
-        input()
-        return vagas
-    global senha
-    vagas.append(senha)
-    print("\n\n\t\tVaga ocupada: %s"%senha)
-    input()
-    senha+=1 #proxima senha a sair
-    return vagas
+def cria_lista():
+    lista = []
+    for x in range (filas):
+        lista.append([])
+        for y in range (vagas):
+            lista[x].append(0)
+    return lista
 
-def removerCarro(vagas):
+def adicionarCarro(parque):
     """
-    receives vagas list and implements ticket fulfillment
+    recebe o carro e gera uma vaga
     """
-    if len(vagas) == 0:
-        print("\n\n\t\tNão há carros no estacionamento")
-        input()
-        return
-    # atende senha que está na posição 0 da lista (mais à frente)     
-    print("\n\n\t\tCarro de nº %s"%vagas[0])
-    input()
-    #del vagas[0]
-    vagas.pop(0)
-    return vagas
+    for x in range(filas):
+        for y in range(vagas):
+            if parque[x][y] == 0:
+                parque[x][y] = 1
+                print("\n\n\tlugar ocupado: Fila %i, Lugar %i"%(x+1, y+1))
+                return parque
+    print("\tO parque está completo! :(")
+    return parque
 
-def estado(vagas):
-    print("\n\t\tVagas ocupadas: %i " %(len(vagas)))
-    print("\n\t\tVagas livres: %i "%(compVagas - len(vagas)))
-    print("\n\t\tLocal das vagas: ", vagas)
-    input()
+def removerCarro(parque):
+    try:
+        removerFila= int(input("\n\n\tFila: "))
+        removerVaga= int(input("\n\n\tVaga: "))
+        if (removerFila > filas):
+            raise ValueError
+        if (removerVaga > vagas):
+            raise ValueError
+    except:
+        print("\tA fila ou lugar não são validos")
+    else:
+        if parque[removerFila-1][removerVaga-1] == 0:
+            print("\tO lugar indicado não está ocupado!")
+        else:
+            parque[removerFila-1][removerVaga-1] = 0
+            print("\to lugar foi desocupado!")
+    return parque
+
+def estado(parque):
+# Função de conta o nº de lugares livres e ocupados do parque
+    VagasLivres =0
+    Vagasocupadas = 0
+    for i in range(filas):
+        for j in range(vagas):
+            if (parque[i][j]== 0):
+                VagasLivres+=1
+            else:
+                Vagasocupadas+=1
+    print("\n\n\t\tESTADO DO PARQUE")
+    print("\tNº lugares livres  : %i"%VagasLivres)
+    print("\tNº lugares ocupados: %i"%Vagasocupadas)
+    print()
+
+def esvaziarParque(parque):
+    for x in range (filas):
+        for y in range(vagas):
+            parque[x][y] = 0
+    print("\n\n\t parque de estacionamento esvaziado")
 
 import os #biblioteca os
-autoStart="y"
 
-vagas = []
+autoStart="y"
+parque = cria_lista()
 op=" "
 while autoStart == "Y" or autoStart == "y":
     os.system("cls")#Limpar tela
@@ -60,10 +85,13 @@ while autoStart == "Y" or autoStart == "y":
 
         op = input("\t\t    Opção: ")
         if op == '1':
-            vagas = adicionarCarro(vagas)
-        if op == '2':
-            vagas = removerCarro(vagas)
-        if op == '3':
-            estado(vagas)
+            parque = adicionarCarro(parque)
+        elif op == '2':
+            parque = removerCarro(parque)
+        elif op == "3":
+            estado(parque)
+        elif op == "4":
+            esvaziarParque(parque)
+        input()
 
     autoStart = input("Repetir(Y/N) ?: ")
