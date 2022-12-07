@@ -59,8 +59,9 @@ def consultaEstatisca():
     for linha in linhas:
         temperatura = linha.split(";")[2]
         temperatura = temperatura[1:3]
+        print(temperatura)
         lista.append(int(temperatura))
-        #print(lista)
+        print(lista)
     lista.sort(reverse=True)
     #print(lista)
     media = sum(lista) / len(lista)
