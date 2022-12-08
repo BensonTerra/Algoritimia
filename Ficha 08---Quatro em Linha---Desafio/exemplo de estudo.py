@@ -43,27 +43,24 @@ def checkForWinner(chip):
   ### Check vertical spaces
   for x in range(rows):
     for y in range(cols - 3):
-      print(gameBoard[x][y])
-      print(gameBoard[x][y+1])
-      print(gameBoard[x][y+2])
-      print(gameBoard[x][y+3])
       if gameBoard[x][y] == chip and gameBoard[x][y+1] == chip and gameBoard[x][y+2] == chip and gameBoard[x][y+3] == chip:
         print("\nGame over", chip, "wins! Thank you for playing :)")
         return True
 
-  ### Check upper right to bottom left diagonal spaces
+  ### Check upper right to bottom left diagonal spaces #2
   for x in range(rows - 3):
     for y in range(3, cols):
       if gameBoard[x][y] == chip and gameBoard[x+1][y-1] == chip and gameBoard[x+2][y-2] == chip and gameBoard[x+3][y-3] == chip:
         print("\nGame over", chip, "wins! Thank you for playing :)")
         return True
 
-  ### Check upper left to bottom right diagonal spaces
+  ### Check upper left to bottom right diagonal spaces #1
   for x in range(rows - 3):
     for y in range(cols - 3):
       if gameBoard[x][y] == chip and gameBoard[x+1][y+1] == chip and gameBoard[x+2][y+2] == chip and gameBoard[x+3][y+3] == chip:
         print("\nGame over", chip, "wins! Thank you for playing :)")
         return True
+        
   return False
 
 def coordinateParser(inputString):

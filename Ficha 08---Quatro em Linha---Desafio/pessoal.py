@@ -5,9 +5,9 @@ colunasLetras = ["A","B","C","D","E","F","G"]
 tabuleiro = [ ["","","","","","",""],
               ["","","","","","",""],
               ["","","","","","",""],
-              ["","","","","","",""],
-              ["","","","","","",""],
-              ["","","","","","",""]]
+              ["","","","","","","2"],
+              ["","","","","","2","2"],
+              ["","","","","2","2","2"]]
 #variaveis globais inicio
 linha = 6
 colunas = 7
@@ -126,6 +126,7 @@ def checarVitoria(ficha):
                 input()
                 win = 1
                 return win
+    
     #verifica na vertical
     for x in range(colunas):
         for y in range(linha-3):
@@ -133,16 +134,34 @@ def checarVitoria(ficha):
                 print("Vertical")
                 input()
                 win = 1
-                return win           
+                return win
+
+    #verifica na diagonal, superior esquerdo para inferior direito
+    for x in range(linha - 3):
+        for y in range(colunas - 3):
+            if tabuleiro[x][y] == ficha and tabuleiro[x+1][y+1] == ficha and tabuleiro[x+2][y+2] == ficha and tabuleiro[x+3][y+3] == ficha:
+                print("Diagonal 1")
+                input()
+                win = 1
+                return True
+    
+    #verifica na diagonal, superior direito para inferior esquerdo
+    for x in range(linha - 3):
+        for y in range(3,colunas):
+            if tabuleiro[x][y] == ficha and tabuleiro[x+1][y-1] == ficha and tabuleiro[x+2][y-2] == ficha and tabuleiro[x+3][y-3] == ficha:
+                print("Diagonal 2")
+                input()
+                win
+                return True
+
     return win #caso não cumpra nenhuma das condições anteriores
 
 def PlayerX(ficha):
     global turnoPlayer
     global vitoria
-    fichaX=ficha
     fim = 0
-    mostrarTabuleiro()
     while True:
+        os.system("cls")
         mostrarTabuleiro()
         colunaSelecionada = input("\nSelecione uma coluna para por a ficha: ")
         #print(colunaSelecionada)
@@ -153,11 +172,11 @@ def PlayerX(ficha):
             cordenadaFinal = gravidade(cordenada)
             #print(cordenadaFinal)
             if colunaDisponivel(cordenadaFinal) == True:
-                modificarTabuleiro(cordenadaFinal,fichaX)
+                modificarTabuleiro(cordenadaFinal,ficha)
                 #os.system("cls")
             mostrarTabuleiro()
             vitoria = checarVitoria(ficha)
-            turnoPlayer+=1
+            turnoPlayer += 1
             fim = 1
             break
         if fim == 1:
@@ -174,16 +193,12 @@ while autoStart == "Y" or autoStart == "y":
     os.system("cls")#Limpar tela
     modo = iniciarJogo()
     if(modo == 1): #modo de jogo 1 jogador
-        turnoPlayer = 0
+        turnoPlayer = 1
         loop = True
         while loop == True:
             #-------------------------------------Vez do Jogador 1------------------------------------------#
-            if(turnoPlayer % 2 == 0):
+            if(turnoPlayer == 1 ):
                 ficha="1"
-                PlayerX(ficha)
-            #-------------------------------------Vez do Jogador 2------------------------------------------#
-            elif(turnoPlayer % 2 != 2):
-                ficha="2"
                 PlayerX(ficha)
             #-------------------------------------jogador vs maquina----------------------------------------#
     if(modo == 2): #modo de jogo 1 jogador

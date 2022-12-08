@@ -67,10 +67,9 @@ def estado(tickets):
     print("\n\t\t", tickets)
     input()
 
-
 tickets= []
-
 op="1"
+
 while op != '0':
     os.system('cls')                # clear screen
     print("\n\t\t\tMENU\n")
@@ -78,7 +77,7 @@ while op != '0':
     print("\t\t2 - Atendimento")
     print("\t\t3 - Estado da fila de espera")
     print("\t\t0 - Sair")
-    op = input("\t\t    Opção: ")
+    op = input("\n\t\t    Opção: ")
     if op == '1':
         tickets = tirarTicket(tickets)
     if op == '2':
