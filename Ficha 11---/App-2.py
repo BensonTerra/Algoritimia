@@ -16,6 +16,8 @@ def PesoIdealFuncao():
     else:
         k = 2
     peso = (altura.get() - 100)
+    Txt_Default.set(str(peso))
+    print(peso)
 
 #Define K para peso ideal fim
 #
@@ -53,7 +55,9 @@ lblPesoIdeal.place(x = 10, y = 10)
 btnPesoIdeal = Button(frame3, width = 20, height = 3,font = ("arial", 10), text = "Calcular peso ideal", fg = "green", bd = 2, command = PesoIdealFuncao) #comando
 btnPesoIdeal.place(x = 10, y = 40)
 #-----------------------------------------------------------------------------------------------------------------------------#
-txtPesoIdeal = Text(frame3,width = 10, height = 1)
+Txt_Default = StringVar()
+Txt_Default.set("0")
+txtPesoIdeal = Entry(frame3,width = 10, textvariable = Txt_Default)
 txtPesoIdeal.place(x = 80, y = 10)
 #codigo principal fim
 
