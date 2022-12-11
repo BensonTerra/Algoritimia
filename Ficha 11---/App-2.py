@@ -15,7 +15,7 @@ def PesoIdealFuncao():
         k = 4
     else:
         k = 2
-    peso = (altura.get() - 100)
+    peso = (altura.get() - 100) - (altura.get() - 150)/k
     Txt_Default.set(str(peso))
     print(peso)
 
