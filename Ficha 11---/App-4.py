@@ -1,5 +1,5 @@
 """
-
+Implemente um simulador de Índice de Massa Corporal, em que IMC = massa / (altura * altura) 
 """
 
 #Bibloiotecas inportadasa inicio
