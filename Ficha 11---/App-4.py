@@ -70,5 +70,13 @@ btnCalcularIMC.place(x=10, y=10)
 frame5 = LabelFrame(frame2,width = 390,height =145)
 frame5.place(x=5,y=215)
 #-----------------------------------------------------------------------------------------------------------------------------#
+imagemIMC = Canvas(frame1,width = 250, height = 250)
+img = PhotoImage(file = "./files/presencas.png")
+imagemIMC.create_image(125,125, anchor = "center",image = img)
+imagemIMC.place(x=0,y=0)
 
-window.mainloop
+
+
+
+window.mainloop()
+
