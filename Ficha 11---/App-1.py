@@ -6,7 +6,7 @@ import time #biblioteca time
 #
 5#Variaveis globais inicio
 pasta = "files"
-ficheiro = "files/text.txt"
+ficheiro = "files/list.txt"
 #Variaveis globais fim
 #
 #Verfica a existencia da pasta incio

@@ -1,7 +1,6 @@
 #Bibloiotecas inportadasa inicio
 import os #biblioteca os
 from tkinter import * #biblioteca tkinter
-import time #biblioteca time
 #Bibloiotecas inportadads fim
 #
 #Variaveis globais inicio
@@ -15,9 +14,14 @@ def PesoIdealFuncao():
         k = 4
     else:
         k = 2
-    peso = (altura.get() - 100) - (altura.get() - 150)/k
-    Txt_Default.set(str(peso))
-    print(peso)
+    #---------------------#
+    if(altura.get() == 0):
+        peso = 0
+        Txt_Default.set(str(peso))
+    else:
+        peso = (altura.get() - 100) - (altura.get() - 150)/k
+        Txt_Default.set(str(peso))
+    #print(peso)
 
 #Define K para peso ideal fim
 #
