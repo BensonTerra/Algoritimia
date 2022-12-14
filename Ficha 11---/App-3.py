@@ -1,11 +1,12 @@
 """
 Implemente um programa que permita gerir uma ToDoList (lista de tarefas a executar)
 """
+
 #Bibloiotecas inportadasa inicio
 import os  # biblioteca os
 from tkinter import *  # biblioteca tkinter
 #Bibloiotecas inportadads fim
-#
+
 #Variaveis globais inicio
 pasta = "files"
 ficheiro = "files/list.txt"
