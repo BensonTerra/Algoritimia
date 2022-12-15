@@ -47,9 +47,9 @@ def mostrarTabuleiro():
         print("\n   +----+----+----+----+----+----+----+")
         print(x, " |", end="")
         for y in range(colunas):
-            if(tabuleiro[x][y] == "1"):
+            if(tabuleiro[x][y] == "🔵"):
                 print("",tabuleiro[x][y], end="  |")
-            elif(tabuleiro[x][y] == "2"):
+            elif(tabuleiro[x][y] == "🔴"):
                 print("", tabuleiro[x][y], end="  |")
             else:
                 print(" ", tabuleiro[x][y], end="  |")
@@ -100,11 +100,11 @@ def gravidade(cordenada):
         return cordenada   
 
 def colunaDisponivel(cordenada):
-    if(tabuleiro[cordenada[0]][cordenada[1]] == "1"):
+    if(tabuleiro[cordenada[0]][cordenada[1]] == "🔵"):
         #input()
         #print("ocupado")
         return False
-    elif(tabuleiro[cordenada[0]][cordenada[1]] == "2"):
+    elif(tabuleiro[cordenada[0]][cordenada[1]] == "🔴"):
         #input()
         #print("ocupado")
         return False
