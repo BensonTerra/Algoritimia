@@ -13,6 +13,7 @@ linha = 6
 colunas = 7
 vitoria = 0
 #vitorias = 0
+destaque = "🟢"
 turnoPlayer = 1
 #variaveis globais fim
 
@@ -48,9 +49,11 @@ def mostrarTabuleiro():
         print(x, " |", end="")
         for y in range(colunas):
             if(tabuleiro[x][y] == "🔵"):
-                print("",tabuleiro[x][y], end="  |")
+                print("",tabuleiro[x][y], end=" |")
             elif(tabuleiro[x][y] == "🔴"):
-                print("", tabuleiro[x][y], end="  |")
+                print("", tabuleiro[x][y], end=" |")
+            elif(tabuleiro[x][y] == destaque):
+                print("", tabuleiro[x][y], end=" |")
             else:
                 print(" ", tabuleiro[x][y], end="  |")
     print("\n   +----+----+----+----+----+----+----+")
@@ -117,12 +120,17 @@ def modificarTabuleiro(cordenada,ficha):
     tabuleiro[cordenada[0]][cordenada[1]] = ficha
 
 def checarVitoria(ficha):
+    global destaque
     win = 0
     #verifica na horizontal
     for y in range(linha):
         for x in range (colunas - 3):
-            if tabuleiro[y][x] == ficha and tabuleiro[y][x+1] == ficha and tabuleiro[y][x+2] == ficha and tabuleiro[y][x+3] == ficha:
+            if tabuleiro[y][x+0] == ficha and tabuleiro[y][x+1] == ficha and tabuleiro[y][x+2] == ficha and tabuleiro[y][x+3] == ficha:
                 print("Horizontal")
+                tabuleiro[y][x+0] = destaque
+                tabuleiro[y][x+1] = destaque
+                tabuleiro[y][x+2] = destaque
+                tabuleiro[y][x+3] = destaque
                 input()
                 win = 1
                 return win
@@ -173,16 +181,18 @@ def PlayerX(ficha):
             #print(cordenadaFinal)
             if colunaDisponivel(cordenadaFinal) == True:
                 modificarTabuleiro(cordenadaFinal,ficha)
-                #os.system("cls")
+                input()
+                os.system("cls")
             mostrarTabuleiro()
             vitoria = checarVitoria(ficha)
-            turnoPlayer += 1
+            turnoPlayer = 1
+            #turnoPlayer += 1
             fim = 1
             break
         if fim == 1:
             break
     if vitoria == 1:
-        print("vitoria da ficha: ")
+        print("vitoria da ficha: %s"%ficha)
         input()
 
 turnoPlayer = 0
@@ -198,7 +208,7 @@ while autoStart == "Y" or autoStart == "y":
         while loop == True:
             #-------------------------------------Vez do Jogador 1------------------------------------------#
             if(turnoPlayer == 1 ):
-                ficha="1"
+                ficha="🔵"
                 PlayerX(ficha)
             #-------------------------------------jogador vs maquina----------------------------------------#
     if(modo == 2): #modo de jogo 1 jogador
@@ -207,10 +217,10 @@ while autoStart == "Y" or autoStart == "y":
         while loop == True:
             #-------------------------------------Vez do Jogador 1------------------------------------------#
             if(turnoPlayer % 2 == 0):
-                ficha="1"
+                ficha="🔵"
                 PlayerX(ficha)
             #-------------------------------------Vez do Jogador 2------------------------------------------#
             elif(turnoPlayer % 2 != 2):
-                ficha="2"
+                ficha="🔴"
                 PlayerX(ficha)
     autoStart = input("\nRepetir(Y/N) ?: ")    
