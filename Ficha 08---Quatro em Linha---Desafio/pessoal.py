@@ -127,10 +127,7 @@ def checarVitoria(ficha):
         for x in range (colunas - 3):
             if tabuleiro[y][x+0] == ficha and tabuleiro[y][x+1] == ficha and tabuleiro[y][x+2] == ficha and tabuleiro[y][x+3] == ficha:
                 print("Horizontal")
-                tabuleiro[y][x+0] = destaque
-                tabuleiro[y][x+1] = destaque
-                tabuleiro[y][x+2] = destaque
-                tabuleiro[y][x+3] = destaque
+                os.system("cls")
                 input()
                 win = 1
                 return win
@@ -140,6 +137,7 @@ def checarVitoria(ficha):
         for y in range(linha-3):
             if tabuleiro[y][x] == ficha and tabuleiro[y+1][x] and tabuleiro[y+2][x] and tabuleiro[y+3][x] == ficha:
                 print("Vertical")
+                os.system("cls")
                 input()
                 win = 1
                 return win
@@ -149,6 +147,7 @@ def checarVitoria(ficha):
         for y in range(colunas - 3):
             if tabuleiro[x][y] == ficha and tabuleiro[x+1][y+1] == ficha and tabuleiro[x+2][y+2] == ficha and tabuleiro[x+3][y+3] == ficha:
                 print("Diagonal 1")
+                os.system("cls")
                 input()
                 win = 1
                 return True
@@ -158,6 +157,7 @@ def checarVitoria(ficha):
         for y in range(3,colunas):
             if tabuleiro[x][y] == ficha and tabuleiro[x+1][y-1] == ficha and tabuleiro[x+2][y-2] == ficha and tabuleiro[x+3][y-3] == ficha:
                 print("Diagonal 2")
+                os.system("cls")
                 input()
                 win
                 return True
@@ -168,7 +168,7 @@ def PlayerX(ficha):
     global turnoPlayer
     global vitoria
     fim = 0
-    while True:
+    while vitoria == 0:
         os.system("cls")
         mostrarTabuleiro()
         colunaSelecionada = input("\nSelecione uma coluna para por a ficha: ")
@@ -182,16 +182,23 @@ def PlayerX(ficha):
             if colunaDisponivel(cordenadaFinal) == True:
                 modificarTabuleiro(cordenadaFinal,ficha)
                 input()
-                os.system("cls")
             mostrarTabuleiro()
-            vitoria = checarVitoria(ficha)
-            turnoPlayer = 1
-            #turnoPlayer += 1
+
+            if modo == 1:
+                turnoPlayer = 1
+            elif modo == 2:
+                turnoPlayer += 1
             fim = 1
+            vitoria = checarVitoria(ficha)
             break
         if fim == 1:
             break
+    vitoriaFuncao(vitoria)
+        
+def vitoriaFuncao(vitoria):
     if vitoria == 1:
+        mostrarTabuleiro()
+        print("")
         print("vitoria da ficha: %s"%ficha)
         input()
 
@@ -205,16 +212,16 @@ while autoStart == "Y" or autoStart == "y":
     if(modo == 1): #modo de jogo 1 jogador
         turnoPlayer = 1
         loop = True
-        while loop == True:
+        while vitoria == 0:
             #-------------------------------------Vez do Jogador 1------------------------------------------#
             if(turnoPlayer == 1 ):
                 ficha="🔵"
                 PlayerX(ficha)
             #-------------------------------------jogador vs maquina----------------------------------------#
-    if(modo == 2): #modo de jogo 1 jogador
+    elif(modo == 2): #modo de jogo 1 jogador
         turnoPlayer = 0
         loop = True
-        while loop == True:
+        while vitoria == 0:
             #-------------------------------------Vez do Jogador 1------------------------------------------#
             if(turnoPlayer % 2 == 0):
                 ficha="🔵"
@@ -223,4 +230,5 @@ while autoStart == "Y" or autoStart == "y":
             elif(turnoPlayer % 2 != 2):
                 ficha="🔴"
                 PlayerX(ficha)
+        
     autoStart = input("\nRepetir(Y/N) ?: ")    
