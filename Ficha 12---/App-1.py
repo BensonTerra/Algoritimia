@@ -52,7 +52,6 @@ def movimentos():
     filemenu.add_command(label="Exit", command=movWindow.quit)
     movWindow.config(menu=filemenu)
     #-----------------------------------------------------------------------------------------------------------------------------#
-
     frame0 = LabelFrame(movWindow,width = 990, height = 440)
     frame0.place(x=5 , y=5)
     #-----------------------------------------------------------------------------------------------------------------------------#
@@ -66,6 +65,7 @@ def movimentos():
     frame3.place(x=5 , y=5)
 #---#
     Numero = StringVar()
+    Numero.set("001")
     entNumero =Entry(frame3, width = 15,justify=CENTER, textvariable=Numero)
     entNumero.place(x=24,y=50)
     #-----------------------------------------------------------------------------------------------------------------------------#
@@ -73,20 +73,26 @@ def movimentos():
     frame4.place(x=5, y=160)
 #---#
     selected = StringVar()
-    selected.set("Masculino")
-    rd1 = Radiobutton(frame4, text = "Masculino", value = "Masculino", variable = selected)
+    selected.set("Entrada")
+    rd1 = Radiobutton(frame4, text = "Entrada", value = "Entrada", variable = selected)
     rd1.place(x = 1, y = 30)
-    rd2 = Radiobutton(frame4, text = "Feminino", value = "Feminino", variable = selected)
+    rd2 = Radiobutton(frame4, text = "Saida", value = "Saida", variable = selected)
     rd2.place(x = 1, y = 60)
     #-----------------------------------------------------------------------------------------------------------------------------#
     btnRegistrar = Button(frame1, width=23, height=1, text="Registrar",font=("arial",35),command= lambda: registrarMovimentos(selected.get(),Numero.get(),lbLista))
     btnRegistrar.place(x=14,y=320)
     #-----------------------------------------------------------------------------------------------------------------------------#
-    lbLista = Listbox(frame2,width =49, height = 19, justify=CENTER)
+    lbLista = Listbox(frame2,width =49, height = 25, justify=CENTER)
     lbLista.place(x=5 , y=5)
+#---#
+    f = open(ficheiro, "r", encoding="utf-8")
+    linhas = f.readlines()
+    f.close()
+    #print(linhas)
+    for linha in linhas:
+        linha = linha.removesuffix("\n")
+        lbLista.insert(END, linha)
     #-----------------------------------------------------------------------------------------------------------------------------#
-    btnRegistrar = Button(frame2, width=17, height=2, text="Carregar\nlista",font=("arial",22))
-    btnRegistrar.place(x=5,y=320)
 
 def registrarMovimentos(selected, numero, Listbox):
     data = str(datetime.date.today())
@@ -96,6 +102,9 @@ def registrarMovimentos(selected, numero, Listbox):
     acessos.write(linha)
     acessos.close()
     Listbox.insert(END,linha)
+
+def limparLista(Lista):
+    Lista.delete(0,END)
 
 #codigo principal inicio
 window = Tk()
