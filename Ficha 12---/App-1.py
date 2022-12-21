@@ -30,6 +30,7 @@ filemenu = Menu(menubar, tearoff=0)
 menubar.add_cascade(label="File", menu=filemenu)
 filemenu.add_command(label="Movimentos", command=donothing)
 filemenu.add_command(label="Consultas", command=donothing)
+filemenu.add_command(label="CLS", command= lambda: os.system("cls"))
 filemenu.add_command(label="Exit", command=window.quit)
 window.config(menu=filemenu)
 

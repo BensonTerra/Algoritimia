@@ -15,6 +15,7 @@ vitoria = 0
 #vitorias = 0
 destaque = "🟢"
 modo = 0
+autoStart="y"
 #variaveis globais fim
 
 def iniciarJogo():
@@ -40,6 +41,7 @@ def iniciarJogo():
             modo = 1
             return modo
         elif op == "2":
+            reset()
             modo = 2
             return modo
 
@@ -133,7 +135,10 @@ def checarVitoria(ficha):
             if tabuleiro[y][x+0] == ficha and tabuleiro[y][x+1] == ficha and tabuleiro[y][x+2] == ficha and tabuleiro[y][x+3] == ficha:
                 print("Horizontal")
                 os.system("cls")
-
+                tabuleiro[y][x+0]=destaque
+                tabuleiro[y][x+1]=destaque
+                tabuleiro[y][x+2]=destaque
+                tabuleiro[y][x+3]=destaque
                 win = 1
                 return win
     
@@ -143,10 +148,7 @@ def checarVitoria(ficha):
             if tabuleiro[y][x] == ficha and tabuleiro[y+1][x] and tabuleiro[y+2][x] and tabuleiro[y+3][x] == ficha:
                 print("Vertical")
                 os.system("cls")
-                tabuleiro[y+0][x]=destaque
-                tabuleiro[y+1][x]=destaque
-                tabuleiro[y+2][x]=destaque
-                tabuleiro[y+3][x]=destaque
+
                 win = 1
                 return win
 
@@ -156,7 +158,10 @@ def checarVitoria(ficha):
             if tabuleiro[x][y] == ficha and tabuleiro[x+1][y+1] == ficha and tabuleiro[x+2][y+2] == ficha and tabuleiro[x+3][y+3] == ficha:
                 print("Diagonal 1")
                 os.system("cls")
-
+                tabuleiro[x+0][y+0]=destaque
+                tabuleiro[x+1][y+1]=destaque
+                tabuleiro[x+2][y+2]=destaque
+                tabuleiro[x+3][y+3]=destaque
                 win = 1
                 return True
     
@@ -166,7 +171,10 @@ def checarVitoria(ficha):
             if tabuleiro[x][y] == ficha and tabuleiro[x+1][y-1] == ficha and tabuleiro[x+2][y-2] == ficha and tabuleiro[x+3][y-3] == ficha:
                 print("Diagonal 2")
                 os.system("cls")
-
+                tabuleiro[x+0][y+0]=destaque
+                tabuleiro[x+1][y-1]=destaque
+                tabuleiro[x+2][y-2]=destaque
+                tabuleiro[x+3][y-3]=destaque
                 win=1
                 return True
 
@@ -178,6 +186,10 @@ def PlayerX(ficha):
     fim = 0
     while vitoria == 0:
         os.system("cls")
+        if ficha == "🔵":
+            print("\t\tJogador 1\n")
+        elif ficha == "🔴":
+            print("\t\tJogador 2\n")
         mostrarTabuleiro()
         colunaSelecionada = input("\nSelecione uma coluna para por a ficha: ")
         #print(colunaSelecionada)
@@ -221,10 +233,10 @@ def reset():
     modo = 0
     global turnoPlayer
     turnoPlayer = 0
+    global vitoria
+    vitoria=0
 
-autoStart="y"
-
-while autoStart == "Y" or autoStart == "y":
+while autoStart.upper() != "N" and autoStart.upper() != "":
     global turnoPlayer
     os.system("cls")#Limpar tela
     modo = iniciarJogo()
@@ -249,5 +261,5 @@ while autoStart == "Y" or autoStart == "y":
             elif(turnoPlayer % 2 != 2):
                 ficha="🔴"
                 PlayerX(ficha)
-        
+    
     autoStart = input("\nRepetir(Y/N) ?: ")    
