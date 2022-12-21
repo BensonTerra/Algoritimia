@@ -127,6 +127,9 @@ def modificarTabuleiro(cordenada,ficha):
     tabuleiro[cordenada[0]][cordenada[1]] = ficha
 
 def checarVitoria(ficha):
+    """
+    
+    """
     global destaque
     win = 0
     #verifica na horizontal
@@ -145,7 +148,7 @@ def checarVitoria(ficha):
     #verifica na vertical
     for x in range(colunas):
         for y in range(linha-3):
-            if tabuleiro[y][x] == ficha and tabuleiro[y+1][x] and tabuleiro[y+2][x] and tabuleiro[y+3][x] == ficha:
+            if tabuleiro[y][x] == ficha and tabuleiro[y+1][x]== ficha and tabuleiro[y+2][x] == ficha and tabuleiro[y+3][x] == ficha:
                 print("Vertical")
                 os.system("cls")
 
@@ -236,7 +239,7 @@ def reset():
     global vitoria
     vitoria=0
 
-while autoStart.upper() != "N" and autoStart.upper() != "":
+while autoStart.upper() != "N":
     global turnoPlayer
     os.system("cls")#Limpar tela
     modo = iniciarJogo()
@@ -244,7 +247,7 @@ while autoStart.upper() != "N" and autoStart.upper() != "":
         turnoPlayer = 1
         loop = True
         while vitoria == 0:
-            #-------------------------------------Vez do Jogador 1------------------------------------------#
+            #-------------------------------------Vez do Jogador 1------------------------------------------datetime#
             if(turnoPlayer == 1 ):
                 ficha="🔵"
                 PlayerX(ficha)
@@ -261,5 +264,6 @@ while autoStart.upper() != "N" and autoStart.upper() != "":
             elif(turnoPlayer % 2 != 2):
                 ficha="🔴"
                 PlayerX(ficha)
-    
-    autoStart = input("\nRepetir(Y/N) ?: ")    
+    autoStart = input("\nRepetir(Y/N) ?: ")   
+    while autoStart.lower() !="y" and autoStart.lower() != "n": 
+        autoStart = input("\nRepetir(Y/N) ?: ")    
