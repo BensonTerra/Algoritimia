@@ -63,7 +63,7 @@ def movimentos():
     #-----------------------------------------------------------------------------------------------------------------------------#
     frame3 = LabelFrame(frame1,width = 150, height = 150, text = "Numero do estudante: ",fg ="blue")     
     frame3.place(x=5 , y=5)
-#---#
+#---#a
     Numero = StringVar()
     Numero.set("001")
     entNumero =Entry(frame3, width = 15,justify=CENTER, textvariable=Numero)
