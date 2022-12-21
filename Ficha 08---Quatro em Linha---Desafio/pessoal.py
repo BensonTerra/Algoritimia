@@ -14,11 +14,12 @@ colunas = 7
 vitoria = 0
 #vitorias = 0
 destaque = "🟢"
-turnoPlayer = 1
+modo = 0
 #variaveis globais fim
 
 def iniciarJogo():
     global modo
+    modo = 0
     op=""
     while op !="0":
         os.system("cls")
@@ -33,8 +34,9 @@ def iniciarJogo():
         print("\t| Work in Progress")
         #-------------------------------------------------#
         print("\t\t0 - Sair\n")
-        op = input("\t\t    Opção: ")
+        op = input("\t\t    Opção: ")#Seletor de Modo
         if op == "1":
+            reset()
             modo = 1
             return modo
         elif op == "2":
@@ -83,13 +85,16 @@ def colunaLetraParaNumero(string):
         input()
         os.system("cls")
         mostrarTabuleiro()
+        posiçao[1]=0
+        posiçao[0]=0
+        return posiçao
 
 def gravidade(cordenada):
     #calcula a casa abaixo da coluna escolhida linha[0]coluna[x]
     casaInferior = [None,None]
     casaInferior[0] = cordenada[0] + 1
     casaInferior[1] = cordenada[1]
-    print(cordenada)
+    #print(cordenada)
     while colunaDisponivel(casaInferior) == True:
         cordenada[0] += 1
         if cordenada[0] == 5 and tabuleiro[cordenada[0]][cordenada[1]] == "": #quando a peça esta na ultima camada/linha do tabuleiro
@@ -128,7 +133,7 @@ def checarVitoria(ficha):
             if tabuleiro[y][x+0] == ficha and tabuleiro[y][x+1] == ficha and tabuleiro[y][x+2] == ficha and tabuleiro[y][x+3] == ficha:
                 print("Horizontal")
                 os.system("cls")
-                input()
+
                 win = 1
                 return win
     
@@ -138,7 +143,10 @@ def checarVitoria(ficha):
             if tabuleiro[y][x] == ficha and tabuleiro[y+1][x] and tabuleiro[y+2][x] and tabuleiro[y+3][x] == ficha:
                 print("Vertical")
                 os.system("cls")
-                input()
+                tabuleiro[y+0][x]=destaque
+                tabuleiro[y+1][x]=destaque
+                tabuleiro[y+2][x]=destaque
+                tabuleiro[y+3][x]=destaque
                 win = 1
                 return win
 
@@ -148,7 +156,7 @@ def checarVitoria(ficha):
             if tabuleiro[x][y] == ficha and tabuleiro[x+1][y+1] == ficha and tabuleiro[x+2][y+2] == ficha and tabuleiro[x+3][y+3] == ficha:
                 print("Diagonal 1")
                 os.system("cls")
-                input()
+
                 win = 1
                 return True
     
@@ -158,8 +166,8 @@ def checarVitoria(ficha):
             if tabuleiro[x][y] == ficha and tabuleiro[x+1][y-1] == ficha and tabuleiro[x+2][y-2] == ficha and tabuleiro[x+3][y-3] == ficha:
                 print("Diagonal 2")
                 os.system("cls")
-                input()
-                win
+
+                win=1
                 return True
 
     return win #caso não cumpra nenhuma das condições anteriores
@@ -200,13 +208,24 @@ def vitoriaFuncao(vitoria):
         mostrarTabuleiro()
         print("")
         print("vitoria da ficha: %s"%ficha)
-        input()
 
-turnoPlayer = 0
-modo = 0
+def reset():
+    global tabuleiro
+    tabuleiro = [ ["","","","","","",""],
+                ["","","","","","",""],
+                ["","","","","","",""],
+                ["","","","","","",""],
+                ["","","","","","",""],
+                ["","","","","","",""]]
+    global modo
+    modo = 0
+    global turnoPlayer
+    turnoPlayer = 0
+
 autoStart="y"
 
 while autoStart == "Y" or autoStart == "y":
+    global turnoPlayer
     os.system("cls")#Limpar tela
     modo = iniciarJogo()
     if(modo == 1): #modo de jogo 1 jogador
