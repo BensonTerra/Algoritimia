@@ -20,11 +20,12 @@ pasta = "files"
 ficheiro = "files/acessos.txt" #Numero;data_sistema;hora_sistema;tipo_acesso
 #Variaveis globais fim
 
-#Verfica a existencia da pasta incio
+#Verfica a existencia da pasta inicio
 if not os.path.exists(pasta):
     os.mkdir(pasta)
 #Verfica a existencia da pasta fim
 
+#Tela dos movimentos Inicio
 def movimentos():
     print("Teste MOVIMENTOS")
     movWindow = Toplevel()
@@ -45,9 +46,11 @@ def movimentos():
     #-----------------------------------------------------------------------------------------------------------------------------#
     filemenu = Menu(menubar, tearoff=0)
     
-    menubar.add_cascade(label="File", menu=filemenu)
+    #menubar.add_cascade(label="File", menu=filemenu)
+    #menubar.add_command(label="Debug", menu=filemenu)
+
     filemenu.add_command(label="Movimentos", command=movimentos, state="disabled")
-    filemenu.add_command(label="Consultas")
+    filemenu.add_command(label="Consultas", command=consultar)
     filemenu.add_command(label="CLS", command= lambda: os.system("cls"))
     filemenu.add_command(label="Exit", command=movWindow.quit)
     movWindow.config(menu=filemenu)
@@ -93,7 +96,6 @@ def movimentos():
         linha = linha.removesuffix("\n")
         lbLista.insert(END, linha)
     #-----------------------------------------------------------------------------------------------------------------------------#
-
 def registrarMovimentos(selected, numero, Listbox):
     data = str(datetime.date.today())
     hora = str(datetime.datetime.now().time().strftime("%H:%M:%S"))
@@ -102,9 +104,87 @@ def registrarMovimentos(selected, numero, Listbox):
     acessos.write(linha)
     acessos.close()
     Listbox.insert(END,linha)
-
+    #-----------------------------------------------------------------------------------------------------------------------------#
 def limparLista(Lista):
     Lista.delete(0,END)
+    #-----------------------------------------------------------------------------------------------------------------------------#
+#Tela dos movimentos Fim
+
+#Tela de consulta inicio
+def consultar():
+    print("Teste CONSULTAS")
+    movWindow = Toplevel()
+    screenWidth = window.winfo_screenwidth()
+    screenHeight = window.winfo_screenheight()
+    appWidth = 1000                             # tamanho (pixeis) da window a criar
+    appHeight = 450
+    x = (screenWidth/2) - (appWidth/2)        # posição do canto superior esquerdo da window
+    y = (screenHeight/2) - (appHeight/2)
+    movWindow.geometry("{:.0f}x{:.0f}+{:.0f}+{:.0f}" .format(appWidth, appHeight, int(x), int(y)))
+    #movWindow.geometry("1000x450")
+    movWindow.title("Consultas")
+    movWindow.focus_force()
+    movWindow.grab_set()
+
+    #-----------------------------------------------------------------------------------------------------------------------------#
+    menubar = Menu(movWindow)
+    #-----------------------------------------------------------------------------------------------------------------------------#
+    filemenu = Menu(menubar, tearoff=0)
+    
+    #menubar.add_cascade(label="File", menu=filemenu)
+    #menubar.add_command(label="Debug", menu=filemenu)
+
+    filemenu.add_command(label="Movimentos", command=movimentos)
+    filemenu.add_command(label="Consultas", command=consultar, state="disabled")
+    filemenu.add_command(label="CLS", command= lambda: os.system("cls"))
+    filemenu.add_command(label="Exit", command=movWindow.quit)
+    movWindow.config(menu=filemenu)
+
+    #-----------------------------------------------------------------------------------------------------------------------------#
+    frame0 = LabelFrame(movWindow,width = 990, height = 440)
+    frame0.place(x=5 , y=5)
+    #-----------------------------------------------------------------------------------------------------------------------------#
+    frame1 = LabelFrame(frame0,width = 660, height = 425)
+    frame1.place(x=5 , y=5)
+    #-----------------------------------------------------------------------------------------------------------------------------#
+    frame2 = LabelFrame(frame0,width = 310, height = 425)
+    frame2.place(x=670 , y=5)
+#---#
+    frame3 = LabelFrame(frame2,width = 150, height = 150, text = "Numero do estudante: ",fg ="blue")     
+    frame3.place(x=5 , y=5)
+#---#
+    Numero = StringVar()
+    Numero.set("000")
+    entNumero =Entry(frame3, width = 15,justify=CENTER, textvariable=Numero)
+    entNumero.place(x=24,y=50)
+#---#
+    frame4 = LabelFrame(frame2,width = 150, height = 150, text="Tipo de entrada", fg="blue")
+    frame4.place(x=5, y=160)
+#---#
+    cbEntrada = StringVar()
+    cbSaida   = StringVar()
+    rd1 = Checkbutton(frame4, text = "Entrada", variable = cbEntrada)
+    rd1.place(x = 1, y = 30)
+    rd2 = Checkbutton(frame4, text = "Saida", variable = cbSaida)
+    rd2.place(x = 1, y = 60)
+#---#
+    btnConsultar = Button(frame2, width=10, height=1, text="Consultar",font=("arial",35))
+    btnConsultar.place(x=12,y=320)
+    #-----------------------------------------------------------------------------------------------------------------------------#
+def consultarMovimentos(cbEntrada, cbSaida,numEstudante,tree):
+    """
+    
+    """
+    tree.delete(*tree.get_children())
+
+
+
+
+
+
+
+
+
 
 #codigo principal inicio
 window = Tk()
@@ -122,10 +202,10 @@ window.title("Registro")
 menubar = Menu(window)
 #-----------------------------------------------------------------------------------------------------------------------------#
 filemenu = Menu(menubar, tearoff=0)
-#1
+
 menubar.add_cascade(label="File", menu=filemenu)
 filemenu.add_command(label="Movimentos", command=movimentos)
-filemenu.add_command(label="Consultas")
+filemenu.add_command(label="Consultas", command=consultar)
 filemenu.add_command(label="CLS", command= lambda: os.system("cls"))
 filemenu.add_command(label="Exit", command=window.destroy)
 window.config(menu=filemenu)
