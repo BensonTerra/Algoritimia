@@ -195,6 +195,9 @@ def consultar():
     btnConsultar = Button(frame2, width=10, height=1, text="Consultar",font=("arial",35), command = lambda: consultarMovimentos(cbEntrada,cbSaida,Numero,tree))
     btnConsultar.place(x=12,y=320)
     #-----------------------------------------------------------------------------------------------------------------------------#
+
+#Zona do possivel local do erro INICIO
+    
 def consultarMovimentos(cbEntrada, cbSaida, numEstudante, tree):
     """
     
@@ -216,10 +219,14 @@ def consultarMovimentos(cbEntrada, cbSaida, numEstudante, tree):
     for linha in linhas:
         print(linha)
         dados = linha.split(";")
-        print(dados)
+    #---#
         if tiposMovimentos == "Todos" or dados[3] == tiposMovimentos:
             if numEstudante.get() == "" or numEstudante.get() == dados[0]:
                 tree.insert("", "end", values = (dados[0], dados[1], dados[2], dados[3]))
+        
+
+#Zona do possivel local do erro FIM
+        
     #-----------------------------------------------------------------------------------------------------------------------------#
 
 #Tela dos consulta Fim
