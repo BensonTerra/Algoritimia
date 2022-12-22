@@ -25,6 +25,22 @@ if not os.path.exists(pasta):
     os.mkdir(pasta)
 #Verfica a existencia da pasta fim
 
+#Funções auxiliares Inicio
+def lerArquivoRegistro(lista):
+    f = open(ficheiro, "r", encoding="utf-8")
+    linhas = f.readlines()
+    f.close()
+    #print(linhas)
+    for linha in linhas:
+        linha = linha.replace(";"," | ")
+        lista.insert(END, linha)
+    #-----------------------------------------------------------------------------------------------------------------------------#
+
+#Funções auxiliares Fim
+
+
+
+
 #Tela dos movimentos Inicio
 def movimentos():
     print("Teste MOVIMENTOS")
@@ -82,19 +98,14 @@ def movimentos():
     rd2 = Radiobutton(frame4, text = "Saida", value = "Saida", variable = selected)
     rd2.place(x = 1, y = 60)
     #-----------------------------------------------------------------------------------------------------------------------------#
-    btnRegistrar = Button(frame1, width=23, height=1, text="Registrar",font=("arial",35),command= lambda: registrarMovimentos(selected.get(),Numero.get(),lbLista))
-    btnRegistrar.place(x=14,y=320)
-    #-----------------------------------------------------------------------------------------------------------------------------#
     lbLista = Listbox(frame2,width =49, height = 25, justify=CENTER)
     lbLista.place(x=5 , y=5)
-#---#
-    f = open(ficheiro, "r", encoding="utf-8")
-    linhas = f.readlines()
-    f.close()
-    #print(linhas)
-    for linha in linhas:
-        linha = linha.removesuffix("\n")
-        lbLista.insert(END, linha)
+    #-----------------------------------------------------------------------------------------------------------------------------#
+    btnRegistrar = Button(frame1, width=23, height=1, text="Registrar",font=("arial",35),command= lambda: registrarMovimentos(selected.get(),Numero.get(),lbLista))
+    btnRegistrar.place(x=14,y=320)
+
+
+    lerArquivoRegistro(lbLista)
     #-----------------------------------------------------------------------------------------------------------------------------#
 def registrarMovimentos(selected, numero, Listbox):
     data = str(datetime.date.today())
@@ -103,6 +114,7 @@ def registrarMovimentos(selected, numero, Listbox):
     acessos = open(ficheiro, "a", encoding="utf8")
     acessos.write(linha)
     acessos.close()
+    linha = str(numero) + " | " + data + " | " + hora + " | " +selected + "\n"
     Listbox.insert(END,linha)
     #-----------------------------------------------------------------------------------------------------------------------------#
 def limparLista(Lista):
@@ -110,7 +122,7 @@ def limparLista(Lista):
     #-----------------------------------------------------------------------------------------------------------------------------#
 #Tela dos movimentos Fim
 
-#Tela de consulta inicio
+#Tela de consulta Inicio
 def consultar():
     print("Teste CONSULTAS")
     movWindow = Toplevel()
@@ -147,6 +159,17 @@ def consultar():
     frame1 = LabelFrame(frame0,width = 660, height = 425)
     frame1.place(x=5 , y=5)
 #---#
+    tree = ttk.Treeview(frame1, height = 19, selectmode = "browse", columns = ("Número", "Data", "Hora", "Movimento"), show = "headings")
+ 
+    tree.column("Número", width = 180,   anchor="c")
+    tree.column("Data", width = 180,  anchor="c")
+    tree.column("Hora", width = 145,   anchor="c")
+    tree.column("Movimento", width = 140,   anchor="c")
+    tree.heading("Número", text = "Número")
+    tree.heading("Data", text = "Data")
+    tree.heading("Hora", text = "Hora")
+    tree.heading("Movimento", text = "Movimento")
+    tree.place(x=5, y=6)
     #-----------------------------------------------------------------------------------------------------------------------------#
     frame2 = LabelFrame(frame0,width = 310, height = 425)
     frame2.place(x=670 , y=5)
@@ -155,7 +178,7 @@ def consultar():
     frame3.place(x=5 , y=5)
 #---#
     Numero = StringVar()
-    Numero.set("000")
+    Numero.set("001")
     entNumero =Entry(frame3, width = 15,justify=CENTER, textvariable=Numero)
     entNumero.place(x=24,y=50)
 #---#
@@ -169,23 +192,37 @@ def consultar():
     rd2 = Checkbutton(frame4, text = "Saida", variable = cbSaida)
     rd2.place(x = 1, y = 60)
 #---#
-    btnConsultar = Button(frame2, width=10, height=1, text="Consultar",font=("arial",35))
+    btnConsultar = Button(frame2, width=10, height=1, text="Consultar",font=("arial",35), command = lambda: consultarMovimentos(cbEntrada,cbSaida,Numero,tree))
     btnConsultar.place(x=12,y=320)
     #-----------------------------------------------------------------------------------------------------------------------------#
-def consultarMovimentos(cbEntrada, cbSaida,numEstudante,tree):
+def consultarMovimentos(cbEntrada, cbSaida, numEstudante, tree):
     """
     
     """
-    tree.delete(*tree.get_children())
+    tree.delete(*tree.get_children()) #Apagar TODAS as linhas da treeview
+    tiposMovimentos = ""
+    if cbEntrada.get() == True and cbSaida.get() == True:
+        tiposMovimentos = "Todos"
+    elif cbEntrada.get() == True:       #filtro por entradas
+        tiposMovimentos = "Entrada\n"
+    elif cbSaida.get() == True:         #filtro por saidas
+        tiposMovimentos = "Saida\n"
+#---#
+    f = open(ficheiro, "r", encoding="utf-8")
+    linhas = f.readlines()
+    f.close()
+#---#
+    #print(linhas)
+    for linha in linhas:
+        print(linha)
+        dados = linha.split(";")
+        print(dados)
+        if tiposMovimentos == "Todos" or dados[3] == tiposMovimentos:
+            if numEstudante.get() == "" or numEstudante.get() == dados[0]:
+                tree.insert("", "end", values = (dados[0], dados[1], dados[2], dados[3]))
+    #-----------------------------------------------------------------------------------------------------------------------------#
 
-
-
-
-
-
-
-
-
+#Tela dos consulta Fim
 
 #codigo principal inicio
 window = Tk()
@@ -242,9 +279,5 @@ frame2.place(x=670 , y=5)
 txtRegister = Label(frame2, width = 0, height = 1, text = " Programa de Registros", font = ("arial", 20))
 txtRegister.place(x = 0,y = 108)
 #-----------------------------------------------------------------------------------------------------------------------------#
-#                                       TELA 2-MOVIMENTOS
-#-----------------------------------------------------------------------------------------------------------------------------#
-"""
 
-"""
 window.mainloop()
