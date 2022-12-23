@@ -19,6 +19,9 @@ autoStart="y"
 #variaveis globais fim
 
 def iniciarJogo():
+    """
+    funçao para inicar o jogo, criar menu no terminal e selecionar opçoes possiveis para utilizador
+    """
     global modo
     modo = 0
     op=""
@@ -46,6 +49,9 @@ def iniciarJogo():
             return modo
 
 def mostrarTabuleiro():
+    """
+    Função para criar de forma clara um tabuleiro, avalindo com base nas casas
+    """
     print("\n     0    1    2    3    4    5    6  ", end="")
     print("\n     A    B    C    D    E    F    G  ", end="")
     for x in range(linha):
@@ -63,6 +69,9 @@ def mostrarTabuleiro():
     print("\n   +----+----+----+----+----+----+----+")
 
 def colunaLetraParaNumero(string):
+    """
+    Função que converte uma string de uma letras em um numero para que seja analisada
+    """
     global colunasLetras
     posiçao = [None,None]#Referencia ao tabuleiro [LINHA,COLUNA]
     if(string.upper() in colunasLetras):
@@ -83,6 +92,9 @@ def colunaLetraParaNumero(string):
         posiçao[0] = 0 #linha 0
         return posiçao
     else:
+        """
+        Uma vez que a letra não exitsa na lista pre-definida e na função mostrarTabuleiro(), o jogador é penalizado com uma posição default
+        """
         print("Letra invalida. Insira novamente")
         input()
         os.system("cls")
@@ -92,6 +104,9 @@ def colunaLetraParaNumero(string):
         return posiçao
 
 def gravidade(cordenada):
+    """
+    Função que permite as fichas estarem sujeitas a gravidade artificial e sempre serem depositadas nos locais mas adequados
+    """
     #calcula a casa abaixo da coluna escolhida linha[0]coluna[x]
     casaInferior = [None,None]
     casaInferior[0] = cordenada[0] + 1
@@ -110,6 +125,10 @@ def gravidade(cordenada):
         return cordenada   
 
 def colunaDisponivel(cordenada):
+    """
+    A função detecta se o local ao qual sera inserido uma ficha se encontra disponivel ou não, e caso esteja
+    a função retorna True se não False
+    """
     if(tabuleiro[cordenada[0]][cordenada[1]] == "🔵"):
         #input()
         #print("ocupado")
@@ -124,11 +143,14 @@ def colunaDisponivel(cordenada):
         return True
 
 def modificarTabuleiro(cordenada,ficha):
+    """
+    Com base nas funções anteriores, esta permite a alteração do tabuleiro
+    """
     tabuleiro[cordenada[0]][cordenada[1]] = ficha
 
 def checarVitoria(ficha):
     """
-    
+    Funçao que verifica há exitencias de vitoria nas situações verticais, horizontais e diagonais. Uma vez que cumpra, a função devolve a variavel win e destaca com o uso de uma ficha de destaque
     """
     global destaque
     win = 0
@@ -151,7 +173,10 @@ def checarVitoria(ficha):
             if tabuleiro[y][x] == ficha and tabuleiro[y+1][x]== ficha and tabuleiro[y+2][x] == ficha and tabuleiro[y+3][x] == ficha:
                 print("Vertical")
                 os.system("cls")
-
+                tabuleiro[y+0][x] = destaque
+                tabuleiro[y+1][x] = destaque
+                tabuleiro[y+2][x] = destaque
+                tabuleiro[y+3][x] = destaque
                 win = 1
                 return win
 
@@ -184,6 +209,9 @@ def checarVitoria(ficha):
     return win #caso não cumpra nenhuma das condições anteriores
 
 def PlayerX(ficha):
+    """
+    Esta função permite de forma simples, definir os jogadores por numero (1 ou 2) além de uma melhor configutração do codigo
+    """
     global turnoPlayer
     global vitoria
     fim = 0
@@ -219,12 +247,23 @@ def PlayerX(ficha):
     vitoriaFuncao(vitoria)
         
 def vitoriaFuncao(vitoria):
+    """
+    Caso a variavel win mencionado na função checarVirtoria seja 1, a variavel vitoria assume tal valor que por consequencia cumpre a condição e termina o jogo
+    """
     if vitoria == 1:
+        jogador = ""
         mostrarTabuleiro()
         print("")
-        print("vitoria da ficha: %s"%ficha)
+        if ficha == "🔵":
+            jogador = "1"
+        elif ficha == "🔴":
+            jogador = "2"
+        print("vitoria do jogador %s da ficha %s"%(jogador,ficha))
 
 def reset():
+    """
+    Função reset para todo inicio de jogo seja garantido que não seja reutilizadoo tabuleiro do jogo anterior, e as variaveis de controle do jogo sejam atribuidas aos seu valores padrão, que é 0
+    """
     global tabuleiro
     tabuleiro = [ ["","","","","","",""],
                 ["","","","","","",""],
@@ -240,6 +279,10 @@ def reset():
     vitoria=0
 
 while autoStart.upper() != "N":
+    """
+    Codigo principal do jogo 4 em linha, possui: a possibilidade de 2 jogares, cada um com sua respetiva ficha
+                                                 a possibilidade de iniciar outra partida sem a necessidade de reabrir o programa
+    """
     global turnoPlayer
     os.system("cls")#Limpar tela
     modo = iniciarJogo()
@@ -247,7 +290,7 @@ while autoStart.upper() != "N":
         turnoPlayer = 1
         loop = True
         while vitoria == 0:
-            #-------------------------------------Vez do Jogador 1------------------------------------------datetime#
+            #-------------------------------------Vez do Jogador 1------------------------------------------#
             if(turnoPlayer == 1 ):
                 ficha="🔵"
                 PlayerX(ficha)
