@@ -1,3 +1,9 @@
+"""
+Benson Leme Terra
+40220440
+"""
+
+
 import os #biblioteca os
 
 colunasLetras = ["A","B","C","D","E","F","G"]
