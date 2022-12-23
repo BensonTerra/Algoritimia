@@ -35,11 +35,7 @@ def lerArquivoRegistro(lista):
         linha = linha.replace(";"," | ")
         lista.insert(END, linha)
     #-----------------------------------------------------------------------------------------------------------------------------#
-
 #Funções auxiliares Fim
-
-
-
 
 #Tela dos movimentos Inicio
 def movimentos():
@@ -101,11 +97,14 @@ def movimentos():
     lbLista = Listbox(frame2,width =49, height = 25, justify=CENTER)
     lbLista.place(x=5 , y=5)
     #-----------------------------------------------------------------------------------------------------------------------------#
-    btnRegistrar = Button(frame1, width=23, height=1, text="Registrar",font=("arial",35),command= lambda: registrarMovimentos(selected.get(),Numero.get(),lbLista))
-    btnRegistrar.place(x=14,y=320)
-
+    btnRegistrar = Button(frame1, width=12, height=1, text="Registrar",font=("arial",35),command= lambda: registrarMovimentos(selected.get(),Numero.get(),lbLista))
+    btnRegistrar.place(x=5,y=320)
+    #-----------------------------------------------------------------------------------------------------------------------------#
+    btnRemover = Button(frame1, width=17, height=2, text="Remover\nentrada",font=("arial",22),command= lambda: removerEntrada(lbLista))
+    btnRemover.place(x=350,y=320)
 
     lerArquivoRegistro(lbLista)
+
     #-----------------------------------------------------------------------------------------------------------------------------#
 def registrarMovimentos(selected, numero, Listbox):
     data = str(datetime.date.today())
@@ -120,6 +119,14 @@ def registrarMovimentos(selected, numero, Listbox):
 def limparLista(Lista):
     Lista.delete(0,END)
     #-----------------------------------------------------------------------------------------------------------------------------#
+def removerEntrada(lista):
+    pos = lista.curselection()
+    #print(pos)
+    lista.delete(pos)
+    limparLista(lista)
+    lerArquivoRegistro(lista)
+    #-----------------------------------------------------------------------------------------------------------------------------#
+
 #Tela dos movimentos Fim
 
 #Tela de consulta Inicio
@@ -178,15 +185,15 @@ def consultar():
     frame3.place(x=5 , y=5)
 #---#
     Numero = StringVar()
-    Numero.set("001")
+    Numero.set("")
     entNumero =Entry(frame3, width = 15,justify=CENTER, textvariable=Numero)
     entNumero.place(x=24,y=50)
 #---#
     frame4 = LabelFrame(frame2,width = 150, height = 150, text="Tipo de entrada", fg="blue")
     frame4.place(x=5, y=160)
 #---#
-    cbEntrada = StringVar()
-    cbSaida   = StringVar()
+    cbEntrada = IntVar()
+    cbSaida   = IntVar()
     rd1 = Checkbutton(frame4, text = "Entrada", variable = cbEntrada)
     rd1.place(x = 1, y = 30)
     rd2 = Checkbutton(frame4, text = "Saida", variable = cbSaida)
@@ -195,10 +202,7 @@ def consultar():
     btnConsultar = Button(frame2, width=10, height=1, text="Consultar",font=("arial",35), command = lambda: consultarMovimentos(cbEntrada,cbSaida,Numero,tree))
     btnConsultar.place(x=12,y=320)
     #-----------------------------------------------------------------------------------------------------------------------------#
-
-#Zona do possivel local do erro INICIO
-    
-def consultarMovimentos(cbEntrada, cbSaida, numEstudante, tree):
+def consultarMovimentos(cbEntrada, cbSaida, numEstudante, tree):  
     """
     
     """
@@ -217,16 +221,13 @@ def consultarMovimentos(cbEntrada, cbSaida, numEstudante, tree):
 #---#
     #print(linhas)
     for linha in linhas:
-        print(linha)
         dados = linha.split(";")
+        #print(dados)
     #---#
         if tiposMovimentos == "Todos" or dados[3] == tiposMovimentos:
             if numEstudante.get() == "" or numEstudante.get() == dados[0]:
                 tree.insert("", "end", values = (dados[0], dados[1], dados[2], dados[3]))
-        
 
-#Zona do possivel local do erro FIM
-        
     #-----------------------------------------------------------------------------------------------------------------------------#
 
 #Tela dos consulta Fim
