@@ -70,19 +70,19 @@ btnOpcao2 = Button(panel1, text = "Gerir\ntarefas", image = imageIco2, compound=
 btnOpcao2.place (x=40, y=95)
 #-----------------------------------------------------------------------------------------------------------------------------#
 imageIco3 = PhotoImage(file = "trabalho/imagens/person_50x50.png" )
-btnOpcao3 = Button(panel1, text = "Gerir\ntarefas", image = imageIco3, compound=LEFT, relief = "sunken", 
+btnOpcao3 = Button(panel1, text = "Consultar\ntarefas", image = imageIco3, compound=LEFT, relief = "sunken", 
                     width = 200, height = 70, font="calibri, 11",
                     command=lambda: print("btnOpcao3"))
 btnOpcao3.place (x=40, y=185)
 #-----------------------------------------------------------------------------------------------------------------------------#
 imageIco4 = PhotoImage(file = "trabalho/imagens/person_50x50.png" )
-btnOpcao4 = Button(panel1, text = "Gerir\ntarefas", image = imageIco4, compound=LEFT, relief = "sunken", 
+btnOpcao4 = Button(panel1, text = "Admin", image = imageIco4, compound=LEFT, relief = "sunken", 
                     width = 200, height = 70, font="calibri, 11",
                     command=lambda: print("btnOpcao4"))
 btnOpcao4.place (x=40, y=275)
 #-----------------------------------------------------------------------------------------------------------------------------#
 imageIco5 = PhotoImage(file = "trabalho/imagens/person_50x50.png" )
-btnOpcao5 = Button(panel1, text = "Gerir\ntarefas", image = imageIco2, compound=LEFT, relief = "sunken", 
+btnOpcao5 = Button(panel1, text = "Sair", image = imageIco2, compound=LEFT, relief = "sunken", 
                     width = 200, height = 70, font="calibri, 11",
                     command=window.destroy)
 btnOpcao5.place (x=40, y=365)
