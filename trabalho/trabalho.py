@@ -20,6 +20,7 @@ from PIL import ImageTk,Image    # Imagens .jpg ou .png
 pasta = "trabalho/files"
 ficheiro = "trabalho/files/acessos.txt" #Numero;data_sistema;hora_sistema;tipo_acesso
 #Variaveis globais fim
+
 #Verfica a existencia da pasta inicio
 if not os.path.exists(pasta):
     os.mkdir(pasta)
