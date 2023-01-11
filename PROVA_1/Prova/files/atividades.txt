@@ -10,3 +10,4 @@
 2022-11-27;21k;89,23
 2022-12-01;5k;22,10
 2022-12-03;10k;44,13
+C:\Users\benso\Desktop\Git\Algoritimia\Provas\PROVA_1\Prova\files
