@@ -8,7 +8,7 @@ import os #biblioteca os
 import random #biblioteca random
 #Variaveis globais
 pasta = "files"
-ficheiro = "files/atividades.txt"
+ficheiro = "PROVA_1/files/atividades.txt"
 
 
 if not os.path.exists(pasta):
@@ -84,14 +84,6 @@ def consultarAtividades(dist):
     for linha in linhas:
         distancia = linha.split(";")[1]
         if dist == distancia:
-            data = linha.split(";")[0]
-            tempo = linha.split(";")[2]
-            print("\t%s                 %s"%(data,tempo))
-        elif dist == distancia:
-            data = linha.split(";")[0]
-            tempo = int(linha.split(";")[2])
-            print("\t%s                 %s"%(data,tempo))
-        elif dist == distancia:
             data = linha.split(";")[0]
             tempo = linha.split(";")[2]
             print("\t%s                 %s"%(data,tempo))
