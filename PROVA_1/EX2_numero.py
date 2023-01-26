@@ -112,8 +112,6 @@ def melhorTempo(dist):
             dados = data +";"+tempo
             lista.append(dados)
 
-
-
 def tabela():
     print("\t\t Data              Tempo Registrado")
     print("---------------------------------------")
