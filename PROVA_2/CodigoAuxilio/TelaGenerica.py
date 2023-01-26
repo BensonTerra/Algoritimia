@@ -43,9 +43,8 @@ x = (screenWidth/2) - (appWidth/2)        # posição do canto superior esquerdo
 y = (screenHeight/2) - (appHeight/2)
 window.geometry("{:.0f}x{:.0f}+{:.0f}+{:.0f}" .format(appWidth, appHeight, int(x), int(y)))
 window.title("App")
-#-----------------------------------------------------------------------------------------------------------------------------#
+
 menubar = Menu(window)
-#-----------------------------------------------------------------------------------------------------------------------------#
 debugMenu = Menu(menubar, tearoff=0)
 
 menubar.add_cascade(label="Debug", menu=debugMenu)
@@ -55,6 +54,6 @@ debugMenu.add_command(label="Exit", command = window.destroy)
 
 window.config(menu=debugMenu)   #Sem cascade
 window.config(menu=menubar)    #Com cascade
-#-----------------------------------------------------------------------------------------------------------------------------#
+
 
 window.mainloop()
