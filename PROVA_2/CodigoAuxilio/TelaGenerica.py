@@ -52,7 +52,7 @@ debugMenu.add_command(label="teste", command = lambda: teste())
 debugMenu.add_command(label="CLS", command = lambda: os.system("cls"))
 debugMenu.add_command(label="Exit", command = window.destroy)
 
-window.config(menu=debugMenu)   #Sem cascade
+#window.config(menu=debugMenu)   #Sem cascade
 window.config(menu=menubar)    #Com cascade
 
 
