@@ -16,15 +16,17 @@ from tkinter import filedialog
 from PIL import ImageTk,Image    # Imagens .jpg ou .png
 #Bibloiotecas inportadads fim
 
-#Variaveis globais inicio
-pasta = "trabalho/files"
-ficheiro = "trabalho/files/acessos.txt" #Numero;data_sistema;hora_sistema;tipo_acesso
-#Variaveis globais fim
+#Variaveis globais
+"""
+pasta = ""
+ficheiro = ""
+"""
 
-#Verfica a existencia da pasta inicio
+#Verfica a existencia da pasta
+"""
 if not os.path.exists(pasta):
     os.mkdir(pasta)
-#Verfica a existencia da pasta fim
+"""
 
 def teste():
     print("teste")
@@ -35,34 +37,23 @@ def teste():
 window = Tk()
 screenWidth = window.winfo_screenwidth()
 screenHeight = window.winfo_screenheight()
-appWidth = 1100                             # tamanho (pixeis) da window a criar
-appHeight = 450
+appWidth = 1366                             # tamanho (pixeis) da window a criar
+appHeight = 768
 x = (screenWidth/2) - (appWidth/2)        # posição do canto superior esquerdo da window
 y = (screenHeight/2) - (appHeight/2)
 window.geometry("{:.0f}x{:.0f}+{:.0f}+{:.0f}" .format(appWidth, appHeight, int(x), int(y)))
 window.title("App")
 #-----------------------------------------------------------------------------------------------------------------------------#
-#
-#-----------------------------------------------------------------------------------------------------------------------------#
-"""
-#-----------------------------------------------------------------------------------------------------------------------------#
-"""
-#-----------------------------------------------------------------------------------------------------------------------------#
-#Menu generico
-#-----------------------------------------------------------------------------------------------------------------------------#
 menubar = Menu(window)
 #-----------------------------------------------------------------------------------------------------------------------------#
-filemenu = Menu(menubar, tearoff=0)
+debugMenu = Menu(menubar, tearoff=0)
 
-menubar.add_cascade(label="File", menu=filemenu)
-filemenu.add_command(label="Movimentos",)
-filemenu.add_command(label="Consultas",)
-filemenu.add_command(label="CLS", command= lambda: os.system("cls"))
-filemenu.add_command(label="Exit", command=window.destroy)
-#-----------------------------------------------------------------------------------------------------------------------------#
-#
-#-----------------------------------------------------------------------------------------------------------------------------#
-window.config(menu=filemenu)   #Sem cascade
+menubar.add_cascade(label="Debug", menu=debugMenu)
+debugMenu.add_command(label="teste", command = lambda: teste())
+debugMenu.add_command(label="CLS", command = lambda: os.system("cls"))
+debugMenu.add_command(label="Exit", command = window.destroy)
+
+window.config(menu=debugMenu)   #Sem cascade
 window.config(menu=menubar)    #Com cascade
 #-----------------------------------------------------------------------------------------------------------------------------#
 
