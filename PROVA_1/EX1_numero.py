@@ -1,21 +1,13 @@
 """
 docstring
 """
-tabuleiro =[["0","0","0"],["0","0","0"],["0","0","0"]]
 import os #biblioteca os
 import random #biblioteca random
-#---------------------GERADOR DE MATRIZES-----------------#
-def cria_Matriz(num):
-    lista = []
-    for x in range (num):
-        lista.append([])
-        for y in range (num):
-            pos = random.randint(1,30)
-            lista[x].append(pos)
-    print("")
-    #print(lista)
-    input()
-    return lista
+
+tabuleiro =[["0","0","0"],
+            ["0","0","0"],
+            ["0","0","0"]]
+pos = random.randint(1,30)
 
 def menu():
     op=" "
@@ -28,20 +20,23 @@ def menu():
 
         op = input("\t\t    Opção: ")
         if op == '1':
-            jogo(tabuleiro)
+            mostrarTabela(tabuleiro)
             print("teste")
     
-def jogo(lista):
-    for x in range (len(lista)):
-        for y in range (len(lista)):
-            print(lista[x][y], end= " ")
+def mostrarTabela(lista):
+    os.system("cls")
+    print("\n\t\t      Tabela\n")
+    for x in range (3):
+        print("\t", end="")
+        for y in range (1):
+            print("\t%s\t%s\t%s"%(lista[x][y],lista[x][y+1],lista[x][y+2]))
         print()
+    input()
 
 #Codigo principal incio
 autoStart="y"
 #-----------------------#
 while autoStart.upper() == "Y":
-    tabuleiroReal = cria_Matriz(3)
     menu()
     autoStart = input("Repetir(Y/N) ?: ")
 #Codigo principal fim
