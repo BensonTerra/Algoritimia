@@ -1,5 +1,5 @@
 """
-
+Teste de uma plataforma de agenda via terminal usando pyhton, com possibilidade remoção de tarefas especifica do ficheiro .txt
 """
 import os #biblioteca os
 
@@ -7,7 +7,7 @@ import os #biblioteca os
 pasta = "pastaEstudo"
 ficheiro = "pastaEstudo/lista.txt"
 
-#função ficheiroCiclo
+#função ficheiroCiclo, cria a pasta e um arquivo .txt para primeira vez que é rodado
 def primeiroCiclo():
     if not os.path.exists(pasta):
         os.mkdir(pasta)
@@ -17,7 +17,7 @@ def primeiroCiclo():
         f.close()
 primeiroCiclo()
 
-#função ler ficheiro
+#função ler ficheiro, permite ler o ficheiro sem que seja necessario repeitir codigo no restante do sistema
 def lerFicheiro():
     f = open(ficheiro, "r", encoding="utf-8")
     linhas = f.readlines()
@@ -25,7 +25,7 @@ def lerFicheiro():
     return linhas
 lerFicheiro()
 
-#função limpar e escrever ficheiro
+#função limpar, remove e reescrever ficheiro baseada na escolha linha a ser removida
 def limparEscreverFicheiro(linhas,index):
     ptr = 0
     index = index - 1
@@ -65,7 +65,7 @@ def remover():
     index = int(input("\nNumero da tarefa a ser removida: "))
     limparEscreverFicheiro(linhas,index)
 
-#função mostar
+#função mostar, permite a construçã de uma tabela simples sem que o mesmo necessite de repetição no corpo do programa
 def mostrar(linhas):
     i = 1
     print(30*"-")
