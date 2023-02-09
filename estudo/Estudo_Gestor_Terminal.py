@@ -4,14 +4,14 @@ Teste de uma plataforma de agenda via terminal usando pyhton, com possibilidade 
 import os #biblioteca os
 
 #Variaveis globais
-pasta = "pastaEstudo"
-ficheiro = "pastaEstudo/lista.txt"
+pasta = "estudo/pastaEstudoTerminal"
+ficheiro = "estudo/pastaEstudoTerminal/lista.txt"
 
 #função ficheiroCiclo, cria a pasta e um arquivo .txt para primeira vez que é rodado
 def primeiroCiclo():
     if not os.path.exists(pasta):
         os.mkdir(pasta)
-        f = open(ficheiro, "a", encoding="utf-8")
+        f = open(ficheiro, "a")
         initialComment = "Readme"
         f.write(initialComment)
         f.close()
