@@ -65,7 +65,7 @@ def remover():
     index = int(input("\nNumero da tarefa a ser removida: "))
     limparEscreverFicheiro(linhas,index)
 
-#função mostar, permite a construçã de uma tabela simples sem que o mesmo necessite de repetição no corpo do programa
+#função mostar, permite a construção de uma tabela simples sem que o mesmo necessite de repetição no corpo do programa
 def mostrar(linhas):
     i = 1
     print(30*"-")
@@ -96,6 +96,21 @@ def filtrar(nivelPrioridade):
     """
     input()
 
+#função ver conteudo ficheiro
+def ver():
+    linhas = lerFicheiro()
+    i = 1
+    print(30*"-")
+    for linha in linhas:
+        linha = linha.replace("\n","")
+        linha = linha.split(";")
+        pos = str(i)
+        line = "    " + pos + " | " + linha[0] + " | " + linha[1] + " | " + linha[2]
+        print(line)
+        i = int(pos)
+        i+=1
+    input()
+
 #função menuInicar
 def menuIniciar():
     os.system("cls")
@@ -106,6 +121,7 @@ def menuIniciar():
         print("\t\t1 - Adicionar")
         print("\t\t2 - Remover")
         print("\t\t3 - Filtrar")
+        print("\t\t4 - Ver ficheiro")
         print("\t\t0 - Sair\n")
 
         op = input("\t\t    Opção: ")
@@ -119,6 +135,10 @@ def menuIniciar():
             print("\n")
             nivel = input("\tfiltrar tarefas de 0 a 5: ")
             filtrar(nivel)
+        elif op == '4':
+            print("\n")
+            ver()
+
 
 autoStart="y"
 while autoStart.upper() == "Y":
