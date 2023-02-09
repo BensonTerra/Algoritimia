@@ -64,9 +64,11 @@ def remover():
         i+=1
     index = int(input("\nNumero da tarefa a ser removida: "))
     limparEscreverFicheiro(linhas,index)
+    os.system("cls")
+    verFicheiro()
 
 #função mostar, permite a construção de uma tabela simples sem que o mesmo necessite de repetição no corpo do programa
-def mostrar(linhas):
+def mostrarTabela(linhas):
     i = 1
     print(30*"-")
     for linha in linhas:
@@ -77,7 +79,7 @@ def mostrar(linhas):
         i+=1
 
 #função filtrar
-def filtrar(nivelPrioridade):
+def filtrarTabela(nivelPrioridade):
     linhas = lerFicheiro()
     lista = []
     for linha in linhas:
@@ -86,7 +88,7 @@ def filtrar(nivelPrioridade):
         if linha[2] == nivelPrioridade and linha[2] != "":
             lista.append(linha)
         #print(lista)
-    mostrar(lista)
+    mostrarTabela(lista)
     """
     linhasOrdenada = []
     linhasOrdenada = sorted(lista, key = lambda x: x[2],reverse=True)
@@ -97,7 +99,7 @@ def filtrar(nivelPrioridade):
     input()
 
 #função ver conteudo ficheiro
-def ver():
+def verFicheiro():
     linhas = lerFicheiro()
     i = 1
     print(30*"-")
@@ -133,11 +135,15 @@ def menuIniciar():
             remover()
         elif op == '3':
             print("\n")
-            nivel = input("\tfiltrar tarefas de 0 a 5: ")
-            filtrar(nivel)
+            filtroOpcao = ["1","2","3","4","5"]
+            nivel = input("\tFiltrar tarefas de 1 a 5, 0 para sair: ")
+            if nivel in filtroOpcao:
+                filtrarTabela(nivel)
+            else:
+                continue
         elif op == '4':
             print("\n")
-            ver()
+            verFicheiro()
 
 
 autoStart="y"

@@ -5,4 +5,3 @@ user4;alfa;2
 user5;alfa;4
 user6;alfa;1
 user7;alfa;3
-especial;alfa;0
