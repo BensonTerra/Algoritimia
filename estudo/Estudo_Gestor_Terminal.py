@@ -32,8 +32,8 @@ def limparEscreverFicheiro(linhas,index):
     f = open(ficheiro, "w", encoding="utf-8")
     for linha in linhas:
         print(linha)
-        if ptr != index:
-            f.write(linha)
+        if ptr != index:   #Permite apagar se pointer(ptr) for igual ao index indicado
+            f.write(linha) #Apaga a linha 
         ptr += 1
     f.close()
 
