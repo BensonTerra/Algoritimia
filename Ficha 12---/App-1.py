@@ -256,7 +256,7 @@ filemenu.add_command(label="CLS", command= lambda: os.system("cls"))
 filemenu.add_command(label="Exit", command=window.destroy)
 window.config(menu=filemenu)
 
-"""
+
 filemenu.add_command(label="Open", command=donothing)
 filemenu.add_command(label="Save", command=donothing)
 filemenu.add_command(label="Save as...", command=donothing)
@@ -264,7 +264,7 @@ filemenu.add_command(label="Close", command=donothing)
 filemenu.add_separator()
 filemenu.add_command(label="Exit", command=window.quit)
 window.config(menu=menubar)
-"""
+
 
 
 #-----------------------------------------------------------------------------------------------------------------------------#
