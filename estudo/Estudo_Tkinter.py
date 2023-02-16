@@ -29,9 +29,8 @@ def lerFicheiro():
     f = open(ficheiro, "r", encoding="utf-8")
     linhas = f.readlines()
     f.close()
-    print(linhas)
+    #print(linhas)
     return linhas
-lerFicheiro()
 
 #função para definir um inteiro indice para cada inscrição
 def lerFicheiroId():
@@ -41,12 +40,14 @@ def lerFicheiroId():
     #print(num)
     return num
 
-def carregarTreeView():
+#função para carregar e atualziar a treeView
+def carregarAtualizarTreeView(treeView):
     linhas = lerFicheiro()
+    treeView.delete(*treeView.get_children())
     for linha in linhas:
         linha = linha.replace("\n","")
         linha = linha.split(";")
-        print(linha)
+        treeView.insert("", END, values = (linha[1], linha[2]))
 
 #Tela 0
 def TelaInicial():
@@ -57,7 +58,6 @@ def TelaInicial():
 
 #Tela 1
 def tela1():
-
     #-----------------------------------------------------------------------------------------------------------------------------#
     panned2Width = 0.75 * appWidth
     panned2Height = appHeight
@@ -113,6 +113,7 @@ def tela1():
     scrollBar1.place(x = 0.94 * labelFrame3Width,y = 0, height = 0.95 * labelFrame3Height)
     #---#
     treePanel.place(x = 0.01 * labelFrame3Width,y = 0.01 * labelFrame3Height)
+    carregarAtualizarTreeView(treePanel)
     #-----------------------------------------------------------------------------------------------------------------------------#
     labelFrame4 = LabelFrame(labelFrame1, width = 0.4 * panned2Width, height = 0.3 * panned2Height, font = ("Arial", 12))
     labelFrame4.place(x = 0.01 * panned2Width, y = 0.41 * panned2Height)
@@ -121,11 +122,11 @@ def tela1():
     #---#
     
     btnLerFicheiro = Button(labelFrame4, text = "Ler Ficheiro", compound=LEFT, relief = "sunken", 
-                    width = 43, height = 3, font=("Arial", 12), command = lerFicheiro)
+                    width = 43, height = 3, font=("Arial", 12), command = lambda: carregarAtualizarTreeView(treePanel))
     btnLerFicheiro.place(x = 0.01 * labelFrame4Width, y = 0.05 * labelFrame4Height)
     #---#
     btnLerAdicionar = Button(labelFrame4, text = "Adicionar", compound=LEFT, relief = "sunken", 
-                    width = 43, height = 3, font=("Arial", 12),command = lambda: adicionar(txtPrimeiroNomeVar.get(),txtUltimoNomeVar.get()))
+                    width = 43, height = 3, font=("Arial", 12),command = lambda: adicionar(txtPrimeiroNomeVar.get(),txtUltimoNomeVar.get(),selected.get(),treePanel))
     btnLerAdicionar.place(x = 0.01 * labelFrame4Width, y = 0.42 * labelFrame4Height)
     #---#
     btnGuardar = Button(labelFrame4, text = "Guardar", compound=LEFT, relief = "sunken", 
@@ -133,7 +134,7 @@ def tela1():
     btnGuardar.place(x = 0.01 * labelFrame4Width, y = 0.79 * labelFrame4Height)
     
 #função 1
-def adicionar(PrimeiroNome,UltimoNome):
+def adicionar(PrimeiroNome, UltimoNome, Tipo,treeView):
     os.system("cls")
     #print(PrimeiroNome)
     #print(UltimoNome)
@@ -143,18 +144,15 @@ def adicionar(PrimeiroNome,UltimoNome):
     idUser = str(idUser)
     #print(idUser)
     while PrimeiroNome != "" and UltimoNome != "":
-        print("Dentro do ciclo")
+        #print("Dentro do ciclo")
         f = open(ficheiro, "a", encoding="utf-8")
-        data = idUser + ";" + PrimeiroNome + ";" + UltimoNome  + "\n"
+        data = idUser + ";" + PrimeiroNome + ";" + UltimoNome + ";" + Tipo + ";" + "\n"
         f.write(data)
         f.close()
+        carregarAtualizarTreeView(treeView)
         break
     if PrimeiroNome == "" or UltimoNome == "":
         messagebox.showinfo(title = "Dados invalidos", message = "Primeiro Nome invalidou ou vazio")
-
-#função 2
-
-
 
 #Interface grafica
 window = Tk()
@@ -175,7 +173,7 @@ navegacao = Menu(menubar, tearoff=0)
 
 menubar.add_cascade(label = "Telas", menu = navegacao)
 navegacao.add_command(label="Tela Inicial", command = TelaInicial)
-navegacao.add_command(label="Tela 2")
+navegacao.add_command(label="Programa 1")
 navegacao.add_command(label="Tela 3")
 navegacao.add_command(label="Tela 4")
 #---#
