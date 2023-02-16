@@ -1,1 +1,5 @@
-1;Benson;Terra;Estudante;
+1;Benson;Terra;Externo
+2;bens;qqqq;Estudante
+3;benseqeq;qqqqeqweq;Estudante
+4;qw;qw;Docente
+5;da;da;Docente

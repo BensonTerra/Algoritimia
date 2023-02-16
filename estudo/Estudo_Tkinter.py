@@ -24,31 +24,6 @@ def primeiroCiclo():
         f.close()
 primeiroCiclo()
 
-#função ler ficheiro, permite ler o ficheiro sem que seja necessario repeitir codigo no restante do sistema
-def lerFicheiro():
-    f = open(ficheiro, "r", encoding="utf-8")
-    linhas = f.readlines()
-    f.close()
-    #print(linhas)
-    return linhas
-
-#função para definir um inteiro indice para cada inscrição
-def lerFicheiroId():
-    f = open(ficheiro, "r", encoding="utf-8")
-    linhas = f.readlines()
-    num = len(linhas)
-    #print(num)
-    return num
-
-#função para carregar e atualziar a treeView
-def carregarAtualizarTreeView(treeView):
-    linhas = lerFicheiro()
-    treeView.delete(*treeView.get_children())
-    for linha in linhas:
-        linha = linha.replace("\n","")
-        linha = linha.split(";")
-        treeView.insert("", END, values = (linha[1], linha[2]))
-
 #Tela 0
 def TelaInicial():
     panned2Width = 0.75 * appWidth
@@ -58,6 +33,21 @@ def TelaInicial():
 
 #Tela 1
 def tela1():
+    #-----------------------------------------------------------------------------------------------------------------------------#
+    menubar = Menu(window)
+    #-----------------------------------------------------------------------------------------------------------------------------#
+    navegacao = Menu(menubar, tearoff=0)
+
+    menubar.add_cascade(label = "Telas", menu = navegacao)
+    navegacao.add_command(label="Tela Inicial", command = TelaInicial)
+    navegacao.add_command(label="Programa 1")
+    navegacao.add_command(label="Tela 3")
+    navegacao.add_command(label="Tela 4")
+    navegacao.add_command(label="Teste", command= lambda: indexCapture(treePanel))
+    #---#
+    menubar.add_command(label="CLS", command = lambda: os.system("cls"))
+    menubar.add_command(label="Exit", command = window.destroy)
+    window.config(menu =  menubar)
     #-----------------------------------------------------------------------------------------------------------------------------#
     panned2Width = 0.75 * appWidth
     panned2Height = appHeight
@@ -113,27 +103,32 @@ def tela1():
     scrollBar1.place(x = 0.94 * labelFrame3Width,y = 0, height = 0.95 * labelFrame3Height)
     #---#
     treePanel.place(x = 0.01 * labelFrame3Width,y = 0.01 * labelFrame3Height)
-    carregarAtualizarTreeView(treePanel)
+    #carregarAtualizarTreeView(treePanel)
     #-----------------------------------------------------------------------------------------------------------------------------#
-    labelFrame4 = LabelFrame(labelFrame1, width = 0.4 * panned2Width, height = 0.3 * panned2Height, font = ("Arial", 12))
+    labelFrame4 = LabelFrame(labelFrame1, width = 0.4 * panned2Width, height = 0.39 * panned2Height, font = ("Arial", 12))
     labelFrame4.place(x = 0.01 * panned2Width, y = 0.41 * panned2Height)
     labelFrame4Width = 0.4 * panned2Width
     labelFrame4Height = 0.25 * panned2Height
-    #---#
-    
+    #---#ler ficheiro
     btnLerFicheiro = Button(labelFrame4, text = "Ler Ficheiro", compound=LEFT, relief = "sunken", 
                     width = 43, height = 3, font=("Arial", 12), command = lambda: carregarAtualizarTreeView(treePanel))
     btnLerFicheiro.place(x = 0.01 * labelFrame4Width, y = 0.05 * labelFrame4Height)
-    #---#
+    #---#adicionar
     btnLerAdicionar = Button(labelFrame4, text = "Adicionar", compound=LEFT, relief = "sunken", 
                     width = 43, height = 3, font=("Arial", 12),command = lambda: adicionar(txtPrimeiroNomeVar.get(),txtUltimoNomeVar.get(),selected.get(),treePanel))
     btnLerAdicionar.place(x = 0.01 * labelFrame4Width, y = 0.42 * labelFrame4Height)
-    #---#
-    btnGuardar = Button(labelFrame4, text = "Guardar", compound=LEFT, relief = "sunken", 
+    #---#remover
+    btnRemover = Button(labelFrame4, text = "Remover", compound=LEFT, relief = "sunken", 
+                    width = 43, height = 3, font=("Arial", 12), command = lambda: removerUser(treePanel))
+    btnRemover.place(x = 0.01 * labelFrame4Width, y = 0.79 * labelFrame4Height)
+    #---#contar contas
+    btnContar = Button(labelFrame4, text = "Contagem", compound=LEFT, relief = "sunken", 
                     width = 43, height = 3, font=("Arial", 12))
-    btnGuardar.place(x = 0.01 * labelFrame4Width, y = 0.79 * labelFrame4Height)
+    btnContar.place(x = 0.01 * labelFrame4Width, y = 1.16 * labelFrame4Height)
     
-#função 1
+                        #Funções do sistema
+
+#função adicionar ao txt e treeview
 def adicionar(PrimeiroNome, UltimoNome, Tipo,treeView):
     os.system("cls")
     #print(PrimeiroNome)
@@ -144,9 +139,9 @@ def adicionar(PrimeiroNome, UltimoNome, Tipo,treeView):
     idUser = str(idUser)
     #print(idUser)
     while PrimeiroNome != "" and UltimoNome != "":
-        #print("Dentro do ciclo")
+        print("Dentro do ciclo")
         f = open(ficheiro, "a", encoding="utf-8")
-        data = idUser + ";" + PrimeiroNome + ";" + UltimoNome + ";" + Tipo + ";" + "\n"
+        data = idUser + ";" + PrimeiroNome + ";" + UltimoNome + ";" + Tipo + "\n"
         f.write(data)
         f.close()
         carregarAtualizarTreeView(treeView)
@@ -154,7 +149,58 @@ def adicionar(PrimeiroNome, UltimoNome, Tipo,treeView):
     if PrimeiroNome == "" or UltimoNome == "":
         messagebox.showinfo(title = "Dados invalidos", message = "Primeiro Nome invalidou ou vazio")
 
-#Interface grafica
+#função ler ficheiro, permite ler o ficheiro sem que seja necessario repeitir codigo no restante do sistema
+def lerFicheiro():
+    f = open(ficheiro, "r", encoding="utf-8")
+    linhas = f.readlines()
+    f.close()
+    #print(linhas)
+    return linhas
+
+#função para definir um inteiro indice para cada inscrição
+def lerFicheiroId():
+    f = open(ficheiro, "r", encoding="utf-8")
+    linhas = f.readlines()
+    num = len(linhas)
+    #print(num)
+    return num
+
+#função para carregar e atualziar a treeView
+def carregarAtualizarTreeView(treeView):
+    linhas = lerFicheiro()
+    treeView.delete(*treeView.get_children())
+    for linha in linhas:
+        linha = linha.replace("\n","")
+        linha = linha.split(";")
+        linha[1] = linha[1] + " " + linha[2]
+        treeView.insert("", END, values = (linha[1], linha[3]))
+
+#função para capturar index
+def indexCapture(treeView):
+    idSelecionado = treeView.focus()
+
+    item_id = treeView.index(idSelecionado)
+    item_id = item_id +1
+    print(item_id)
+
+
+def removerUser(treeView):
+    os.system("cls")
+    print("remover")
+    linhas = lerFicheiro()
+    #print(linhas)
+    id = 1
+    ptr = 1
+    """
+    f = open(ficheiro, "w", encoding="utf8")
+    f.close()
+    """
+    treeView.delete(*treeView.get_children())
+    carregarAtualizarTreeView(treeView)
+
+
+"""----------------------------------------------------------------------------------------"""
+"""                                    Interface grafica                                   """
 window = Tk()
 
 screenWidth = window.winfo_screenwidth()
@@ -176,6 +222,7 @@ navegacao.add_command(label="Tela Inicial", command = TelaInicial)
 navegacao.add_command(label="Programa 1")
 navegacao.add_command(label="Tela 3")
 navegacao.add_command(label="Tela 4")
+navegacao.add_command(label="Teste", command= lambda: indexCapture(treePanel))
 #---#
 menubar.add_command(label="CLS", command = lambda: os.system("cls"))
 menubar.add_command(label="Exit", command = window.destroy)
