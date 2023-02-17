@@ -11,14 +11,14 @@ from tkcalendar import DateEntry
 from PIL import ImageTk,Image    # Imagens .jpg ou .png
 
 #Variaveis globais
-pasta = "estudo/pastaEstudoTkinter"
-ficheiro = "estudo/pastaEstudoTkinter/listaTkinter.txt"
+pastaPrograma_1 = "estudo/pastaEstudoTkinter"
+ficheiroPrograma_1 = "estudo/pastaEstudoTkinter/listaTkinter.txt"
 
 #função ficheiroCiclo, cria a pasta e um arquivo .txt para primeira vez que é rodado
 def primeiroCiclo():
-    if not os.path.exists(pasta):
-        os.mkdir(pasta)
-        f = open(ficheiro, "a", encoding="utf-8")
+    if not os.path.exists(pastaPrograma_1):
+        os.mkdir(pastaPrograma_1)
+        f = open(ficheiroPrograma_1, "a", encoding="utf-8")
         initialComment = "Readme"
         f.write(initialComment)
         f.close()
@@ -128,7 +128,6 @@ def tela1():
     
 """----------------------------------------------------------------------------------------"""
 """                                   Funções do Sistema                                   """
-
 #função adicionar ao txt e treeview
 def adicionar(PrimeiroNome, UltimoNome, Tipo,treeView):
     os.system("cls")
@@ -141,7 +140,7 @@ def adicionar(PrimeiroNome, UltimoNome, Tipo,treeView):
     #print(idUser)
     while PrimeiroNome != "" and UltimoNome != "":
         print("Dentro do ciclo")
-        f = open(ficheiro, "a", encoding="utf-8")
+        f = open(ficheiroPrograma_1, "a", encoding="utf-8")
         data = idUser + ";" + PrimeiroNome + ";" + UltimoNome + ";" + Tipo + "\n"
         f.write(data)
         f.close()
@@ -152,7 +151,7 @@ def adicionar(PrimeiroNome, UltimoNome, Tipo,treeView):
 
 #função ler ficheiro, permite ler o ficheiro sem que seja necessario repeitir codigo no restante do sistema
 def lerFicheiro():
-    f = open(ficheiro, "r", encoding="utf-8")
+    f = open(ficheiroPrograma_1, "r", encoding="utf-8")
     linhas = f.readlines()
     f.close()
     #print(linhas)
@@ -160,7 +159,7 @@ def lerFicheiro():
 
 #função para definir um inteiro indice para cada inscrição
 def lerFicheiroId():
-    f = open(ficheiro, "r", encoding="utf-8")
+    f = open(ficheiroPrograma_1, "r", encoding="utf-8")
     linhas = f.readlines()
     num = len(linhas)
     #print(num)
@@ -196,7 +195,7 @@ def removerUser(treeView):
     #---#
     idUser = 1
     ptr = 1
-    acessos = open(ficheiro, "w", encoding="utf8")
+    acessos = open(ficheiroPrograma_1, "w", encoding="utf8")
     for linha in linhas:
         linha = linha.replace("\n","")
         linha = linha.split(";")
@@ -211,7 +210,7 @@ def removerUser(treeView):
     treeView.delete(*treeView.get_children())
     carregarAtualizarTreeView(treeView)
 
-#
+#Função permite contar quantos são os usuarios por tipos
 def contar():
     linhas = lerFicheiro()
     Docente = 0
