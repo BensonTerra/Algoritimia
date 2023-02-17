@@ -15,10 +15,11 @@ pastaPrograma_1 = "estudo/pastaEstudoTkinter"
 ficheiroPrograma_1 = "estudo/pastaEstudoTkinter/listaTkinter.txt"
 #---#
 
-
-
-"""----------------------------------------------------------------------------------------
-                                          Programa 1                                       """
+"""----------------------------------------------------------------------------------------"""
+"""                                                                                        """
+"""                                       Programa 1                                       """
+"""                                                                                        """
+"""----------------------------------------------------------------------------------------"""
 
 #função ficheiroCiclo, cria a pasta e um arquivo .txt para primeira vez que é rodado
 def primeiroCiclo_Programa_1():
@@ -132,8 +133,7 @@ def tela1():
                     width = 43, height = 3, font=("Arial", 12), command = contar)
     btnContar.place(x = 0.01 * labelFrame4Width, y = 1.16 * labelFrame4Height)
     
-"""----------------------------------------------------------------------------------------
-                                      Funções do Sistema                                   """
+"""-----------------------------------Funções do Sistema-----------------------------------"""
 
 #função adicionar ao txt e treeview
 def adicionar(PrimeiroNome, UltimoNome, Tipo,treeView):
@@ -235,10 +235,26 @@ def contar():
     data = "A plataforma possui: " + str(Docente) + " " + "docentes" + "," + " " + str(Estudante) + " " + "estudantes" + "," + " " + str(Externo) + " " + "externos"
     messagebox.showinfo(title = "Numero de inscrições", message = data)
 
+"""----------------------------------------------------------------------------------------"""
+"""                                                                                        """
+"""                                       Programa 2                                       """
+"""                                                                                        """
+"""----------------------------------------------------------------------------------------"""
+
+
+
+
+
+
+
+
+
 
 
 """----------------------------------------------------------------------------------------"""
 """                                    Interface grafica                                   """
+"""----------------------------------------------------------------------------------------"""
+
 window = Tk()
 
 screenWidth = window.winfo_screenwidth()
