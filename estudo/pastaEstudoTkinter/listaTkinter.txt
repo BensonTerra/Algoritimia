@@ -3,3 +3,4 @@
 3;benseqeq;qqqqeqweq;Estudante
 4;qw;qw;Docente
 5;da;da;Docente
+6;NOVO;aluno;Docente

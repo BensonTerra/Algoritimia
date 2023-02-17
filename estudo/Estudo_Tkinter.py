@@ -103,7 +103,7 @@ def tela1():
     scrollBar1.place(x = 0.94 * labelFrame3Width,y = 0, height = 0.95 * labelFrame3Height)
     #---#
     treePanel.place(x = 0.01 * labelFrame3Width,y = 0.01 * labelFrame3Height)
-    #carregarAtualizarTreeView(treePanel)
+    carregarAtualizarTreeView(treePanel)
     #-----------------------------------------------------------------------------------------------------------------------------#
     labelFrame4 = LabelFrame(labelFrame1, width = 0.4 * panned2Width, height = 0.39 * panned2Height, font = ("Arial", 12))
     labelFrame4.place(x = 0.01 * panned2Width, y = 0.41 * panned2Height)
@@ -123,10 +123,11 @@ def tela1():
     btnRemover.place(x = 0.01 * labelFrame4Width, y = 0.79 * labelFrame4Height)
     #---#contar contas
     btnContar = Button(labelFrame4, text = "Contagem", compound=LEFT, relief = "sunken", 
-                    width = 43, height = 3, font=("Arial", 12))
+                    width = 43, height = 3, font=("Arial", 12), command = contar)
     btnContar.place(x = 0.01 * labelFrame4Width, y = 1.16 * labelFrame4Height)
     
-                        #Funções do sistema
+"""----------------------------------------------------------------------------------------"""
+"""                                   Funções do Sistema                                   """
 
 #função adicionar ao txt e treeview
 def adicionar(PrimeiroNome, UltimoNome, Tipo,treeView):
@@ -175,29 +176,58 @@ def carregarAtualizarTreeView(treeView):
         linha[1] = linha[1] + " " + linha[2]
         treeView.insert("", END, values = (linha[1], linha[3]))
 
-#função para capturar index
+#função para capturar index do elemento selecionado na treeView
 def indexCapture(treeView):
     idSelecionado = treeView.focus()
 
     item_id = treeView.index(idSelecionado)
     item_id = item_id +1
     print(item_id)
+    return item_id
 
-
+#Função para remover elementos da treeView e atualizar a mesma
 def removerUser(treeView):
     os.system("cls")
     print("remover")
     linhas = lerFicheiro()
     #print(linhas)
-    id = 1
+    index = indexCapture(treeView)
+    #print(index)
+    #---#
+    idUser = 1
     ptr = 1
-    """
-    f = open(ficheiro, "w", encoding="utf8")
-    f.close()
-    """
+    acessos = open(ficheiro, "w", encoding="utf8")
+    for linha in linhas:
+        linha = linha.replace("\n","")
+        linha = linha.split(";")
+        #print(ptr)
+        if ptr != index:
+            #print("funciona")
+            data = str(idUser) + ";" + linha[1] + ";" + linha[2] + ";" + linha[3] + "\n"
+            acessos.write(data)
+            idUser+=1
+        ptr+=1
+    acessos.close()
     treeView.delete(*treeView.get_children())
     carregarAtualizarTreeView(treeView)
 
+#
+def contar():
+    linhas = lerFicheiro()
+    Docente = 0
+    Estudante = 0
+    Externo = 0
+    for linha in linhas:
+        linha = linha.replace("\n","")
+        linha = linha.split(";")
+        if linha[3] == "Docente":
+            Docente+=1
+        elif linha[3] == "Estudante":
+            Estudante+=1
+        elif linha[3] == "Externo":
+            Externo+=1
+    data = "A plataforma possui: " + str(Docente) + " " + "docentes" + "," + " " + str(Estudante) + " " + "estudantes" + "," + " " + str(Externo) + " " + "externos"
+    messagebox.showinfo(title = "Numero de inscrições", message = data)
 
 """----------------------------------------------------------------------------------------"""
 """                                    Interface grafica                                   """
@@ -222,7 +252,7 @@ navegacao.add_command(label="Tela Inicial", command = TelaInicial)
 navegacao.add_command(label="Programa 1")
 navegacao.add_command(label="Tela 3")
 navegacao.add_command(label="Tela 4")
-navegacao.add_command(label="Teste", command= lambda: indexCapture(treePanel))
+navegacao.add_command(label="Teste")
 #---#
 menubar.add_command(label="CLS", command = lambda: os.system("cls"))
 menubar.add_command(label="Exit", command = window.destroy)
