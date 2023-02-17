@@ -10,16 +10,15 @@ from tkinter import filedialog
 from tkcalendar import DateEntry
 from PIL import ImageTk,Image    # Imagens .jpg ou .png
 
-#Variaveis globais
-pastaPrograma_1 = "estudo/pastaEstudoTkinter"
-ficheiroPrograma_1 = "estudo/pastaEstudoTkinter/listaTkinter.txt"
-#---#
-
 """----------------------------------------------------------------------------------------"""
 """                                                                                        """
 """                                       Programa 1                                       """
 """                                                                                        """
 """----------------------------------------------------------------------------------------"""
+
+#Variaveis globais
+pastaPrograma_1 = "estudo/pastaEstudoTkinter"
+ficheiroPrograma_1 = "estudo/pastaEstudoTkinter/listaTkinterPrograma_1.txt"
 
 #função ficheiroCiclo, cria a pasta e um arquivo .txt para primeira vez que é rodado
 def primeiroCiclo_Programa_1():

@@ -145,7 +145,6 @@ def menuIniciar():
             print("\n")
             verFicheiro()
 
-
 autoStart="y"
 while autoStart.upper() == "Y":
     menuIniciar()
