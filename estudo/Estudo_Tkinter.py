@@ -13,16 +13,22 @@ from PIL import ImageTk,Image    # Imagens .jpg ou .png
 #Variaveis globais
 pastaPrograma_1 = "estudo/pastaEstudoTkinter"
 ficheiroPrograma_1 = "estudo/pastaEstudoTkinter/listaTkinter.txt"
+#---#
+
+
+
+"""----------------------------------------------------------------------------------------
+                                          Programa 1                                       """
 
 #função ficheiroCiclo, cria a pasta e um arquivo .txt para primeira vez que é rodado
-def primeiroCiclo():
+def primeiroCiclo_Programa_1():
     if not os.path.exists(pastaPrograma_1):
         os.mkdir(pastaPrograma_1)
         f = open(ficheiroPrograma_1, "a", encoding="utf-8")
         initialComment = "Readme"
         f.write(initialComment)
         f.close()
-primeiroCiclo()
+primeiroCiclo_Programa_1()
 
 #Tela 0
 def TelaInicial():
@@ -126,8 +132,9 @@ def tela1():
                     width = 43, height = 3, font=("Arial", 12), command = contar)
     btnContar.place(x = 0.01 * labelFrame4Width, y = 1.16 * labelFrame4Height)
     
-"""----------------------------------------------------------------------------------------"""
-"""                                   Funções do Sistema                                   """
+"""----------------------------------------------------------------------------------------
+                                      Funções do Sistema                                   """
+
 #função adicionar ao txt e treeview
 def adicionar(PrimeiroNome, UltimoNome, Tipo,treeView):
     os.system("cls")
@@ -227,6 +234,8 @@ def contar():
             Externo+=1
     data = "A plataforma possui: " + str(Docente) + " " + "docentes" + "," + " " + str(Estudante) + " " + "estudantes" + "," + " " + str(Externo) + " " + "externos"
     messagebox.showinfo(title = "Numero de inscrições", message = data)
+
+
 
 """----------------------------------------------------------------------------------------"""
 """                                    Interface grafica                                   """
