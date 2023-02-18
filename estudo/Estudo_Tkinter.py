@@ -2,6 +2,7 @@
 Teste de uma plataforma de agenda via terminal usando pyhton, com possibilidade remoção de tarefas especifica do ficheiro .txt
 """
 import os  # biblioteca os
+from pathlib import Path
 import datetime
 from tkinter import *  # biblioteca tkinter
 from tkinter import ttk # biblioteca tkinter treeview
@@ -17,13 +18,18 @@ from PIL import ImageTk,Image    # Imagens .jpg ou .png
 """----------------------------------------------------------------------------------------"""
 
 #Variaveis globais
-pastaPrograma_1 = "estudo/pastaEstudoTkinter"
+pastaPrograma = "estudo/pastaEstudoTkinter"
 ficheiroPrograma_1 = "estudo/pastaEstudoTkinter/listaTkinterPrograma_1.txt"
 
 #função ficheiroCiclo, cria a pasta e um arquivo .txt para primeira vez que é rodado
 def primeiroCiclo_Programa_1():
-    if not os.path.exists(pastaPrograma_1):
-        os.mkdir(pastaPrograma_1)
+    if not os.path.exists(pastaPrograma):
+        os.mkdir(pastaPrograma)
+
+    path_to_file = ficheiroPrograma_1
+    path = Path(path_to_file)
+
+    if path.is_file() == False:
         f = open(ficheiroPrograma_1, "a", encoding="utf-8")
         initialComment = "Readme"
         f.write(initialComment)
@@ -38,7 +44,7 @@ def TelaInicial():
     panned2.place(x=panned1Width , y=0)
 
 #Tela 1
-def tela1():
+def programa1():
     #-----------------------------------------------------------------------------------------------------------------------------#
     menubar = Menu(window)
     #-----------------------------------------------------------------------------------------------------------------------------#
@@ -240,7 +246,51 @@ def contar():
 """                                                                                        """
 """----------------------------------------------------------------------------------------"""
 
+#Variaveis globais
+pastaPrograma = "estudo/pastaEstudoTkinter"
+ficheiroPrograma_2 = "estudo/pastaEstudoTkinter/listaTkinterPrograma_2.txt"
 
+#função ficheiroCiclo, cria a pasta e um arquivo .txt para primeira vez que é rodado
+def primeiroCiclo_Programa_2():
+    if not os.path.exists(pastaPrograma):
+        os.mkdir(pastaPrograma)
+
+    path_to_file = ficheiroPrograma_2
+    path = Path(path_to_file)
+
+    if path.is_file() == False:
+        f = open(ficheiroPrograma_2, "a", encoding="utf-8")
+        initialComment = "Readme"
+        f.write(initialComment)
+        f.close()
+    
+primeiroCiclo_Programa_2()
+
+#Tela 0
+def TelaInicial():
+    panned2Width = 0.75 * appWidth
+    panned2Height = appHeight
+    panned2 = PanedWindow(window, bg = "gray",width = panned2Width, height = appHeight)
+    panned2.place(x=panned1Width , y=0)
+
+#Tela 1
+def programa2():
+    #-----------------------------------------------------------------------------------------------------------------------------#
+    menubar = Menu(window)
+    #-----------------------------------------------------------------------------------------------------------------------------#
+    navegacao = Menu(menubar, tearoff=0)
+
+    menubar.add_cascade(label = "Telas", menu = navegacao)
+    navegacao.add_command(label="Tela Inicial", command = TelaInicial)
+    navegacao.add_command(label="Programa 1")
+    navegacao.add_command(label="Tela 3")
+    navegacao.add_command(label="Tela 4")
+    navegacao.add_command(label="Teste")
+    #---#
+    menubar.add_command(label="CLS", command = lambda: os.system("cls"))
+    menubar.add_command(label="Exit", command = window.destroy)
+    window.config(menu =  menubar)
+    #-----------------------------------------------------------------------------------------------------------------------------#
 
 
 
@@ -288,12 +338,12 @@ panned1.place(x=0 , y=0)
 #-----------------------------------------------------------------------------------------------------------------------------#
 btnOpcao1 = Button(panned1, text = "Programa 1", compound=LEFT, relief = "sunken", 
                     width = 10, height = 3, font="calibri, 11",
-                    command = tela1)
+                    command = programa1)
 btnOpcao1.place (x = 0.025 * panned1Width, y = 0.01 * panned1Height)
 #-----------------------------------------------------------------------------------------------------------------------------#
 btnOpcao2 = Button(panned1, text = "BTN2", compound=LEFT, relief = "sunken", 
                     width = 10, height = 3, font="calibri, 11",
-                    command=None)
+                    command=programa2)
 btnOpcao2.place (x = 0.35 * panned1Width, y = 0.01 * panned1Height)
 #-----------------------------------------------------------------------------------------------------------------------------#
 btnOpcao3 = Button(panned1, text = "BTN3", compound=LEFT, relief = "sunken", 

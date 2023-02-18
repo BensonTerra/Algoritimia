@@ -7,7 +7,7 @@ import os #biblioteca os
 os.system("cls")
 
 lista_1 = [10,12,14,16,18,20,22,24,26,28]
-lista_2 = [1,3,5,7,14,18,21,7,9,8]
+lista_2 = [12,3,5,7,14,18,21,7,9,8]
 numVezes = 0
 resposta = ""
 
@@ -23,3 +23,5 @@ resposta = resposta[0:respostaNum-2]
 resposta = resposta + "."
 
 print("Existem %i elementos que se repetem, e eles são: %s" %(numVezes,resposta))
+
+input()
