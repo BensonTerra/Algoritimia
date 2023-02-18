@@ -291,7 +291,13 @@ def programa2():
     menubar.add_command(label="Exit", command = window.destroy)
     window.config(menu =  menubar)
     #-----------------------------------------------------------------------------------------------------------------------------#
-
+    panned2Width = 0.75 * appWidth
+    panned2Height = appHeight
+    panned2 = PanedWindow(window, bg = "gray",width = panned2Width, height = appHeight)
+    panned2.place(x=panned1Width , y=0)
+    #-----------------------------------------------------------------------------------------------------------------------------#
+    labelFrame1 = LabelFrame(panned2, width = 0.98 * panned2Width, height = 0.98 * panned2Height, bg = "gray")
+    labelFrame1.place(x = 0.01 * panned2Width, y = 0.01 * panned2Height)
 
 
 
