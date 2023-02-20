@@ -24,6 +24,7 @@ def selecionaPerfil():
   global filename
   filename = filedialog.askopenfilename(title = "Select file", initialdir= "./imagens",
               filetypes = (("png files","*.png"),("gif files", "*.gif"), ("all files","*.*")))
+  print(filename)
   
   global img_perfil
   global image_perfil_id
@@ -31,6 +32,7 @@ def selecionaPerfil():
   # change image on canvas
   global canvas_perfil
   canvas_perfil.itemconfig(image_perfil_id, image=img_perfil)
+  #.itemconfig(item(elemento), option(bg,fg, image e outros))
 
 def PanelConfigurar():
     # ------------------------------------------------------------
