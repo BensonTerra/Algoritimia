@@ -32,7 +32,7 @@ def selecionaPerfil():
   # change image on canvas
   global canvas_perfil
   canvas_perfil.itemconfig(image_perfil_id, image=img_perfil)
-  #.itemconfig(item(elemento), option(bg,fg, image e outros))
+  #            .itemconfig(item(elemento), option(bg,fg, image e outros))
 
 def PanelConfigurar():
     # ------------------------------------------------------------
