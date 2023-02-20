@@ -27,10 +27,10 @@ def selecionaPerfil():
   print(filename)
   
   global img_perfil
-  global image_perfil_id
   img_perfil = PhotoImage(file = filename)
   # change image on canvas
   global canvas_perfil
+  global image_perfil_id
   canvas_perfil.itemconfig(image_perfil_id, image=img_perfil)
   #            .itemconfig(item(elemento), option(bg,fg, image e outros))
 
@@ -52,6 +52,7 @@ def PanelConfigurar():
 
     global image_perfil_id
     image_perfil_id = canvas_perfil.create_image(25, 25, image=img_perfil)
+    #image_perfil_id equivale à imagem presente no canvas_perfil com a img_perfil=PhotoImage(file = filename)
 
     frame1 = LabelFrame(panelConfig, text = "Selecione o continente para jogar", width = 300, height = 150, bd = 3, relief = "sunken")
     frame1.place(x=100, y=150)
