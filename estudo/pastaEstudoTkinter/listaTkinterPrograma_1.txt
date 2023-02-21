@@ -4,3 +4,4 @@
 4;aaa;bdad;Estudante
 5;aaaa;bdadd;Estudante
 6;aaaafg;bdaddfg;Estudante
+7;dasdasdd;dadaddaaddaad;Externo

@@ -33,7 +33,6 @@ def item_selected(event):
         # show a message
         showinfo(title='Information', message=','.join(record))
 tree.bind('<<TreeviewSelect>>', item_selected)
-tree.bind('<', item_selected)
 
 
 tree.grid(row=0, column=0, sticky='nsew')

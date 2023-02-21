@@ -1,11 +1,12 @@
-""" Mostrar dados do elementos selecionado de uma tree
-def item_selected(event):
-    for selected_item in tree.selection():
-        item = tree.item(selected_item)
-        record = item['values']
-        # show a message
-        showinfo(title='Information', message=','.join(record))
-"""
+#Mostrar dados do elementos selecionado de uma tree
+
+    def item_selected(event):
+        for selected_item in tree.selection():
+            item = tree.item(selected_item)
+            record = item['values']
+            # show a message
+            showinfo(title='Information', message=','.join(record))
+
 
 #Remoção de itens de uma lista
 
