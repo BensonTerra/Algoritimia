@@ -3,7 +3,7 @@ from tkinter import *
 from tkinter import messagebox
 from tkinter import ttk          # extensão do tkinter, inclui treeview
 
-fProvas= "files/provas.txt"
+fProvas= "Ficha 13---/files/provas.txt"
 
 
 def inserirProva(prova, data, local, tipoProva, tview):

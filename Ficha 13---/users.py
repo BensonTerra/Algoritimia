@@ -6,7 +6,7 @@ from tkinter import messagebox
 
 # Funções relacionadas com o User
 # Registar, Iniciar Sessão
-fUsers= "files/utilizadores.txt"
+fUsers= "Ficha 13---/files/utilizadores.txt"
 
 def validaConta(userName, userPass):
     """

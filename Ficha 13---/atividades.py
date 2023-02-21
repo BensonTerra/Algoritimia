@@ -2,7 +2,7 @@
 from tkinter import *
 from tkinter import messagebox
 
-fProvas= "files/provas.txt"
+fProvas= "Ficha 13---/files/provas.txt"
 
 
 def contarProvas(tree, numProvas):

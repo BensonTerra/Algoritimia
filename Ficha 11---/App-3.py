@@ -155,5 +155,6 @@ tarefas_restantes = IntVar()
 txtTarefaNum = Entry(frame4,width =5,state="disable", justify= CENTER, textvariable=tarefas_restantes)
 txtTarefaNum.place(x=305, y=50)
 
+downloadLista()
 
 window.mainloop()

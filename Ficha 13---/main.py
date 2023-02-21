@@ -73,12 +73,12 @@ def containerGerirProvas():
     refreshListboxProvas(listaProvas, tview)
 
     global image1, image2
-    image1 = PhotoImage(file = "imagens\\adicionar.png" )
+    image1 = PhotoImage(file = "Ficha 13---\\imagens\\adicionar.png" )
     btnInserir = Button(panelProvas, image = image1, width=200, height=48, text = "Inserir Prova", compound=LEFT,
                 command= lambda: inserirProva(prova.get(), data.get(), local.get(), tipoprova.get(), tview))
     btnInserir.place(x=280, y= 320)
     
-    image2 = PhotoImage(file = "imagens\\remover.png" )
+    image2 = PhotoImage(file = "Ficha 13---\\imagens\\remover.png" )
     btnRemover = Button(panelProvas, image = image2, width=200, height=48,  text = "Remover Prova", compound=LEFT,
                 command= lambda: removerProva(tview))
     btnRemover.place(x=510, y= 320)
@@ -111,9 +111,9 @@ def containerConsultarProvas():
     ck4.place(x=350, y=30)
 
     global imagePesq, imageAsc, imageDesc
-    imagePesq = PhotoImage(file = "imagens\\pesquisar.png")
-    imageAsc  = PhotoImage(file = "imagens\\asc.png")
-    imageDesc = PhotoImage(file = "imagens\\desc.png")
+    imagePesq = PhotoImage(file = "Ficha 13---\\imagens\\pesquisar.png")
+    imageAsc  = PhotoImage(file = "Ficha 13---\\imagens\\asc.png")
+    imageDesc = PhotoImage(file = "Ficha 13---\\imagens\\desc.png")
 
     btnPesquisar = Button(panelCon, width=48, height=48, image = imagePesq, 
             command = lambda: filtrarAtividades(tree, choice1, choice2, choice3, choice4, numProvas))
@@ -165,7 +165,7 @@ def panelAutenticarUser():
    containerImage = Canvas(panelUsers, height = 128, width=128)
    containerImage.place(x=50, y=70) 
    global img
-   img = PhotoImage(file = ".\imagens\\loginCanvas.png")
+   img = PhotoImage(file = "Ficha 13---\\imagens\\loginCanvas.png")
    containerImage.create_image(64, 64, image = img)
   # Username
    labelUsers = Label(panelUsers, text ="Username:")
@@ -205,7 +205,7 @@ def panelCriarConta():
    containerImage = Canvas(panelUsers, height = 128, width=128)
    containerImage.place(x=50, y=70) 
    global img
-   img = PhotoImage(file = ".\imagens\\loginCanvas.png")
+   img = PhotoImage(file = "Ficha 13---\\imagens\\loginCanvas.png")
    containerImage.create_image(64, 64, image = img)
 # Username
    labelUsers = Label(panelUsers, text ="Username:")
@@ -241,7 +241,7 @@ def containerHome():
    ctnCanvas = Canvas(panel2, width = 750, height= 450)
    ctnCanvas.place(x=0, y= 0)
    global img
-   img = PhotoImage(file = ".\imagens\\running.png")
+   img = PhotoImage(file = "Ficha 13---\\imagens\\running.png")
    ctnCanvas.create_image(375, 225, image = img)
 
 
@@ -262,30 +262,30 @@ window.title('my Running App')
 panel1 = PanedWindow(window, bg = "gray", width=250, height=500)
 panel1.place(x=0, y=0)
 
-imageHome = PhotoImage(file = "imagens\\icoHome.png" )
+imageHome = PhotoImage(file = "Ficha 13---\\imagens\\icoHome.png" )
 btnHome = Button(panel1, text = "Início \nHome", image = imageHome, compound=LEFT, relief = "sunken", 
                     width = 230, height = 68, font="calibri, 11",
                     command=containerHome)
 btnHome.place (x=5, y=50)
 
-imageIco1 = PhotoImage(file = "imagens\\icoOp1.png" )
+imageIco1 = PhotoImage(file = "Ficha 13---\\imagens\\icoOp1.png" )
 btnOpcao1 = Button(panel1, text = "Gerir \nProvas", image = imageIco1, compound=LEFT, relief = "sunken", 
                     width = 230, height = 68, font="calibri, 11",
                     command=containerGerirProvas)
 btnOpcao1.place (x=5, y=130)
 
-imageIco2 = PhotoImage(file = "imagens\\icoOp2.png" )
+imageIco2 = PhotoImage(file = "Ficha 13---\\imagens\\icoOp2.png" )
 btnOpcao2 = Button(panel1, text = "Consultar \nProvas", relief = "sunken", image = imageIco2, compound=LEFT,
                 width = 230, height = 68,  font="calibri, 11",
                 command= containerConsultarProvas)
 btnOpcao2.place (x=5, y=210)
 
-imageIco3 = PhotoImage(file = "imagens\\icoOp3.png" )
+imageIco3 = PhotoImage(file = "Ficha 13---\\imagens\\icoOp3.png" )
 btnOpcao3 = Button(panel1, text = "Dashboard\nÁrea Pessoal", relief = "sunken", image = imageIco3, compound=LEFT,
                 width = 230, height = 68,  font="calibri, 11", state="disabled")
 btnOpcao3.place (x=5, y=290)
 
-imageIco4 = PhotoImage(file = "imagens\\icoOp4.png" )
+imageIco4 = PhotoImage(file = "Ficha 13---\\imagens\\icoOp4.png" )
 btnOpcao4 = Button(panel1, text = "Sair App", relief = "sunken", image = imageIco4, compound=LEFT,
                 width = 230, height = 68,  font="calibri, 11", 
                 command = window.destroy)
@@ -301,12 +301,12 @@ userAutenticado.set("")
 labelHeader = Label(window, textvariable= userAutenticado, fg = "blue", font="calibri, 11")
 labelHeader.place(x= 310, y= 10)
 
-imageLogin = PhotoImage(file = "imagens\\icoLogin.png" )
+imageLogin = PhotoImage(file = "Ficha 13---\\imagens\\icoLogin.png" )
 btnIniciarSessão = Button (window, image = imageLogin, relief = "flat",  compound=TOP,
                      width = 78, height=38, text = "Iniciar Sessão", command = panelAutenticarUser)
 btnIniciarSessão.place(x=790, y=5)
 
-imageConta = PhotoImage(file = "imagens\\icoConta.png" )
+imageConta = PhotoImage(file = "Ficha 13---\\imagens\\icoConta.png" )
 btnCriarConta = Button (window, image = imageConta, width = 64, height=38, relief="flat", text = "Criar Conta",
                   compound = TOP, command=panelCriarConta)
 
