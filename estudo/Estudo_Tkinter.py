@@ -148,12 +148,11 @@ def adicionar(PrimeiroNome, UltimoNome, Tipo,treeView):
     numsUsers = lerFicheiroId()
     #print(numsUsers)
     idUser = numsUsers + 1
-    idUser = str(idUser)
     #print(idUser)
     while PrimeiroNome != "" and UltimoNome != "":
         print("Dentro do ciclo")
         f = open(ficheiroPrograma_1, "a", encoding="utf-8")
-        data = idUser + ";" + PrimeiroNome + ";" + UltimoNome + ";" + Tipo + "\n"
+        data = str(idUser) + ";" + PrimeiroNome + ";" + UltimoNome + ";" + Tipo + "\n"
         f.write(data)
         f.close()
         carregarAtualizarTreeView(treeView)
