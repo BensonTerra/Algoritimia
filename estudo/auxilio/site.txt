@@ -1,0 +1,2 @@
+https://www.pythontutorial.net/tkinter/tkinter-event-binding/
+https://www.tutorialspoint.com/list-of-all-tkinter-events
