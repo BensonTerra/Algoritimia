@@ -55,7 +55,7 @@ def programa1():
     navegacao.add_command(label="Programa 1")
     navegacao.add_command(label="Tela 3")
     navegacao.add_command(label="Tela 4")
-    navegacao.add_command(label="Teste", command= lambda: indexCapture(treePanel))
+    navegacao.add_command(label="Teste", command= lambda: indexCapture_TREEVIEW(treePanel))
     #---#
     menubar.add_command(label="CLS", command = lambda: os.system("cls"))
     menubar.add_command(label="Exit", command = window.destroy)
@@ -188,7 +188,7 @@ def carregarAtualizarTreeView(treeView):
         treeView.insert("", END, values = (linha[1], linha[3]))
 
 #função para capturar index do elemento selecionado na treeView quando: index(começa em 1); conteudo
-def indexCapture(treeView):
+def indexCapture_TREEVIEW(treeView):
     idSelecionado = treeView.focus()
 
     item_id = treeView.index(idSelecionado)
@@ -202,7 +202,7 @@ def removerUser(treeView):
     print("remover")
     linhas = lerFicheiro()
     print(linhas)
-    index = indexCapture(treeView)
+    index = indexCapture_TREEVIEW(treeView)
     print(index)
     #---#
     idUser = 1

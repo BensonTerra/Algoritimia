@@ -1,7 +1,6 @@
 1;Benson;Terra;Externo
 2;a;b;Estudante
 3;aa;bd;Estudante
-4;aaa;bdad;Estudante
-5;aaaa;bdadd;Estudante
-6;aaaafg;bdaddfg;Estudante
-7;dasdasdd;dadaddaaddaad;Externo
+4;aaaa;bdadd;Estudante
+5;aaaafg;bdaddfg;Estudante
+6;dasdasdd;dadaddaaddaad;Externo

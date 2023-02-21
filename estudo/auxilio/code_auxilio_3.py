@@ -18,7 +18,6 @@ def removerElemento(lista):
         index = i
         print(index)
     lista.delete(lista.curselection())
-    
 
 # Add items in the Listbox
 lb.insert("end","item1","item2","item3","item4","item5")
