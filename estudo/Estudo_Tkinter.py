@@ -187,7 +187,7 @@ def carregarAtualizarTreeView(treeView):
         linha[1] = linha[1] + " " + linha[2]
         treeView.insert("", END, values = (linha[1], linha[3]))
 
-#função para capturar index do elemento selecionado na treeView
+#função para capturar index do elemento selecionado na treeView quando: index(começa em 1); conteudo
 def indexCapture(treeView):
     idSelecionado = treeView.focus()
 
@@ -201,9 +201,9 @@ def removerUser(treeView):
     os.system("cls")
     print("remover")
     linhas = lerFicheiro()
-    #print(linhas)
+    print(linhas)
     index = indexCapture(treeView)
-    #print(index)
+    print(index)
     #---#
     idUser = 1
     ptr = 1
@@ -211,9 +211,9 @@ def removerUser(treeView):
     for linha in linhas:
         linha = linha.replace("\n","")
         linha = linha.split(";")
-        #print(ptr)
+        print(ptr)
         if ptr != index:
-            #print("funciona")
+            print("funciona")
             data = str(idUser) + ";" + linha[1] + ";" + linha[2] + ";" + linha[3] + "\n"
             acessos.write(data)
             idUser+=1

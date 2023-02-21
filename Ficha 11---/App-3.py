@@ -17,6 +17,12 @@ if not os.path.exists(pasta):
     os.mkdir(pasta)
 #Verfica a existencia da pasta fim
 
+f = open(ficheiro,"w",encoding="utf8")
+for i in range(10):
+    line = "teste " + str(i+1) + "\n"
+    f.write(line)
+f.close()
+
 #Função adicionarTarefa a lista Inicio
 def adicionarTarefa():
     texto = tarefas.get()
@@ -62,7 +68,7 @@ def downloadLista():
     f.close()
     #print(linhas)
     for linha in linhas:
-        linha = linha.removesuffix("\n")
+        linha = linha.replace("\n","")
         lbLista.insert(END, linha)
     numerosTarefas()
 #Função downloadLista para arquivo Fim
