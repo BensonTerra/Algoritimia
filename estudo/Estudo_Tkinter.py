@@ -192,7 +192,7 @@ def indexCapture(treeView):
     idSelecionado = treeView.focus()
 
     item_id = treeView.index(idSelecionado)
-    item_id = item_id +1
+    item_id = item_id + 1
     print(item_id)
     return item_id
 

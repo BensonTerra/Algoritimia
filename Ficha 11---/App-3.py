@@ -29,7 +29,7 @@ def adicionarTarefa():
 #Função removerTarefa a lista Inicio
 def removerTarefa():
     pos = lbLista.curselection()
-    #print(pos)
+    print(pos)
     lbLista.delete(pos)
     uploadLista()
     numerosTarefas()

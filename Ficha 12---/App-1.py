@@ -43,7 +43,7 @@ def movimentos():
     movWindow = Toplevel()
     screenWidth = window.winfo_screenwidth()
     screenHeight = window.winfo_screenheight()
-    appWidth = 500                             # tamanho (pixeis) da window a criar
+    appWidth = 1000                             # tamanho (pixeis) da window a criar
     appHeight = 450
     x = (screenWidth/2) - (appWidth/2)        # posição do canto superior esquerdo da window
     y = (screenHeight/2) - (appHeight/2)
