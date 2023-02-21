@@ -2,7 +2,6 @@
 Programa de gestão de acessos  ao parque de estacionamento da ESMAD
 """
 import os #biblioteca os
-import time
 
 #Variaveis Globais
 gessList = ['00-CC-00','01-CC-01','02-CC-02','03-CC-03','04-CC-04', '05-CC-05','06-CC-06','07-CC-07','08-CC-08','09-CC-09']
