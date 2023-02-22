@@ -141,7 +141,7 @@ def programa1():
 """-----------------------------------Funções do Sistema-----------------------------------"""
 
 #função adicionar ao txt e treeview
-def adicionar(PrimeiroNome, UltimoNome, Tipo,treeView):
+def adicionar(PrimeiroNome, UltimoNome, Tipo, treeView):
     os.system("cls")
     #print(PrimeiroNome)
     #print(UltimoNome)

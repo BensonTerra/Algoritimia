@@ -13,7 +13,7 @@
         return linhas
 
 #Função para definir um identificador numerico, ou id, para cada dado a ser inserido
-#ex : id + ";" + "dados do exercicio / resultado: 1;dados..."
+#ex : id + ";" + "dados do exercicio / resultado: 1;dados..." Uso especifico
 
     def lerFicheiroId():
         f = open(ficheiro, "r", encoding="utf-8")
