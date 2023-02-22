@@ -10,6 +10,7 @@ from tkinter import messagebox # biblioteca tkinter messagebox
 from tkinter import filedialog
 from tkcalendar import DateEntry
 from PIL import ImageTk,Image    # Imagens .jpg ou .png
+import threading
 
 """----------------------------------------------------------------------------------------"""
 """                                                                                        """
@@ -116,6 +117,15 @@ def programa1():
     #---#
     treePanel.place(x = 0.01 * labelFrame3Width,y = 0.01 * labelFrame3Height)
     carregarAtualizarTreeView(treePanel)
+    #---#
+    def item_selected(event):
+        for selected_item in treePanel.selection():
+            item = treePanel.item(selected_item)
+            record = item['values']
+            # show a message
+            messagebox.showinfo(title='Information', message=','.join(record))
+    #treePanel.bind('<<TreeviewSelect>>', item_selected)
+    treePanel.bind('<Double-1>', item_selected)
     #-----------------------------------------------------------------------------------------------------------------------------#
     labelFrame4 = LabelFrame(labelFrame1, width = 0.4 * panned2Width, height = 0.39 * panned2Height, font = ("Arial", 12))
     labelFrame4.place(x = 0.01 * panned2Width, y = 0.41 * panned2Height)

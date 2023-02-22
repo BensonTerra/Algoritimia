@@ -22,6 +22,15 @@
         #print(num)
         return num
 
+#função para capturar index do elemento selecionado na treeView quando: index(começa em 1); conteudo
+    def indexCapture_TREEVIEW(treeView):
+        idSelecionado = treeView.focus()
+
+        item_id = treeView.index(idSelecionado)
+        item_id = item_id + 1
+        print(item_id)
+        return item_id
+
 
 """----------------------------------------------------------------------------------------"""
 """                                                                                        """
@@ -96,7 +105,7 @@
 """                                                                                        """
 """----------------------------------------------------------------------------------------"""
 
-#metodo complexo de remover e reescrecer elementos de uma lista com base em ficheiro
+#metodo para remover elemento selecionado e reescrecer file.txt com os elementos de uma lista com base em ficheiro
     def delete_elementSelected_rewriteFile(lista):
         ptr = 0
         acessos = open(ficheiro, "w", encoding="utf8")
