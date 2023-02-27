@@ -1,0 +1,223 @@
+# Biblioteca Tkinter: UI
+import os
+from tkinter import *
+from tkinter import ttk          # treeView
+from tkinter import filedialog   # filedialog boxes
+from tkinter import messagebox   #  messagebox
+import time 
+
+#Variaveis globais
+pasta = "recurso\\ex2\\files\\"
+ficheiroParque = "recurso\\ex2\\files\\parque.txt"
+ficheiroTipo = "recurso\\ex2\\files\\tipoveiculos.txt"
+opcao = 0
+
+#Função ler ficheiro, permite ler o ficheiro sem que seja necessario repeitir codigo no restante do sistema
+def lerFicheiroParque():
+    f = open(ficheiroParque, "r", encoding="utf-8")
+    linhas = f.readlines()
+    f.close()
+    #print(linhas)
+    return linhas
+
+#Função ler ficheiro, permite ler o ficheiro sem que seja necessario repeitir codigo no restante do sistema
+def lerFicheiroTipo():
+    f = open(ficheiroTipo, "r", encoding="utf-8")
+    linhas = f.readlines()
+    f.close()
+    #print(linhas)
+    return linhas
+
+#Carregar treeView com dados de um file.txt
+def lerOcupacao(treeView):
+    linhas = lerFicheiroParque()
+    for item in treeView.get_children():
+        treeView.delete(item)
+    for linha in linhas:
+        linha = linha.split(";")
+        #print(linha)
+        if linha[0] == "":
+            pass
+        else:
+            treeView.insert("", END, values = (linha[0],linha[1],linha[2],linha[3]))
+
+#função para capturar index do elemento selecionado na treeView quando: index(começa em 1); conteudo
+def indexCapture_TREEVIEW(treeView):
+    idSelecionado = treeView.focus()
+    #print(idSelecionado)
+    item_id = treeView.index(idSelecionado)
+    item_id = item_id + 1
+    #print(item_id)
+    return item_id  
+
+def registrar(cbOption, matricula, data, hora, tipo,tree,res):
+    os.system("cls")
+    if( cbOption == "Entrada"):
+        print("Entrada")
+        f = open(ficheiroParque, "r", encoding="utf8")
+        linhas = f.readlines()
+        f.close()
+        num = len(linhas)
+        print(num)
+        if num <= 9:
+            print(30*"-")
+            print(matricula)
+            print(data)
+            print(hora)
+            print(tipo)
+            print(30*"-")
+            
+            f = open(ficheiroParque, "a", encoding="utf8")
+            line = matricula + ";" + data + ";" + hora + ";" + tipo 
+            f.write(line)
+            f.close()
+            lerOcupacao(tree)
+        else:
+            messagebox.showinfo(title='Information', message = "estacionamento lotado")
+    elif cbOption == "Saida":
+        #res = messagebox.askquestion(title=None, message="Confirma a saida do parque?")
+        if res == "yes":
+            messagebox.showinfo(title = "AVISO", message = "Saida Autorizada")
+            if tree.focus() != "":
+                print("Saida")
+                linhas = lerFicheiroParque()
+                print(linhas)
+                index = indexCapture_TREEVIEW(tree)
+                print(index)
+                print(tree.focus())
+                #---#
+                ptr = 1
+                f = open(ficheiroParque, "w", encoding="utf8")
+                for linha in linhas:
+                    print(ptr)
+                    linha = linha.split(";")
+                    print(linha)
+                    if ptr != index:
+                        print("ReEscrever")
+                        line = linha[0] + ";" + linha[1] + ";" + linha[2] + ";" + linha[3]
+                        f.write(line)
+                    ptr+=1
+                f.close()
+                lerOcupacao(tree)
+            else:
+                messagebox.showerror(title = "AVISO", message = "Selecione um veiculo na lista\npara poder continuar")
+        else:
+            messagebox.showinfo(title = "AVISO", message = "Saida Negada")
+
+
+# ---------------Main-------------------------------------------
+#----------------------------------------------------------------
+window = Tk()
+screenWidth = window.winfo_screenwidth()
+screenHeight = window.winfo_screenheight()
+appWidth = 550                             # tamanho (pixeis) da window a criar 900 / 500
+appHeight = 640 
+x = (screenWidth/2) - (appWidth/2)        # posição do canto superior esquerdo da window
+y = (screenHeight/2) - (appHeight/2)
+window.geometry("{:.0f}x{:.0f}+{:.0f}+{:.0f}" .format(appWidth, appHeight, int(x), int(y)))
+window.title('gestParque')
+
+
+frame1 = LabelFrame(window, text = "Movimentos no Parque", width=450, height=200, relief = "sunken")
+frame1.place(x=40, y=20)
+
+# RadioButtons entrada / Saida
+selected = StringVar()
+selected.set("Entrada")
+rd1 = Radiobutton(frame1, text = "Entrada", value = "Entrada", variable = selected)
+rd2 = Radiobutton(frame1, text = "Saída", value = "Saida", variable = selected)
+rd1.place(x=20, y=20)
+rd2.place(x=120, y=20)
+
+# Matricula
+labelMatricula = Label(frame1, text = "Matrícula")
+labelMatricula.place(x=20, y= 50)
+matricula = StringVar()
+matricula.set("00-00-00")
+entryMatricula = Entry(frame1, width = 15, textvariable = matricula)
+entryMatricula.place(x=90, y= 50)
+
+# Data
+labelData = Label(frame1, text = "Data")
+labelData.place(x=20, y= 80)
+data = StringVar()
+data.set("2222-22-22")
+entryData = Entry(frame1, width = 15, textvariable = data)
+entryData.place(x=90, y= 80)
+
+# Hora
+labelHora = Label(frame1, text = "Hora")
+labelHora.place(x=20, y= 110)
+hora =StringVar()
+hora.set("22:22")
+entryHora = Entry(frame1, width = 15, textvariable = hora)
+entryHora.place(x=90, y= 110)
+
+#Combobox Tipo Veiculo
+labelTipo = Label(frame1, text = "Tipo")
+labelTipo.place(x=20, y= 140)
+
+tipos = lerFicheiroTipo()
+tipo = StringVar()
+tipo.set(tipos[0])
+comboboxTipo = ttk.Combobox(frame1, width = 12, values = tipos, textvariable = tipo)
+comboboxTipo.place(x=90, y= 140)
+
+
+# Buttton para registar o movimento
+btnRegistarImage = PhotoImage(file = "recurso\\ex2\\images\\car.png")
+btnRegistar = Button(frame1, text = "Registar", image = btnRegistarImage,compound = TOP, width=140, height=100, 
+                    command = lambda: registrar(selected.get(),matricula.get(),data.get(),hora.get(),tipo.get(),tree,res ="yes"))
+btnRegistar.place(x= 230, y= 35)  
+
+
+# Painel 2
+panel2 = PanedWindow(window, width = 450, height = 270, bd = "3", relief = "sunken")
+panel2.place(x=40, y=230)
+# TreeView para consulta de movimentos
+tree = ttk.Treeview(panel2, height = 10, selectmode = "browse", columns = ("Matricula", "Data", "Hora", "Tipo"), 
+                     show = "headings")
+ 
+tree.column("Matricula", width = 110,  anchor="c")
+tree.column("Data", width = 110,  anchor="c")          # c- center, e - direita, w- esquerda
+tree.column("Hora", width = 110,   anchor="c")
+tree.column("Tipo", width = 110,   anchor="c")
+tree.heading("Matricula", text = "Matricula")
+tree.heading("Data", text = "Data")
+tree.heading("Hora", text = "Hora")
+tree.heading("Tipo", text = "Tipo")
+tree.place(x= 15, y=10)
+lerOcupacao(tree)
+
+#metodo de escolha por messagebox.askquestion, e depois define se sim ou nao
+def item_selected_TREEVIEW(event):
+    if selected.get() == "Saida":
+        res = messagebox.askquestion(title=None, message="Confirma a saida do parque?")
+        if res == 'yes':
+            registrar(selected.get(),matricula.get(),data.get(),hora.get(),tipo.get(),tree,res)
+        elif res == 'no':
+            messagebox.showinfo('Response', 'res = no')
+tree.bind('<Double-Button-1>', item_selected_TREEVIEW)
+
+# Painel 3
+panel3 = PanedWindow(window, width = 450, height = 100, bd = "3", relief = "sunken")
+panel3.place(x=40, y=530)
+
+# Tempo no Parque
+labelTempo = Label(panel3, text = "Tempo no parque")
+labelTempo.place(x=20, y= 20)
+entryTempo = Entry(panel3, width = 15)
+entryTempo.place(x=150, y= 20)
+
+# Valor a pagar 
+labelValor = Label(panel3, text = "Valor a Pagar")
+labelValor.place(x=20, y= 60)
+entryValor = Entry(panel3, width = 15)
+entryValor.place(x=150, y= 60)
+
+# Button Calcular o valor a pagar
+btnCalcularImage = PhotoImage(file = "recurso\\ex2\\images\\calcular.png")
+btnCalcular = Button(panel3, text = "Valor a pagar", width=100, height=78, image = btnCalcularImage, compound=TOP)
+btnCalcular.place(x= 280, y=5)  
+
+window.mainloop()   # event listening loop by calling the mainloop()

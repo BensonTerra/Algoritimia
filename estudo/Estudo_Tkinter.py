@@ -137,7 +137,8 @@ def programa1():
     btnLerFicheiro.place(x = 0.01 * labelFrame4Width, y = 0.05 * labelFrame4Height)
     #---#adicionar
     btnLerAdicionar = Button(labelFrame4, text = "Adicionar", compound=LEFT, relief = "sunken", 
-                    width = 43, height = 3, font=("Arial", 12),command = lambda: adicionar(txtPrimeiroNomeVar.get(),txtUltimoNomeVar.get(),selected.get(),treePanel))
+                    width = 43, height = 3, font=("Arial", 12),
+                    command = lambda: adicionar(txtPrimeiroNomeVar.get(),txtUltimoNomeVar.get(),selected.get(),treePanel))
     btnLerAdicionar.place(x = 0.01 * labelFrame4Width, y = 0.42 * labelFrame4Height)
     #---#remover
     btnRemover = Button(labelFrame4, text = "Remover", compound=LEFT, relief = "sunken", 
@@ -282,7 +283,7 @@ def TelaInicial():
     panned2 = PanedWindow(window, bg = "gray",width = panned2Width, height = appHeight)
     panned2.place(x=panned1Width , y=0)
 
-#Tela 1
+#Tela 2
 def programa2():
     #-----------------------------------------------------------------------------------------------------------------------------#
     menubar = Menu(window)

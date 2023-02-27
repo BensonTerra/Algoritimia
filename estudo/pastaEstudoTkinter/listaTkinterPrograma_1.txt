@@ -1,3 +1,9 @@
 1;Benson;Terra;Estudante
 2;aaaafg;bdaddfg;Estudante
 3;dasdasdd;dadaddaaddaad;Externo
+4;fs;fs;Estudante
+5;fs;fs;Estudante
+6;fs;fs;Estudante
+7;fs;fs;Estudante
+8;fs;fs;Estudante
+9;fs;fs;Estudante
