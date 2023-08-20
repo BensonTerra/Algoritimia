@@ -31,7 +31,7 @@ lblTitulo.place(x=220, y=30)
 canvasImage = Canvas(window, width = 350, height = 200, bd = 2, relief = "sunken")
 canvasImage.place(x=50, y=150)
 
-imagem = PhotoImage(file = "PROVA_3\\images\\img1.png")
+imagem = PhotoImage(file = "Algoritimia\\PROVA_3\\images\\img1.png")
 image_id = canvasImage.create_image(175, 100, image=imagem)
 
 btnSelect = Button(window, text= "Selecionar Imagem", width=25, height=2, command = selecionarImagem)
