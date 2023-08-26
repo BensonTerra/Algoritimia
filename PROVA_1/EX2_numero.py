@@ -8,7 +8,7 @@ import os #biblioteca os
 import random #biblioteca random
 #Variaveis globais
 pasta = "files"
-ficheiro = "PROVA_1/files/atividades.txt"
+ficheiro = "files/atividades.txt"
 
 
 if not os.path.exists(pasta):
