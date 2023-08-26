@@ -13,8 +13,7 @@ nArrayMax = 5
 def primeroCiclo():
     global listaResposta
     numeros_possiveis = list(range(1, 21))
-    listaResposta = random.sample(numeros_possiveis, nArrayMax)
-    print(listaResposta)
+    listaResposta = random.sample(numeros_possiveis, nArrayMax);print(listaResposta.sort())
 primeroCiclo()
 
 #sistema do jogo

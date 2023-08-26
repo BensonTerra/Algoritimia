@@ -22,8 +22,8 @@ def menu():
 
         op = input("\t\t    Opção: ")
         if op == '1':
-            #mostrarTabela(tabuleiro)
-            fim()
+            mostrarTabela(tabuleiro)
+            #fim()
             print("teste")
     
 def mostrarTabela(lista):
@@ -44,10 +44,15 @@ def jogar():
     coluna = input("Selecione uma coluna dentre A,B ou C: ")
     colunaIndex = colunaOptions.index(coluna.upper());print(colunaIndex)
     posRes = random.randint(1,30);print(posRes)
-    res = input("Selecione uma valor de 1 a 30: ")
+
+    try:
+        res = input("Selecione uma valor de 1 a 30: ")
+    except ValueError:
+        print("Caracter não aceito")
+
     if int(res) == posRes:
         print("True")
-            
+        tabuleiro[linhaIndex][colunaIndex]=int(res)
         fim()
     else:
         print("False")
