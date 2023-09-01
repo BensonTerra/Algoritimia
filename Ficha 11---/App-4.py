@@ -15,11 +15,11 @@ def funcaoIMC():
         os.system("cls")
         alturaFinal = altura.get() / 100
         resultado = peso.get() / (alturaFinal ** 2)
-        """
+        
         print("peso: %i"%peso.get())
         print("altura: %i"%altura.get())
         print(resultado)
-        """
+        
         varIMC.set("{0:.2f}".format(resultado))
 #
 

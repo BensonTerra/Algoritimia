@@ -4,7 +4,7 @@ from tkinter import * #biblioteca tkinter
 import time #biblioteca time
 #Bibloiotecas inportadads fim
 #
-5#Variaveis globais inicio
+#Variaveis globais inicio
 pasta = "files"
 ficheiro = "files/list.txt"
 #Variaveis globais fim
@@ -16,10 +16,19 @@ if not os.path.exists(pasta):
 #
 #Guardar o ficheiro inicio
 def guardarFicheiro():
-    linha = txtTexto.get("0.0","end")
-    f = open(ficheiro, "a", encoding="utf-8")
-    f.write(linha)
+   
+    linhas = txtTexto.get("0.0","end");#print(linhas)
+    linhas = linhas.split("\n");#print(linhas)
+    linhas = list(filter(("").__ne__, linhas));#print(linhas)
+
+    f = open(ficheiro, "w", encoding="utf-8")
+
+    for linha in linhas:
+        #print(linha + "\n")
+        f.write(linha + "\n")
+        
     f.close()
+
     time.sleep(1)
 #Guardar o ficheiro fim
 #
@@ -32,7 +41,8 @@ def limparTexto():
 def lerFicheiro():
     limparTexto()
     f = open(ficheiro,"r")
-    texto = f.read()
+    texto = f.read();#print(texto)
+
     txtTexto.insert("end",texto)
     f.close()
 #Ler ficheiros fim
@@ -44,7 +54,7 @@ def limparFicheiro():
     f.close()
 #codigo principal inicio
 window = Tk()
-window.geometry("700x400")
+window.geometry("700x500")
 window.title("Teste.txt")
 #-----------------------------------------------------------------------------------------------------------------------------#
 txtTexto = Text(window, width = 60, height = 16, wrap = "word")
