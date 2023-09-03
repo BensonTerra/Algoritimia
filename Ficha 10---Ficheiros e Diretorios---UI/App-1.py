@@ -45,7 +45,7 @@ def menu():
 def EscreveTexto():
     texto = input("\nInsira o texto que deseja inserir: ")
     f = open(ficheiro,"ab")
-    textoFinal = texto + "\n"
+    textoFinal = texto
     textoBin = bytes(textoFinal,encoding="utf-8")
     f.write(textoBin)
     f.close()
@@ -58,7 +58,7 @@ def LerTexto():
     f.close()
     for linha in linhas:
         print(linha)
-        input()
+    input()
 #lerTexto(): lê o conteúdo binario e traduz para srtring fim
 #
 #Codigo principal incio
