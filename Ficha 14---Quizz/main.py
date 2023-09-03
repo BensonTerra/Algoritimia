@@ -6,7 +6,7 @@ import os
 from jogar import *
 from perfil import *
 
-ficheiro_perfil = "ficheiros/perfil.txt"
+ficheiro_perfil = "Ficha 14---Quizz/ficheiros/perfil.txt"
 
 def atualizaImgPerfil():
   """
@@ -22,9 +22,9 @@ def selecionaPerfil():
   selecionar imagem para o perfil, nas configurações, a partir de FileDialog
   """
   global filename
-  filename = filedialog.askopenfilename(title = "Select file", initialdir= "./imagens",
+  filename = filedialog.askopenfilename(title = "Select file", initialdir= "Ficha 14---Quizz/imagens",
               filetypes = (("png files","*.png"),("gif files", "*.gif"), ("all files","*.*")))
-  print(filename)
+  #print(filename)
   
   global img_perfil
   img_perfil = PhotoImage(file = filename)
@@ -54,6 +54,8 @@ def PanelConfigurar():
     image_perfil_id = canvas_perfil.create_image(25, 25, image=img_perfil)
     #image_perfil_id equivale à imagem presente no canvas_perfil com a img_perfil=PhotoImage(file = filename)
 
+    filename, tema = ler_perfil()
+
     frame1 = LabelFrame(panelConfig, text = "Selecione o continente para jogar", width = 300, height = 150, bd = 3, relief = "sunken")
     frame1.place(x=100, y=150)
     continente = StringVar() 
@@ -74,7 +76,7 @@ def PanelConfigurar():
     btn_guardar.place(x=100, y=320)
 
 def panelJogar():
-    # Panel Jogar  -------------------------------------
+  # Panel Jogar  -------------------------------------
   panelJogar = PanedWindow(window, width = 700, height = 450, relief = "flat" )
   panelJogar.place(x=0, y=50)
 
@@ -87,6 +89,9 @@ def panelJogar():
   lblCidade = Label(panelJogar, textvariable =cidade, width = 25,  fg = "blue", font = ("Helvetica", "12"))
   lblCidade.place(x=210, y=60)
 
+  global filename
+  filename, tema = ler_perfil()
+
   frame2 = LabelFrame(panelJogar, text = "É a Capital do país: ", width = 450, height = 150, bd = 3, relief = "sunken")
   frame2.place(x=120, y=100)
   resposta = StringVar(frame2, "A")   # variavel que contém o conteudo / valor do radiobutton selecionado
@@ -95,20 +100,22 @@ def panelJogar():
   resp3 = Radiobutton(frame2, text = "Opção C", variable = resposta, value = "C", font = ("Helvetica", "10"), fg = "blue")
   resp4 = Radiobutton(frame2, text = "Opção D", variable = resposta, value = "D", font = ("Helvetica", "10"), fg = "blue")
 
+  obter_questao (tema, resp1, resp2, resp3, resp4, cidade)
+
   resp1.place(x=20, y= 20)
   resp2.place(x=250, y= 20)
   resp3.place(x=20, y= 100)
   resp4.place(x=250, y= 100)
 
   global btnImage1, btnImage2
-  btnImage1 = PhotoImage(file = "imagens\\icoPergunta.png")
+  btnImage1 = PhotoImage(file = "Ficha 14---Quizz/imagens/icoPergunta.png")
   btnNovaPergunta = Button(panelJogar, text = "Nova Pergunta", image = btnImage1, compound = LEFT, fg = "red",
                         width = 220, height = 48, font = ("Helvetica", "10"),
                         command =lambda: obter_questao (tema, resp1, resp2, resp3, resp4, cidade))
   btnNovaPergunta.place(x=120, y=280)
   
 
-  btnImage2 = PhotoImage(file = "imagens\\icovalidar.png")
+  btnImage2 = PhotoImage(file = "Ficha 14---Quizz/imagens/icovalidar.png")
   btnResponder = Button(panelJogar, text = "Validar Resposta", image = btnImage2,compound = LEFT,  fg = "red",
                       width = 220, height = 48, font = ("Helvetica", "10"),  command = lambda: validar_resposta(resposta, respCertas, respErradas))
   btnResponder.place(x=345, y=280)
@@ -152,17 +159,17 @@ PanelStatus = PanedWindow(window, width=700, height=50, relief = "flat")
 PanelStatus.place(x=0, y=0)
 
 #----- Button JOGAR ------------------------------
-imageNovo = PhotoImage(file = "imagens\\icoNovo.png" )
+imageNovo = PhotoImage(file = "Ficha 14---Quizz/imagens/icoNovo.png" )
 btnJogar = Button(PanelStatus, text = "Novo Jogo", width = 100, height = 48, image = imageNovo, compound = LEFT,
                    font = ("Helvetica", "10"),  command = panelJogar)
 btnJogar.place(x=100, y=0)
 #----- Button SAIR ------------------------------
-imageSair = PhotoImage(file = "imagens\\icoSair.png" )
+imageSair = PhotoImage(file = "Ficha 14---Quizz/imagens/icoSair.png" )
 btnSair = Button(PanelStatus, text = "Fechar", width = 100, height = 48,   image = imageSair, compound = LEFT,
                   font = ("Helvetica", "10"),  command = window.destroy)
 btnSair.place(x=250, y=0)
 #----- Button CONFIGURAÇÕES -----------------------
-imageConfig = PhotoImage(file = "imagens\\icoConfig.png" )
+imageConfig = PhotoImage(file = "Ficha 14---Quizz/imagens/icoConfig.png" )
 btnConfig = Button(PanelStatus, text = "Configurar \nopções", image = imageConfig, compound = LEFT, 
                   width = 100, height = 48, font = ("Helvetica", "10"), command = PanelConfigurar)
 btnConfig.place(x=400, y=0)
@@ -176,7 +183,7 @@ imageHeader_id = ctnUser.create_image(25, 25, image=imgPerfilHeader)
 # ------------ Imagem do Quizz ------------------
 ctnLogo = Canvas(window, width = 700, height = 450, relief = "flat")
 ctnLogo.place(x=0, y=70)
-img_logo = PhotoImage(file = "imagens\\quizzCapitais.png")
+img_logo = PhotoImage(file = "Ficha 14---Quizz/imagens/quizzCapitais.png")
 ctnLogo.create_image(350, 225, image=img_logo)
 
 window.mainloop()   # event listening loop by calling the mainloop()
