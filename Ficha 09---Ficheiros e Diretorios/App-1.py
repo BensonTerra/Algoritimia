@@ -45,7 +45,7 @@ def paisExiste(pais):
         linhas = f.readlines()
         f.close()
         for linha in linhas:
-            #print("%s"%(linha.split(";")[0]))
+            print("%s"%(linha.split(";")[0]))
             if pais == linha.split(";")[0]:
                 return True
         else:
