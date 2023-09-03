@@ -57,7 +57,7 @@ def estado(parque):
                 VagasLivres+=1
             else:
                 Vagasocupadas+=1
-    print("\n\n\t\tESTADO DO PARQUE")
+    print("\n\n\t\tESTADO DO PARQUE\n")
     print("\tNº lugares livres  : %i"%VagasLivres)
     print("\tNº lugares ocupados: %i"%Vagasocupadas)
     print()
