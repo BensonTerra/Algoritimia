@@ -7,7 +7,7 @@ from tkinter import filedialog   # filedialog boxes
 import os
 from tkinter import messagebox   #  messagebox
 
-ficheiro_perfil = "ficheiros\\perfil.txt"
+ficheiro_perfil = "ficheiros\perfil.txt"
 
 
 def guardarPerfil(continente, filename):
