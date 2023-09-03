@@ -57,7 +57,7 @@ def consultaEstatisca():
     #print(len(linhas))
     #input()
     for linha in linhas:
-        temperatura = linha.split(";")[2]
+        temperatura = linha.split(";")[1]
         temperatura = temperatura[1:3]
         print(temperatura)
         lista.append(int(temperatura))

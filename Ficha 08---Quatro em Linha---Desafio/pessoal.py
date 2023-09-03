@@ -124,7 +124,9 @@ def gravidade(cordenada):
             return cordenada
         elif tabuleiro[cordenada[0]][cordenada[1]] != "":
             cordenada[0] = cordenada[0] - 1
+            print(cordenada[0])
             cordenada[1] = cordenada[1]
+            print(cordenada[1])
             return cordenada
            
     while colunaDisponivel(casaInferior) == False:
@@ -232,10 +234,9 @@ def PlayerX(ficha):
         #print(colunaSelecionada)
         while colunaSelecionada != "":
             cordenada = colunaLetraParaNumero(colunaSelecionada)
-            #print(cordenada)
-            #verificar se o coluna esta ocupado ou ha algo abaixo
-            cordenadaFinal = gravidade(cordenada)
-            #print(cordenadaFinal)
+            print(cordenada)
+            cordenadaFinal = gravidade(cordenada) #verificar se o coluna esta ocupado ou ha algo abaixo
+            print(cordenadaFinal)
             if colunaDisponivel(cordenadaFinal) == True:
                 modificarTabuleiro(cordenadaFinal,ficha)
                 input()
