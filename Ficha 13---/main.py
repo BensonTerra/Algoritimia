@@ -85,7 +85,6 @@ def containerGerirProvas():
 
 
 
-
 def containerConsultarProvas():
     """
     Painel de consulta de provas com filtros e ordenação
@@ -145,10 +144,6 @@ def containerConsultarProvas():
 
 
 
-
-
-
-
 def panelAutenticarUser():
    """
    Painel de autenticação
@@ -184,8 +179,6 @@ def panelAutenticarUser():
                       command = lambda: autenticarUser(userName.get(), userPass.get(), panelUsers))
    btnValidar.place(x=260, y= 200) 
    
-
-
 
 
 def autenticarUser(userName, userPass, panelUsers):
@@ -313,9 +306,6 @@ btnCriarConta = Button (window, image = imageConta, width = 64, height=38, relie
 btnCriarConta.place(x=890, y=5)
 
 containerHome()
-
-
-
 
 
 
