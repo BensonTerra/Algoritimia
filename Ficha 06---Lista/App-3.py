@@ -20,11 +20,11 @@ while autoStart == "Y" or autoStart == "y":
         i=1
         nota= 10
         while i <=10:
-            #nota =int(input("Nota do aluno nº %i: "%i))
+            nota =int(input("Nota do aluno nº %i: "%i))
             if nota<0 or nota>20:
                 raise ValueError()
             score.append(nota)
-            nota+=1
+            #nota+=1 #macro
             i+=1
         listapositiva=positiveList(score)
         print("Scores superior a 10: %s"%listapositiva)

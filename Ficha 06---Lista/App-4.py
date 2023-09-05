@@ -28,7 +28,7 @@ while autoStart == "Y" or autoStart == "y":
                 raise ValueError()
             aluno.append(nome)
             score.append(nota)
-            nota+=1
+            nota+=1 #macro
             i+=1
         pNomes,pNotas = positiveList(aluno,score)
 
