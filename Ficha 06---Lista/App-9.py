@@ -1,5 +1,5 @@
 """
-
+Este programa calcula a média de visitantes ao longo de uma semana em diferentes dias.
 """
 
 def media_visitantes(lista):

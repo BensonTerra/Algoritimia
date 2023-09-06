@@ -1,5 +1,6 @@
 """
-
+Este programa cria uma matriz (lista de listas) com base no número de linhas e colunas especificadas.
+Em seguida, ele inverte a matriz transpondo suas linhas e colunas e a exibe em formato de tabela.
 """
 #---------------------------------------------------------------#
 def cria_lista(nlin,ncol):

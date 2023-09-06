@@ -13,5 +13,5 @@ def valorMedio(*valores):
 while autoStart == "Y" or autoStart == "y":
     os.system("cls")
     resultado=valorMedio(10,20,30,40,50)
-    print("%.2f\n"%resultado)
+    print("%.2f\n"%(resultado))
     autoStart = input("Repetir(Y/N) ?: ")

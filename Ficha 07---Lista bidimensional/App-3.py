@@ -1,5 +1,5 @@
 """
-
+Este programa simula um estacionamento com múltiplas filas e vagas. Os carros podem ser adicionados, removidos e o estado atual do estacionamento pode ser verificado.
 """
 
 #Variaveis globais

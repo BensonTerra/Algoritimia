@@ -1,5 +1,6 @@
 """
-docstring
+Este programa é um gerador de matrizes que permite ao usuário criar uma matriz de números aleatórios com base na dimensão especificada.
+Ele também pode calcular a matriz transposta e encontrar o maior elemento da matriz.
 """
 #---------------------GERADOR DE MATRIZES-----------------#
 def cria_Matriz(num):
