@@ -38,8 +38,8 @@ def removeDuplicates(texto):
     lista = []
     listaProvisoria = []
     resposta = ""
-    lista = texto.split()
-    #print(lista)
+    lista = texto.split(" ")
+    print(lista)
     numCiclos = len(lista)
 
     for i in range (len(lista)):
