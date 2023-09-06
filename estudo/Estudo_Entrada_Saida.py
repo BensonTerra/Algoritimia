@@ -17,7 +17,7 @@ def parkValidator(data):
 def adcionarMatricula():
     os.system("cls")
     #print("adcionarMatricula")
-    x = input("Digite o primeiro par de caracteres da matricula(00 a 99): ")
+    x = input("Digite o primeiro par de caracteres da matricula(00 a 09): ")
     y = input("Digite o segundo par de caracteres da matricula(AA a ZZ): ")
     z = input("Digite o terceiro par de caracteres damatricula(00 a 99): ")
     if len(str(x)) <= 2 and len(y) == 2 and len(str(z)) <= 2:

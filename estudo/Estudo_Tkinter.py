@@ -53,7 +53,7 @@ def programa1():
 
     menubar.add_cascade(label = "Telas", menu = navegacao)
     navegacao.add_command(label="Tela Inicial", command = TelaInicial)
-    navegacao.add_command(label="Programa 1")
+    navegacao.add_command(label="Programa 1",command= programa1)
     navegacao.add_command(label="Tela 3")
     navegacao.add_command(label="Tela 4")
     navegacao.add_command(label="Teste", command= lambda: indexCapture_TREEVIEW(treePanel))
