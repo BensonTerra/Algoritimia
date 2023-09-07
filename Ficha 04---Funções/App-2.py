@@ -11,7 +11,7 @@ def somatorio(Num1,Num2): #função somatorio
         #os.system("cls")
         #print("")
         #print(somatorio)
-        #print(i)
+        print(i)
         #print("")
         resultado = resultado + i #novo valor da variavel somatorio
     print(resultado)

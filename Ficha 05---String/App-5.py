@@ -9,10 +9,10 @@ autoStart="y"
 
 def shortName(nome):
     nomeCurto=""
-    posFirstName=nome.find(" ")
-    nomeCurto=nomeCurto+nome[:posFirstName]
-    posLastName=nome.rfind(" ")
-    nomeCurto=nomeCurto+nome[posLastName:]
+    posFirstName = nome.find(" ")
+    nomeCurto = nomeCurto + nome[:posFirstName]
+    posLastName = nome.rfind(" ")
+    nomeCurto = nomeCurto + nome[posLastName:]
     print(nomeCurto)
 
 

@@ -62,11 +62,14 @@ def atendimentoV2(tickets):
 
 
 def estado(tickets):
-    print("\n\n\t\tSenhas por atender {0} " .format(len(tickets)))
-    print("\n\n\t\tSenhas livres      {0} " .format(compFila - len(tickets)))
-    print("\n\t\t", tickets)
-    input()
 
+    if len(tickets) != 0:
+        print("\n\n\t\tSenhas por atender {0} " .format(len(tickets)))
+        print("\n\n\t\tSenhas livres      {0} " .format(compFila - len(tickets)))
+        print("\n\t\t", tickets)
+    else:
+        print("\n\n\t\tNenhuma senha  por atender")
+    input()
 tickets= []
 op="1"
 

@@ -1,4 +1,17 @@
+"""
+Este programa calcula e analisa os dados de faturação mensal para um ano.
 
+Inclui as seguintes funções:
+- maior_faturacao(lista): Retorna o mês com a maior faturação.
+- menor_faturacao(lista): Retorna o mês com a menor faturação.
+- media_faturacao(lista): Calcula a média da faturação mensal.
+
+O usuário é solicitado a inserir os valores de faturação para cada mês, e o programa
+calcula e exibe as seguintes informações:
+- O mês com a maior faturação.
+- O mês com a menor faturação.
+- A média da faturação mensal com base nos valores inseridos.
+"""
 meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"] #postos de trabalho
 faturação = [800,900,1100,1210,1320,1570,1400,1300,750,900,1400,1350] #mascaras
 

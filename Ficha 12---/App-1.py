@@ -120,8 +120,9 @@ def limparLista(Lista):
     Lista.delete(0,END)
     #-----------------------------------------------------------------------------------------------------------------------------#
 def removerEntrada(lista):
+    print(lista)
     pos = lista.curselection()
-    #print(pos)
+    print(pos)
     lista.delete(pos)
     limparLista(lista)
     lerArquivoRegistro(lista)

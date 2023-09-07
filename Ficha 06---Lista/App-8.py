@@ -8,7 +8,7 @@ def lista_sem_duplicados(lnumbers):
     newList = []
     lnumbers.sort()
     for i in range (0, len(lnumbers)):
-        if newList.count(lnumbers[i]) ==0:           # Se não existe na newList
+        if newList.count(lnumbers[i]) == 0:           # Se não existe na newList
             newList.append(lnumbers[i])
     return newList
 

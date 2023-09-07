@@ -10,7 +10,7 @@ import os #biblioteca os
 autoStart="y"
 
 meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"] 
-#pluviosidade = [150,190,225,270,145,110,90,60,80,120,175,185] #agua
+pluviosidade = [150,190,225,270,145,110,90,60,80,120,175,185] #agua
 
 def maior_pluviosidade(lista):
     """
@@ -37,11 +37,11 @@ def maior_pluviosidade(lista):
 while autoStart == "Y" or autoStart == "y":
     os.system("cls")
     try:
-        pluviosidade= []
+        #pluviosidade= []
         for i in range(12):
-            #valor = pluviosidade[i]
-            valor = int(input("Faturação do mês %s: "%meses[i]))
-            pluviosidade.append(valor)
+            valor = pluviosidade[i]
+            #valor = int(input("Faturação do mês %s: "%meses[i]))
+            #pluviosidade.append(valor)
         print("\n %s \n"%pluviosidade)
     except ValueError:
         print("Digite novamente")
