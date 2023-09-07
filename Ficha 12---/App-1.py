@@ -120,12 +120,20 @@ def limparLista(Lista):
     Lista.delete(0,END)
     #-----------------------------------------------------------------------------------------------------------------------------#
 def removerEntrada(lista):
-    print(lista)
     pos = lista.curselection()
     print(pos)
     lista.delete(pos)
+
+    count = lista.size();print(count)
+    f = open(ficheiro,"w", encoding="utf-8")
+    for i in range(count):
+        elemento = lista.get(i)
+        f.write(elemento)
+    f.close()
+    """
     limparLista(lista)
     lerArquivoRegistro(lista)
+    """
     #-----------------------------------------------------------------------------------------------------------------------------#
 
 #Tela dos movimentos Fim
@@ -222,7 +230,7 @@ def consultarMovimentos(cbEntrada, cbSaida, numEstudante, tree):
 #---#
     #print(linhas)
     for linha in linhas:
-        dados = linha.split(";")
+        dados = linha.split("|")
         #print(dados)
     #---#
         if tiposMovimentos == "Todos" or dados[3] == tiposMovimentos:
