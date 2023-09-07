@@ -76,5 +76,6 @@ print('\nParabéns!\nConseguiste {} pontos em {} jogadas'.format(nPontos, jogada
 input('\nPressione ENTER para fechar.')
 
 
-
-EX1_40220426.py
+"""
+        EX1_40220426.py
+"""
