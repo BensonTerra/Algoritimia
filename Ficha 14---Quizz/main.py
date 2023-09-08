@@ -153,6 +153,7 @@ window.title('Quizz - Capitais')
 #window.attributes('-disabled', True)   # desativa os atrubutos da window de maximizar, minimizar e fecho
 
 filename, tema = ler_perfil()
+print(filename)
 
 
 PanelStatus = PanedWindow(window, width=700, height=50, relief = "flat")

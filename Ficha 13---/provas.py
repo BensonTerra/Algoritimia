@@ -22,7 +22,7 @@ def removerProva(tview):
     #linha= tview.item(rowId)
     #print(linha)
     
-    tview.delete(tview.selection())
+    tview.delete(tview.selection()) #metodo remoçãoProfessor
 
     fileProvas=open(fProvas, "w", encoding="utf-8")
     for line in tview.get_children():
