@@ -4,9 +4,9 @@ docstring
 import os #biblioteca os
 import random #biblioteca random
 
-tabuleiro =[[1,2,3],
-            [2,5,6],
-            [7,8,9]]
+tabuleiro =[[0,0,0],
+            [0,0,0],
+            [0,0,0]]
 posRes = random.randint(1,30)
 colunaOptions = ["A","B","C"]
 linhaOptions = ["1","2","3"]
@@ -50,12 +50,12 @@ def jogar():
     except ValueError:
         print("Caracter não aceito")
 
-    if int(res) == posRes:
+    if int(res) == posRes and tabuleiro[linhaIndex][colunaIndex] == 0:
         print("True")
         tabuleiro[linhaIndex][colunaIndex]=int(res)
-        fim()
     else:
         print("False")
+    fim()
     input()
 
 def fim():
@@ -86,6 +86,7 @@ def fim():
                 print("> 90")
     
     input()
+    mostrarTabela(tabuleiro)
 
 #Codigo principal incio
 autoStart="y"
