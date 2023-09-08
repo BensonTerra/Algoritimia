@@ -14,7 +14,7 @@ def generateNumber(limMin,limMax,numeros):
             num=random.randint(limMin,limMax)
         lista.append(num)
     lista.sort()
-    #print(lista)
+    print(lista)
     return lista
 
 
